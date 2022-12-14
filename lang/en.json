@@ -1,0 +1,26 @@
+{
+  "earthland.AbilityStr": "Strength",
+  "earthland.AbilityCon": "Constitution",
+  "earthland.AbilityPre": "Precision",
+  "earthland.AbilitySpd": "Speed",
+  "earthland.AbilityInt": "Intelligence",
+  "earthland.AbilityPer": "Perception",
+  "earthland.AbilityWil": "Willpower",
+  "earthland.AbilityCha": "Charisma",
+
+  "earthland.AbilityStrAbbr": "str",
+  "earthland.AbilityConAbbr": "con",
+  "earthland.AbilityPreAbbr": "pre",
+  "earthland.AbilitySpdAbbr": "spd",
+  "earthland.AbilityIntAbbr": "int",
+  "earthland.AbilityWilAbbr": "wil",
+  "earthland.AbilityPerAbbr": "per",
+  "earthland.AbilityChaAbbr": "cha",
+
+  "earthland.EffectCreate": "Create Effect",
+  "earthland.EffectToggle": "Toggle Effect",
+  "earthland.EffectEdit": "Edit Effect",
+  "earthland.EffectDelete": "Delete Effect",
+
+  "earthland.Add": "Add"
+}
