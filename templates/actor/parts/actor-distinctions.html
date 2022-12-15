@@ -1,0 +1,22 @@
+<ol class="distinctions-list">
+  <li class="distinction flexrow distinctions-header">
+    <div class="distinction-name">Name</div>
+    <div class="distinction-hinder">Hindrance</div>
+    <div class="distinction-controls">
+      <a class="distinction-control distinction-create" title="Create a Distinction" data-type="distinction"><i class="fas fa-plus"></i> Add a Distinction</a>
+    </div>
+  </li>
+  {{#each distinctions as |distinction id|}}
+    <li class="distinction flexrow" data-distinction-id="{{distinction._id}}">
+      <div class="distinction-name">
+        <button class="role rollable" data-rolltype="actor" data-roll="{{distinction.system.dice}}" data-label="{{key}}"><i class="fas fa-dice-d8"></i></button>
+       <h4>{{distinction.name}}</h4>
+      </div>
+      <div class="distinction-hinder distinction-prop">{{distinction.system.hinder_die}}</div>
+      <div class="distinction-controls">
+        <a class="distinction-control distinction-edit" title="Edit Distinction"><i class="fas fa-edit"></i></a>
+        <a class="distinction-control distinction-delete" title="Delete Distinction"><i class="fas fa-trash"></i></a>
+      </div>
+    </li>
+  {{/each}}
+</ol>

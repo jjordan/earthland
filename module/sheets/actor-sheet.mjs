@@ -11,9 +11,9 @@ export class earthlandActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["earthland", "sheet", "actor"],
       template: "systems/earthland/templates/actor/actor-sheet.html",
-      width: 600,
-      height: 900,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      width: 800,
+      height: 1000,
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "traits" }]
     });
   }
 
@@ -31,7 +31,7 @@ export class earthlandActorSheet extends ActorSheet {
     // sheets are the actor object, the data object, whether or not it's
     // editable, the items array, and the effects array.
     const context = super.getData();
-
+    console.log("What is context? %o", context);
     // Use a safe clone of the actor data for further operations.
     const actorData = this.actor.toObject(false);
 
@@ -71,6 +71,9 @@ export class earthlandActorSheet extends ActorSheet {
     for (let [k, v] of Object.entries(context.system.attributes)) {
       v.label = game.i18n.localize(CONFIG.earthland.attributes[k]) ?? k;
     }
+    for (let [k, v] of Object.entries(context.system.roles)) {
+      v.label = game.i18n.localize(CONFIG.earthland.roles[k]) ?? k;
+    }
   }
 
   /**
@@ -82,6 +85,7 @@ export class earthlandActorSheet extends ActorSheet {
    */
   _prepareItems(context) {
     // Initialize containers.
+    const distinctions = [];
     const gear = [];
     const features = [];
     const spells = {
@@ -100,6 +104,10 @@ export class earthlandActorSheet extends ActorSheet {
     // Iterate through items, allocating to containers
     for (let i of context.items) {
       i.img = i.img || DEFAULT_TOKEN;
+      // Append to distinctions.
+      if (i.type === 'distinction') {
+        distinctions.push(i);
+      }
       // Append to gear.
       if (i.type === 'item') {
         gear.push(i);
@@ -117,6 +125,7 @@ export class earthlandActorSheet extends ActorSheet {
     }
 
     // Assign and return
+    context.distinctions = distinctions;
     context.gear = gear;
     context.features = features;
     context.spells = spells;
@@ -203,7 +212,7 @@ export class earthlandActorSheet extends ActorSheet {
     event.preventDefault();
     const element = event.currentTarget;
     const dataset = element.dataset;
-
+    // console.log("element: %o, dataset: %o", element, dataset);
     // Handle item rolls.
     if (dataset.rollType) {
       if (dataset.rollType == 'item') {
@@ -215,7 +224,7 @@ export class earthlandActorSheet extends ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : '';
+      let label = dataset.label ? `[${dataset.kind}] ${dataset.label}` : '';
       let roll = new Roll(dataset.roll, this.actor.getRollData());
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),

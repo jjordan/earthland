@@ -15,6 +15,31 @@ export const earthland = {};
   "charisma": "earthland.AbilityCha"
 };
 
+earthland.roles = {
+  "arcanist":    "earthland.RoleArcanist",
+  "artillery":   "earthland.RoleArtillery",
+  "assassin":    "earthland.RoleAssassin",
+  "athlete":     "earthland.RoleAthlete",
+  "brawler":     "earthland.RoleBrawler",
+  "brute":       "earthland.RoleBrute",
+  "burglar":     "earthland.RoleBurglar",
+  "controller":  "earthland.RoleController",
+  "courtesean":  "earthland.RoleCourtesean",
+  "defender":    "earthland.RoleDefender",
+  "detective":   "earthland.RoleDetective",
+  "entertainer": "earthland.RoleEntertainer",
+  "explorer":    "earthland.RoleExplorer",
+  "fencer":      "earthland.RoleFencer",
+  "healer":      "earthland.RoleHealer",
+  "leader":      "earthland.RoleLeader",
+  "lurker":      "earthland.RoleLurker",
+  "marksman":    "earthland.RoleMarksman",
+  "scholar":     "earthland.RoleScholar",
+  "skirmisher":  "earthland.RoleSkirmisher",
+  "soldier":     "earthland.RoleSoldier",
+  "tinkerer":    "earthland.RoleTinkerer"
+};
+
 earthland.abilityAbbreviations = {
   "strength": "earthland.AbilityStrAbbr",
   "precision": "earthland.AbilityPreAbbr",

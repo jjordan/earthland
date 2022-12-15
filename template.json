@@ -18,6 +18,10 @@
                "min":0,
                "max":7
             },
+            "experience":{
+               "min":0,
+               "value":0
+            },
             "size":"",
             "attributes":{
                "strength": { "value": ""},
@@ -46,21 +50,21 @@
          },
          "biography":"",
          "roles":{
-            "arcanist":"",
-            "assassin":"",
-            "athlete":"",
-            "brawler":"",
-            "burglar":"",
-            "courtesean":"",
-            "defender":"",
-            "detective":"",
-            "entertainer":"",
-            "explorer":"",
-            "fencer":"",
-            "healer":"",
-            "marksman":"",
-            "scholar":"",
-            "tinkerer":""
+            "arcanist":{ "value": ""},
+            "assassin":{ "value": ""},
+            "athlete":{ "value": ""},
+            "brawler":{ "value": ""},
+            "burglar":{ "value": ""},
+            "courtesean":{ "value": ""},
+            "defender":{ "value": ""},
+            "detective":{ "value": ""},
+            "entertainer":{ "value": ""},
+            "explorer":{ "value": ""},
+            "fencer":{ "value": ""},
+            "healer":{ "value": ""},
+            "marksman":{ "value": ""},
+            "scholar":{ "value": ""},
+            "tinkerer":{ "value": ""}
          }
       },
       "monster":{
@@ -71,24 +75,24 @@
          "category":"",
          "environments":"",
          "behaviors":{
-            "aggression":"",
-            "alertness":"",
-            "coordination":"",
-            "cunning":"",
-            "ferocity":"",
-            "predation":"",
-            "protectivity":"",
-            "skittishness":"",
-            "territoriality":""
+            "aggression":{ "value": ""},
+            "alertness":{ "value": ""},
+            "coordination":{ "value": ""},
+            "cunning":{ "value": ""},
+            "ferocity":{ "value": ""},
+            "predation":{ "value": ""},
+            "protectivity":{ "value": ""},
+            "skittishness":{ "value": ""},
+            "territoriality":{ "value": ""}
          },
          "roles":{
-            "artillery":"",
-            "brute":"",
-            "controller":"",
-            "leader":"",
-            "lurker":"",
-            "skirmisher":"",
-            "soldier":""
+            "artillery":{ "value": ""},
+            "brute":{ "value": ""},
+            "controller":{ "value": ""},
+            "leader":{ "value": ""},
+            "lurker":{ "value": ""},
+            "skirmisher":{ "value": ""},
+            "soldier":{ "value": ""}
          }
       },
       "npc":{
@@ -97,40 +101,40 @@
          ],
          "backstory":"",
          "roles":{
-            "arcanist":"",
-            "assassin":"",
-            "athlete":"",
-            "brawler":"",
-            "burglar":"",
-            "courtesean":"",
-            "defender":"",
-            "detective":"",
-            "entertainer":"",
-            "explorer":"",
-            "fencer":"",
-            "healer":"",
-            "marksman":"",
-            "scholar":"",
-            "tinkerer":""
+            "arcanist":{ "value": ""},
+            "assassin":{ "value": ""},
+            "athlete":{ "value": ""},
+            "brawler":{ "value": ""},
+            "burglar":{ "value": ""},
+            "courtesean":{ "value": ""},
+            "defender":{ "value": ""},
+            "detective":{ "value": ""},
+            "entertainer":{ "value": ""},
+            "explorer":{ "value": ""},
+            "fencer":{ "value": ""},
+            "healer":{ "value": ""},
+            "marksman":{ "value": ""},
+            "scholar":{ "value": ""},
+            "tinkerer":{ "value": ""}
          },
          "morality":{
             "virtues":{
-               "compassion":"",
-               "courage":"",
-               "honor":"",
-               "humility":"",
-               "justice":"",
-               "prudence":"",
-               "temperance":""
+               "compassion":{ "value": ""},
+               "courage":{ "value": ""},
+               "honor":{ "value": ""},
+               "humility":{ "value": ""},
+               "justice":{ "value": ""},
+               "prudence":{ "value": ""},
+               "temperance":{ "value": ""}
             },
             "vices":{
-               "envy":"",
-               "gluttony":"",
-               "greed":"",
-               "lust":"",
-               "pride":"",
-               "sloth":"",
-               "wrath":""
+               "envy":{ "value": ""},
+               "gluttony":{ "value": ""},
+               "greed":{ "value": ""},
+               "lust":{ "value": ""},
+               "pride":{ "value": ""},
+               "sloth":{ "value": ""},
+               "wrath":{ "value": ""}
             }
          }
       }
@@ -224,8 +228,7 @@
             "base",
             "rollable"
          ],
-         "hinder_die":"",
-         "description":""
+         "hinder_die":"1d4"
       },
       "potion":{
          "templates":[
