@@ -1,0 +1,317 @@
+Okay, so now I know that I can implement the item drag & drop.
+But what do I do about the actual transferrence?
+Like what do I want out of the game?
+
+Magic Items
+Magic Abilities
+
+Monsters
+Mages
+
+Guild Battles
+
+
+
+I probably need to redesign most of the magic and combat.
+
+So there are no "multi-attacks" and I want to balance pets with non-pet users...
+
+So I like my "balance" system, of having Unbalanced, Disturbed and Doubtful.
+Although I should probably change Disturbed to Confused, since it makes more sense in terms of an Intelligence condition.
+
+I like having my Attributes + Roles + Distinctions as the base set for PCs.
+For NPCs (humanoids) it would be similar: Attributes + Roles + Virtues/Vices.
+For Monsters, probably: Attributes + Roles + Behaviors.
+
+For combat, I have both Duels and Brawls.
+
+Armor is a die (or multiple dice) whereby the attacker's Effect Die must exceed the target's Armor, or they take no damage. But on a successful hit, the Armor die should still be decreased by 1 level.
+For +1, +2, +3 Armor, instead those get additional Armor Dice, so that even though they are decremented, the armor lasts longer.
+Armor would need to be repaired after battles.
+Magic Armor must be repaired by magic.
+
+Weapons add additional dice. And again a +1, +2 or +3 adds additional dice to the attack.
+Probably most weapons should do a D6.
+
+Do I want Hit Points? Or can I do it with the Injury/Trauma track?
+
+The basic combat strategy varies by Type and Role (starting with Monsters):
+
+Monster Strategies
+
+Types:
+
+ * Boss   - has multiple modes, depending on how many Hit Dice they have.
+ * Elite  - has "Desperation" dice which they can use after they are "bloodied"
+ * Minion - have exactly 3 dice, but only 1 hit die, good at a single thing
+ * Mob    - a group of minions, with dice equal to their number/power
+ * Extra  - represented by a single die, does not have a character sheet
+
+Roles (Elite & Boss mostly):
+ * Artillery  - fires projectiles from a distance, attempts to keep out of melee range
+ * Brute      - attempts to close to melee quickly and bash/grapple
+ * Controller - tries to inflict one or more status conditions
+ * Leader     - can buff/heal other mobs, typical role for Elite or Boss monsters
+ * Lurker     - hides and strikes from stealth, tries to reset to get into position again
+ * Skirmisher - moves quickly to attack using alternate mobility (running, flying, swimming, burrowing, climbing, jumping, teleporting, etc)
+ * Soldier    - has armor and more hit dice, can absorb more hits, role for Elite or Boss monsters
+
+Humanoid Strategies
+
+Types:
+ * Boss   - has multiple modes, depending on how many Hit Dice they have.
+ * Elite  - has "Desperation" dice which they can use after they are "bloodied"
+ * Minion - have exactly 3 dice, but only 1 hit die, good at a single thing
+ * Mob    - a group of minions, with dice equal to their number/power
+ * Extra  - represented by a single die, does not have a character sheet
+
+
+Martial Roles (Elite & Boss mostly):
+ * Arcanist(controller) - uses spells for AOE damage and status effects
+ * Assassin(lurker) - strikes from stealth or, tries to reset to get into position again
+ * Brawler(brute) - attempts to close to melee quickly and bash/grapple
+ * Defender (soldier) - has armor and more hit dice, can absorb more hits, role for Elite or Boss monsters
+ * Healer(leader) - uses spells for healing, shieling, cleansing and enhancing effects
+ * Marksman(artillery) - fires projectiles from a distance, attempts to keep out of melee range, projectiles may be physical or magical
+ * Martial Artist(skirmisher) - moves quickly to attack using alternate mobility (running, jumping, etc)
+
+Non-Combat Roles:
+ * Athlete - uses their superior physique to attack in a broad way or defend by fleeing quickly
+ * Courtesean - tries to confuse or charm the opponent
+ * Detective - tries to discover the opponent's strengths & weaknesses
+ * Entertainer - tries to confuse or charm the opponent
+ * Explorer - tries to use their knowledge of the environment to their advantage
+ * Scholar - ???
+ * Thief/Burglar - has access to hiding, sneaking and stealth, so tries to hide or get away
+ * Tinkerer - tries to use a gadget to fight with
+
+So the Non-combat roles indicate what other types of game systems I want to have in this world.
+
+Athlete - skill tests that involve parkour or other feats of strength or agility
+Courtesean - social manipulations and political maneuvering, persuasion via emotions
+Detective - finding clues, solving mysteries and persuasion via logical arguments
+Entertainer - gaining fame, mass social manipulations, persuasion via appearance
+Explorer - navigating the world, finding rare items or resources, survival in the wilds
+Scholar - knowledge of languages, magic and the arcane, religion, history, the natural world
+Thief - hiding & sneaking, lock picking, pocket picking, palming, trap disarming
+Tinkerer - understanding technology, repairing items, crafting new and magical items
+
+So it seems like "Social Manipulation" is a major sub-game.
+Everything else is skill challenge stuff.
+Except maybe crafting, since I already built a crafting system.
+Should I split crafting into two pieces?
+Like "Scholar & Tinkerer"?
+Scholar would be for the raw theory of creating something totally new.
+Tinkerer would be for building something via a recipe?
+
+Maybe, but I think Scholar will get plenty of use since it's the "catch all" for knowledges.
+How would Tinkerer work with the new crafting?
+I mean most of the game involves recipes. Maybe the Effect Die roughly determines the crafting points one can allocate to the device? So a D4 means only 4 points, whereas a D12 would be a whopping 12 crafting points?
+I kinda like that.
+
+So if crafting works that way, what is the Artificer class?
+Maybe a normal crafter needs lots of time to make magical items, but an Artificer can do it in real time?
+
+Do I have class dice?
+If I do then wouldn't it be:
+
+Attribute + Role / Class + Distinction?
+Could you use both a Role and a Class?
+
+What about Rogue and Thief and Assassin?
+
+I kinda like Class Dice, but I think it should be a "custom category" kind of thing.
+Rather than having all class dice available all the time, like Roles do, you just have the 1 die.
+And you can "level up" in a Class by increasing it's value or the number of dice.
+Maximum would be 5 D12 (equivalent to level 20?)
+
+Also the Class Die is used for various Class Abilities.
+
+Should Class Dice be similar to Distinctions in that they can generate MP?
+Or are they Resources that can be spent?
+I kinda like the second one.
+Then resting restores the Class Dice in addition to allowing you to recover and repair weapons and armor.
+
+So what are basic functions of the Class dice?
+
+ * Artificer - can be used whenever item crafting is rolled, can be used to repair magical items, or spent to increase the Effect Die of any asset created by the Artificer. If used to increase the Effect Die beyond 12, the magic item becomes permanent (signature asset).
+ * Barbarian - represents Rage and can be added as additional attack dice
+ * Fighter - are used similarly to Superiority Dice in the battlemaster subclass
+ * Monk - can be spent as Chi/Ki for Monk abilities
+ * Rogue - used as Sneak Attack and Stealth Pool Bonus dice
+ * Sorcerer - used as "Sorcery Points" to modify a spell
+ * Summoner - used to increase the length of time a spirit is summoned, or added to a Spirit's ability
+ * Warlock - used to create minions or add to Warlock spell power
+ * Wizard - can be consumed to cast spells without MP. The level of the die indicates the level of the spell that can be cast using it (ie D4 = Spell Level 1-2, D12 = Spell Level 9)
+
+Class Die to Class Level:
+
+Die | Class Level
+-----------------
+D4  | 1-4
+D6  | 5-8
+D8  | 9-12
+D10 | 13-16
+D12 | 17-20
+
+XP cost to increase Class Die:
+
+Cost | Die Level
+----------------
+10   | D4 (buying new class)
+15   | D6
+20   | D8
+25   | D10
+30   | D12 (max level)
+
+XP cost to add a Class Die:
+
+Cost | Total Dice
+-----------------
+0    | 1 (first level costs nothing extra)
+10   | 2
+20   | 3
+40   | 4
+80   | 5
+
+A 5D12 class would be at "mastery" level.
+
+You don't have to upgrade each die individually, the additional dice are at whatever level that Class Die is at.
+
+================================================================================
+
+Okay, so here's the hardest part: Multi-attack and Pets.
+
+Cortex doesn't really work with "multi-attack", as either you're in a Duel and it goes back-and-forth, or you're in a Brawl and it's Challenge->Response only. Neither of those work for a "I attack three times" kinda thing. Also having so many attacks makes it so that combat slows down and players tend to do boring things if they have three "attacks".
+
+Also I still want to support Pets and player Minions (ironically the Summoner's normal spirits would be "Pets" and their pets would be "Minions" in this nomenclature).
+But if I allow Pets to go right after their masters, then they essentially have Multi-attack anyway.
+
+I could maybe support both by having Pets roll their Initiative and no longer go at the same time as players, and by allowing Warriors to have a second slot in the Initiative order, so that they could go twice, but not in a row.
+
+So that would give Jyonyana potentially 3 or 4 slots in the initiative:
+ * 2 for Jyonyana, Artificer
+ * 1 for Steel Defender
+ * 1 for Homonculous
+
+So when rolling Initiative for characters with Multiattack, they could get one action at their Initiative value and one at half-initiative. I probably don't want to support more than 2 actions in this way.
+
+Really, I want things to be fluid and flexible, without nerfing people whos classes had multi-attack.
+
+What if, characters with Multi-attack could use their Class Dice to perform another action? That would make it occur far less often than if they just always had it. When could they use it? Is it an Interrupt effect? Or does it have to go in order? We don't always want people interrupting other players though...
+
+How about this: Characters with Multi-attack don't always have access to it. In order to use it they must spend 1 MP to gain the extra action.  Then they can take this action immediately after their current action. Now the question is: can normal characters also do this by spending more MP?  Seems like they cannot. So this would be a potential way to both allow this and curtail it completely dominating the story flow.  Also this additional action can take place at any time, and is an Interrupt.  This makes it on-par with Pet abilities but also won't dominate the way that having it be "always available" does.
+
+NPCs that have multi-attack can also do that, but the GM has to spend MP for them as well.
+
+Plus maybe Warriors can expend one of their Superiority Dice for the same effect.
+
+I think that works. It makes it so that multi-attack is still kinda a thing, but also has enough of a cost that it won't completely unbalance the game.
+
+For Ardem's pets that have multi-attack, they can only use it if he spends his MP to fuel it. This will keep it balanced.
+
+================================================================================
+
+Attributes
+
+Okay, let's re-examine the attributes. I'm not overly fond of D&Ds, but I don't much like all of mine either:
+
+Current Attributes:
+ * Brawn
+ * Precision
+ * Grit
+ * Knowledge
+ * Wits
+ * Awareness
+ * Presence
+
+So some of these I like and some I don't.
+
+Maybe if I examine D&Ds, I can see what ones need to be broken apart:
+
+ * Strength - fine, it really does only 1 or 2 things
+ * Dexterity - overloaded as it represents manual dexterity, full-body dexterity and speed
+ * Constitution - fine, it's not used a lot, but also it represents a reactive attribute
+ * Intelligence - fine, but I like "Knowledge" better, as the player uses their own Intelligence
+ * Wisdom - overloaded in 2 ways: Perception, Willpower
+ * Charisma - kinda overpowered in application, but is at least less terrible than Dexterity.
+
+Okay, so which ones do I want to redo?
+
+ * Strength - fine, keep as is
+ * Dexterity - split into at least 2
+ * Constitution - fine, but might want a new name, like "Toughness" or something
+ * Intelligence - fine, but rename as "Knowledge"
+ * Wisdom - overloaded, split into Perception & Willpower
+ * Charisma - fine, keep as is
+
+So that would make 8 attributes:
+
+ * Strength
+ * Precision
+ * Speed
+ * Constitution
+ * Knowledge (Intelligence)
+ * Perception
+ * Willpower
+ * Charisma
+
+By renaming the ones that I split apart, it's easier to see what's new and different.
+So by that reasoning, I should keep "Knowledge" as "Intelligence" :p
+Ah well, whatever.
+
+So are there specific attributes linked to specific class magic casting?
+
+Here's my attempted mapping:
+
+ * Artificer - Intelligence
+ * Barbarian - Charisma
+ * Fighter   - Subclass Dependent (Intelligence or Willpower)
+ * Monk      - Willpower
+ * Rogue     - Subclass Dependent (Intelligence or Charisma)
+ * Sorcerer  - Charisma
+ * Summoner  - Willpower
+ * Warlock   - Charisma
+ * Wizard    - Intelligence
+
+
+Well, that seems like a good mapping. Although it would be kinda cool if one of them were based on Constitution or something :p
+
+================================================================================
+
+Okay, what's left?
+
+Figuring out what Items I want and what fields they need.
+
+Physical Items
+ * Weapon (Name, Dice, Damage Type, Special Effects)
+ * Armor/Shield (Name, Dice, Special Effects)
+ * Potion (Name, Special Effects)
+ * Lacrima (Name, Dice, Special Effects, Charges)
+ * Container (Name, Contents?)
+ * Equipment (Name, Bonus Dice, Description, Special Effects, Charges)
+ * Trinket (Name, Active Effect, Charges)
+ * Crafting Resource (Name, Alchemical Components, Other Features)
+ * Recipe (Name, Formula, Description, Sequence)
+ * Vehicle (Name, Passengers, Fuel Level, Special Effects)
+ * Treasure (Name, Other Features, Value)
+
+Other things
+ * Spells (Name, School, Level, Cost, Dice, Special Effects)
+ * Abilities (Name, Type, Cost, Dice, Special Effects)
+ * Features (Name, Type, Special Effects)
+ * Relationship (Name, Type, Dice, Character, IsOrg)
+
+Do I care about classes and subclasses in terms of items?
+It would allow me to dynamically create a character, but since classes have specific dice as resources, I'm not sure how to do that.
+
+What overall tabs do I want on the character sheet?
+
+Traits (Attributes, Roles, Distinctions, Stress & Trauma, Complications & Status Conditions, Assets (temporary buffs) MP, XP)
+Features (Racial Abilities, Racial Features, Class Dice, Class Abilities, Class Features, Subclass Abilities, Subclass Features, Spells)
+Equipment (Weapons, Armor, Consumables, Equipment, Trinkets, Resources, Recipes, Vehicles, Treasure, Money)
+Relationships (Other Character, Relationship Type, Die)
+Milestones (Milestone: name, level, XP, description, completed?)
+Effects (active effects)
+Notes
+
