@@ -1,5 +1,5 @@
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
-
+import {times} from "../../lib/helpers.js"
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -227,14 +227,33 @@ export class earthlandActorSheet extends ActorSheet {
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
       let label = dataset.label ? `[${dataset.kind}] ${dataset.label}` : '';
-      let roll = new Roll(dataset.roll, this.actor.getRollData());
-      roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label,
-        rollMode: game.settings.get('core', 'rollMode'),
-      });
-      return roll;
+      let trait = dataset.roll;
+      let rollData = this.actor.getRollData();
+      let value = this.replaceFormulaData(trait, rollData);
+      let object = this.formulaToDiceObject(value);
+
+      game.earthland.UserDicePool._addTraitToPool(this.actor.name, label, object)
+      return null;
     }
   }
 
+  replaceFormulaData(formula, data, {missing, warn=false}={}) {
+    let dataRgx = new RegExp(/@([a-z.0-9_\-]+)/gi);
+    return formula.replace(dataRgx, (match, term) => {
+      let value = foundry.utils.getProperty(data, term);
+      if ( value == null ) {
+        if ( warn && ui.notifications ) ui.notifications.warn(game.i18n.format("DICE.WarnMissingData", {match}));
+        return (missing !== undefined) ? String(missing) : match;
+      }
+      return String(value).trim();
+    });
+  }
+
+
+  formulaToDiceObject(formula) {
+    const [num, sides] = formula.split('d');
+    const obj = {};
+    times(parseInt(num)) (i => obj[i] = parseInt(sides));
+    return obj;
+  }
 }
