@@ -151,6 +151,7 @@
          "equipment",
          "feature",
          "lacrima",
+         "milestone",
          "potion",
          "recipe",
          "relationship",
@@ -168,9 +169,14 @@
          },
          "physical_item":{
             "quantity":1,
+            "rarity":"common",
             "weight":0,
             "value":0,
             "durability":""
+         },
+         "equippable_item":{
+            "equippable":false,
+            "equipped":false
          },
          "rollable":{
             "dice":""
@@ -196,6 +202,7 @@
             "base",
             "physical_item",
             "rollable",
+            "equippable_item",
             "magic",
             "wondrous"
          ],
@@ -207,6 +214,7 @@
          "templates":[
             "base",
             "physical_item",
+            "equippable_item",
             "rollable",
             "magic",
             "wondrous"
@@ -262,6 +270,7 @@
          "templates":[
             "base",
             "physical_item",
+            "equippable_item",
             "rollable",
             "wondrous",
             "magic"
@@ -272,6 +281,7 @@
          "templates":[
             "base",
             "physical_item",
+            "equippable_item",
             "rollable",
             "wondrous",
             "magic"
@@ -369,6 +379,15 @@
          "kind":"",
          "character":"",
          "isOrg":false
+      },
+      "milestone":{
+         "templates":[
+           "base"
+         ],
+         "level":"basic",
+         "xp":1,
+         "completed":false,
+         "shared":false
       }
    }
 }

@@ -209,13 +209,15 @@ export class earthlandActorSheet extends ActorSheet {
    * @private
    */
   _onRoll(event) {
+    console.log("in onRoll with event: %o", event);
     event.preventDefault();
     const element = event.currentTarget;
     const dataset = element.dataset;
-    // console.log("element: %o, dataset: %o", element, dataset);
+    console.log("element: %o, dataset: %o", element, dataset);
     // Handle item rolls.
     if (dataset.rollType) {
       if (dataset.rollType == 'item') {
+        console.log("Got an item with dataset: %o", dataset);
         const itemId = element.closest('.item').dataset.itemId;
         const item = this.actor.items.get(itemId);
         if (item) return item.roll();
