@@ -27,7 +27,7 @@ export class UserDicePool extends FormApplication {
       id: 'user-dice-pool',
       template: 'systems/earthland/templates/other/dice-pool.html',
       title: localizer('DicePool'),
-      classes: ['earthland', 'user-dice-pool'],
+      classes: ['dice-pool', 'user-dice-pool'],
       width: 600,
       height: 'auto',
       top: 500,
