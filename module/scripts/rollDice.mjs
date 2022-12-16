@@ -1,5 +1,5 @@
 import { objectReduce } from '../../lib/helpers.js'
-import { localizer } from './foundryHelpers.js'
+import { localizer } from './foundryHelpers.mjs'
 
 const getAppendDiceContent = (data) => renderTemplate('systems/earthland/templates/partials/die-display.html', data)
 

@@ -25,7 +25,7 @@ export class UserDicePool extends FormApplication {
   static get defaultOptions () {
     return mergeObject(super.defaultOptions, {
       id: 'user-dice-pool',
-      template: 'systems/earthland/templates/dice-pool.html',
+      template: 'systems/earthland/templates/other/dice-pool.html',
       title: localizer('DicePool'),
       classes: ['earthland', 'user-dice-pool'],
       width: 600,

@@ -8,6 +8,7 @@ import { earthlandItemSheet } from "./sheets/item-sheet.mjs";
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { earthland } from "./helpers/config.mjs";
 import dicePoolHooks from './hooks/dicePoolHooks.mjs';
+import { registerHandlebarHelpers } from './handlebars/helpers.js'
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -46,7 +47,7 @@ Hooks.once('init', async function() {
   Items.registerSheet("earthland", earthlandItemSheet, { makeDefault: true });
 
   dicePoolHooks();
-
+  registerHandlebarHelpers();
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();
 });
