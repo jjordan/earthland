@@ -15,6 +15,9 @@ export default () => {
   })
 
   Hooks.on('ready', async () => {
+    const themes = game.settings.get('earthland', 'themes')
+    const theme = themes.current === 'custom' ? themes.custom : themes.list[themes.current]
+    setCssVars(theme)
     game.earthland.UserDicePool = new UserDicePool()
     await game.earthland.UserDicePool.initPool()
   })

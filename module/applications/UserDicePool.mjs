@@ -41,7 +41,9 @@ export class UserDicePool extends FormApplication {
 
   async getData () {
     const dice = game.user.getFlag('earthland', 'dicePool')
-    return { ...dice }
+    const themes = game.settings.get('earthland', 'themes')
+    const theme = themes.current === 'custom' ? themes.custom : themes.list[themes.current]
+    return { ...dice, theme }
   }
 
   async _updateObject (event, formData) {

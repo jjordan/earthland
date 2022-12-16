@@ -9,6 +9,7 @@ import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { earthland } from "./helpers/config.mjs";
 import dicePoolHooks from './hooks/dicePoolHooks.mjs';
 import { registerHandlebarHelpers } from './handlebars/helpers.js'
+import { registerSettings } from './settings/settings.js'
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -45,6 +46,7 @@ Hooks.once('init', async function() {
   Actors.registerSheet("earthland", earthlandActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("earthland", earthlandItemSheet, { makeDefault: true });
+  registerSettings()
 
   dicePoolHooks();
   registerHandlebarHelpers();
