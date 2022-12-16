@@ -1,0 +1,35 @@
+<ul class="list-style-none my-0 px-0">
+  {{#each data.descriptors as |descriptor descriptorIndex|}}
+    <li class="flex flex-wrap py-2 relative-section">
+      <div class="{{ternary (eq (mod descriptorIndex 2) 0) 'section-background' 'section-background-alternate'}}"></div>
+      <div class="flex-col col-12">
+        <div class="flex-row flex-ae mb-1">
+          <div class="flex-col col-12">
+            <label>
+              <span class="input-label-cpt">{{localize 'Label'}}</span>
+              <input class="input-cpt {{../borderClass}}" name="{{concat ../fieldPath '.' descriptorIndex '.label'}}" type="text" value="{{descriptor.label}}">
+            </label>
+          </div>
+          <div class="flex-col">
+            {{> "systems/earthland/templates/partials/remove-button.html"
+              group=../path
+              itemKey=descriptorIndex
+              itemName=descriptor.label
+              path=../path
+              setting='actorTypes'
+              stayOnPage=true
+              target='descriptors'
+              type="trash"
+            }}
+          </div>
+        </div>
+      </div>
+      <div class="flex-col col-12">
+        <label>
+          <span class="input-label-cpt">{{localize 'Value'}}</span>
+          <textarea class="input-cpt {{../borderClass}}" name="{{concat ../fieldPath '.' descriptorIndex '.value'}}">{{descriptor.value}}</textarea>
+        </label>
+      </div>
+    </li>
+  {{/each}}
+</ul>

@@ -1,0 +1,12 @@
+<div class="relative-section pa-2">
+  <div class="section-background"></div>
+  <label>
+    <span class="input-label-cpt">{{localize 'DefaultValue'}}</span>
+    {{> "systems/earthland/templates/partials/value-types/text.html"
+      data=data
+      edit=true
+      fieldPath=(concat 'actorTypes.' path '.text')
+      path=(concat path '.text')
+    }}
+  </label>
+</div>

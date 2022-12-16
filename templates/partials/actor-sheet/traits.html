@@ -1,0 +1,141 @@
+<div>
+  {{#each traits as |trait traitIndex|}}
+    {{#if (or ../owner (or (not ../data.hasHidableTraits) (not trait.hidden)))}}
+      <div class="px-2 py-1 relative-section{{ternary (or ../traitSetShutdown trait.shutdown) ' shutdown' ''}}">
+        <div class="{{ternary (and ../data.hasHidableTraits trait.hidden) ' section-background-alternate' 'section-background'}}"></div>
+        <div class="trait-title-cpt flex-row flex-ac flex-wrap">
+          {{#if (and ../data.hasHidableTraits trait.hidden)}}
+            <span class="flex-col pr-0">
+              <i class="fa fa-eye-slash"></i>
+            </span>
+          {{/if}}
+          <span
+            class="flex-col flex-g-1{{ternary (and (and (not ../traitSetShutdown) (not trait.shutdown)) (and ../settings.hasDice trait.dice.value.[0])) ' add-to-pool' ''}}{{ternary trait.shutdown ' shutdown' ''}}"
+            data-label="{{ternary (and ../settings.hasLabel trait.label) (ternary (and trait.label trait.name) (concat trait.label ' (' trait.name ')')) trait.name}}"
+            data-path="{{concat ../path '.' ../target '.' traitIndex '.dice'}}" {{{ternary
+            ../settings.diceConsumable 'data-consumable="true"' '' }}}>
+            {{ternary (and ../settings.hasLabel trait.label) trait.label trait.name}}
+          </span>
+          {{#if ../settings.hasDice}}
+            {{#if (or (not ../owner) (or ../traitSetShutdown trait.shutdown))}}
+              <div class="pl-0 flex-col flex-s-1">
+                <div class="flex flex-wrap flex-ac">
+                  {{#each trait.dice.value as |die|}}
+                    {{> (concat "systems/earthland/templates/partials/dice/d" die ".html")
+                      number=die
+                      type='die-rating'
+                    }}
+                  {{/each}}
+                </div>
+              </div>
+            {{else}}
+              <div class="pl-0 flex-col flex-s-1">
+                {{> "systems/earthland/templates/partials/dice/select.html"
+                  addToPool=true
+                  consumable=../settings.consumableDice
+                  dice=trait.dice.value
+                  minDice=0
+                  label=(ternary (and ../settings.hasLabel trait.label) trait.label trait.name)
+                  selectName=(concat ../path '.' ../target '.' traitIndex '.dice')
+                }}
+              </div>
+            {{/if}}
+          {{/if}}
+        </div>
+        {{#if (and trait.name (and ../settings.hasLabel trait.label))}}
+          <div class="mb-2">
+            <span class="trait-sub-title-cpt">{{trait.name}}</span>
+          </div>
+        {{/if}}
+        {{#if (and ../settings.hasDescription trait.description)}}
+          <div class="my-2">
+            <p>{{trait.description}}</p>
+          </div>
+        {{/if}}
+        {{#if (and ../settings.hasDescriptors trait.descriptors)}}
+          <div>
+            {{#each trait.descriptors as |descriptor|}}
+              {{#if (or descriptor.label descriptor.value)}}
+                <div class="my-2">
+                  <div
+                    class="{{ternary (or ../traitSetShutdown trait.shutdown) 'shutdown' ''}}"
+                  >
+                      <p>
+                        {{#if descriptor.label}}
+                          <span class="descriptor-label-cpt">{{descriptor.label}}:</span>
+                        {{/if}}
+                        {{{descriptor.value}}}
+                      </p>
+                  </div>
+                </div>
+              {{/if}}
+            {{/each}}
+          </div>
+        {{/if}}
+        {{#if (and ../settings.hasSubTraits trait.subTraits)}}
+          <div>
+            {{#each trait.subTraits as |subTrait subTraitIndex|}}
+              {{#if (or subTrait.label subTrait.dice.value)}}
+                <div class="my-1 flex-row flex-ac flex-wrap sub-trait-label-cpt">
+                  {{#if subTrait.label}}
+                    <div class="flex-col flex-g-1">
+                      <span class="{{ternary (and ../../settings.subTraitsHaveDice (and (and (not ../../traitSetShutdown) (not trait.shutdown)) subTrait.dice.value.[0])) ' add-to-pool' ''}}"
+                        data-label="{{concat subTrait.label ' (' (ternary (and trait.label trait.name) trait.label trait.name) ')'}}"
+                        data-path="{{concat ../../path '.' ../../target '.' traitIndex '.subTraits.' subTraitIndex '.dice'}}" {{{ternary ../../settings.subTraitsDiceConsumable 'data-consumable="true"' '' }}}>
+                        {{subTrait.label}}
+                      </span>
+                    </div>
+                  {{/if}}
+                  {{#if (and ../../settings/subTraitsHaveDice (or (not ../../owner) (or ../../traitSetShutdown trait.shutdown)))}}
+                  <div class="pl-0 flex-col flex-s-1">
+                    <div class="flex flex-wrap flex-ac">
+                      {{#each subTrait.dice.value as |die|}}
+                        {{> (concat "systems/earthland/templates/partials/dice/d" die ".html")
+                          number=die
+                          type='die-rating'
+                        }}
+                      {{/each}}
+                    </div>
+                  </div>
+                  {{else if ../../settings/subTraitsHaveDice}}
+                    <div class="pl-0 flex-col flex-s-1">
+                      {{> "systems/earthland/templates/partials/dice/select.html"
+                        addToPool=true
+                        consumable=../../settings.subTraitsDiceConsumable
+                        dice=subTrait.dice.value
+                        minDice=0
+                        label=subTrait.label
+                        selectName=(concat ../../path '.' ../../target '.' traitIndex '.subTraits.' subTraitIndex '.dice')
+                      }}
+                    </div>
+                  {{/if}}
+                </div>
+              {{/if}}
+            {{/each}}
+          </div>
+        {{/if}}
+        {{#if (and ../settings.hasSfx trait.sfx)}}
+          <div>
+            {{#each trait.sfx as |sfx|}}
+              {{#if (or sfx.label sfx.description)}}
+                <div class="my-2 flex-row">
+                  <div class="flex-col pr-0">
+                    <i class="sfx-bullet-cpt {{ternary sfx.unlocked 'fas' 'far'}} fa-circle"></i>
+                  </div>
+                  <div class="flex-col col-12{{ternary (and (not sfx.unlocked) (and (not ../traitSetShutdown) (not trait.shutdown))) ' shutdown' ''}}">
+                    {{#if sfx.label}}
+                      <span class="mb-2 sfx-label-cpt">{{sfx.label}}</span>
+                    {{/if}}
+                    {{#if sfx.description}}
+                      <p>{{{sfx.description}}}</p>
+                    {{/if}}
+                  </div>
+                </div>
+              {{/if}}
+            {{/each}}
+          </div>
+        {{/if}}
+      </div>
+    {{/if}}
+  {{/each}}
+</div>

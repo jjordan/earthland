@@ -1,0 +1,21 @@
+<h3 class="section-secondary-title-cpt">{{label}}</h3>
+<div class="flex-row my-2">
+  {{> "systems/earthland/templates/partials/settings/theme/color.html"
+    default=fillDefault
+    label=(localize 'Fill')
+    name=fillName
+    value=fillValue
+  }}
+  {{> "systems/earthland/templates/partials/settings/theme/color.html"
+    default=strokeDefault
+    label=(localize 'Stroke')
+    name=strokeName
+    value=strokeValue
+  }}
+  {{> "systems/earthland/templates/partials/settings/theme/color.html"
+    default=numberDefault
+    label=(localize 'Number')
+    name=numberName
+    value=numberValue
+  }}
+</div>

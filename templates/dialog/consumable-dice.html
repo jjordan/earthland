@@ -1,0 +1,41 @@
+<div class="earthland dice-picker">
+  <div class="sheet-cpt">
+    <div class="sheet-background"></div>
+    <div class="sheet-image"></div>
+    <div class="sheet-content pa-2">
+      <div class="pa-2 section-cpt mb-2">
+        <div class="section-image"></div>
+        <div class="section-background-alternate"></div>
+        <div class="section-content">
+          <p class="section-primary-title-cpt text-center">{{localize 'SelectDiceToAdd'}}</p>
+          <div class="flex flex-wrap flex-c">
+            {{#each options as |option optionIndex|}}
+              <div class="die-select cursor-pointer result" data-key="{{optionIndex}}" data-value="{{option}}">
+                {{> (concat "systems/earthland/templates/partials/dice/d" option ".html")
+                  number=option
+                  type='unchosen'
+                }}
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="pa-2 section-cpt mt-2">
+        <div class="section-image"></div>
+        <div class="section-background"></div>
+        <div class="section-content">
+          <label class="flex flex-ac">
+            <div class="checkmark-container">
+              <input
+                class="remove-check input-checkbox-cpt"
+                type="checkbox"
+                {{ternary isOwner ' checked' : ''}}
+              >
+              <div class="checkmark-cpt"></div>
+            </div>
+            <span class="input-label-cpt mb-0 ml-2">{{localize 'RemoveSelectedFromSheet'}}</span>
+          </label>
+        </div>
+      </div>
+  </div>
+</div>
