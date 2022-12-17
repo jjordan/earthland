@@ -72,6 +72,7 @@
     "systems/earthland/templates/partials/dice/d2.html",
     "systems/earthland/templates/partials/dice/d4.html",
     "systems/earthland/templates/partials/dice/d10.html",
+    "systems/earthland/templates/partials/dice/d20.html",
     "systems/earthland/templates/partials/remove-button.html"
   ]);
 };
