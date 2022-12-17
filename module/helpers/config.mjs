@@ -40,6 +40,18 @@ earthland.roles = {
   "tinkerer":    "earthland.RoleTinkerer"
 };
 
+earthland.classes = {
+  "artificer":  "earthland.ClassArtificer",
+  "barbarian":  "earthland.ClassBarbarian",
+  "fighter":    "earthland.ClassFighter",
+  "monk":       "earthland.ClassMonk",
+  "rogue":      "earthland.ClassRogue",
+  "sorcerer":   "earthland.ClassSorcerer",
+  "summoner":   "earthland.ClassSummoner",
+  "warlock":    "earthland.ClassWarlock",
+  "wizard":     "earthland.ClassWizard"
+};
+
 earthland.abilityAbbreviations = {
   "strength": "earthland.AbilityStrAbbr",
   "precision": "earthland.AbilityPreAbbr",

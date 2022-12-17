@@ -69,6 +69,7 @@
     "systems/earthland/templates/partials/dice/d12.html",
     "systems/earthland/templates/partials/dice/d8.html",
     "systems/earthland/templates/partials/dice/select.html",
+    "systems/earthland/templates/partials/dice/d2.html",
     "systems/earthland/templates/partials/dice/d4.html",
     "systems/earthland/templates/partials/dice/d10.html",
     "systems/earthland/templates/partials/remove-button.html"

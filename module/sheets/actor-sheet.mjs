@@ -74,6 +74,9 @@ export class earthlandActorSheet extends ActorSheet {
     for (let [k, v] of Object.entries(context.system.roles)) {
       v.label = game.i18n.localize(CONFIG.earthland.roles[k]) ?? k;
     }
+    for (let [k, v] of Object.entries(context.system.classes)) {
+      v.label = game.i18n.localize(CONFIG.earthland.classes[k]) ?? k;
+    }
   }
 
   /**

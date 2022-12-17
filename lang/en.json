@@ -31,6 +31,16 @@
   "earthland.RoleSoldier":     "Soldier",
   "earthland.RoleTinkerer":    "Tinkerer",
 
+  "earthland.ClassArtificer":    "Artificer",
+  "earthland.ClassBarbarian":    "Barbarian",
+  "earthland.ClassFighter":      "Fighter",
+  "earthland.ClassMonk":         "Monk",
+  "earthland.ClassRogue":        "Rogue",
+  "earthland.ClassSorcerer":     "Sorcerer",
+  "earthland.ClassSummoner":     "Summoner",
+  "earthland.ClassWarlock":      "Warlock",
+  "earthland.ClassWizard":       "Wizard",
+
   "earthland.AbilityStrAbbr": "str",
   "earthland.AbilityConAbbr": "con",
   "earthland.AbilityPreAbbr": "pre",

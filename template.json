@@ -13,10 +13,14 @@
                "min":0,
                "max":10
             },
-            "magic":{
-               "value":1,
+            "energy":{
+               "value":5,
                "min":0,
-               "max":7
+               "max":5
+            },
+            "magic":{
+               "value":0,
+               "min":0
             },
             "experience":{
                "min":0,
@@ -49,22 +53,25 @@
            "cp": 0
          },
          "biography":"",
+         "classes":{
+            "artificer":{ "value": "1d2"},
+            "barbarian":{ "value": "1d2"},
+            "fighter":{ "value": "1d2"},
+            "monk":{ "value": "1d2"},
+            "rogue":{ "value": "1d2"},
+            "sorcerer":{ "value": "1d2"},
+            "summoner":{ "value": "1d2"},
+            "warlock":{ "value": "1d2"},
+            "wizard":{ "value": "1d2"}
+         },
          "roles":{
-            "arcanist":{ "value": ""},
-            "assassin":{ "value": ""},
-            "athlete":{ "value": ""},
-            "brawler":{ "value": ""},
-            "burglar":{ "value": ""},
-            "courtesean":{ "value": ""},
-            "defender":{ "value": ""},
-            "detective":{ "value": ""},
-            "entertainer":{ "value": ""},
-            "explorer":{ "value": ""},
-            "fencer":{ "value": ""},
-            "healer":{ "value": ""},
-            "marksman":{ "value": ""},
-            "scholar":{ "value": ""},
-            "tinkerer":{ "value": ""}
+            "athlete":{ "value": "1d4"},
+            "burglar":{ "value": "1d4"},
+            "courtesean":{ "value": "1d4"},
+            "detective":{ "value": "1d4"},
+            "entertainer":{ "value": "1d4"},
+            "explorer":{ "value": "1d4"},
+            "scholar":{ "value": "1d4"}
          }
       },
       "monster":{

@@ -1,13 +1,15 @@
 TODO
 ====
 
- * Finish the character's character-sheet
- * Finish the NPC's character sheet
- * Finish the Monster's character sheet
- * Get rolls working
- * Change rolls to instead add to a dice pool
- * Make it so that you can roll the dice pool
- * Make it so that you can 'roll for effect', 'roll for total', and 'roll and select'
+Done
+ * Get rolls working *CHECK*
+ * Change rolls to instead add to a dice pool *CHECK*
+ * Make it so that you can roll the dice pool *CHECK*
+ * Make it so that you can 'roll for effect', 'roll for total', and 'roll and select' *CHECK*
+ * Make it so a character can add an existing roll (from chat log) back to their dice pool *CHECK*
+ * Make it so a character can reroll from the chat log *CHECK*
+
+Still To Do
  * Finish all the Item sheets:
    + ability
    + armor
@@ -15,10 +17,11 @@ TODO
    + class
    + complication
    + container
-   + distinction
+   + distinction *CHECK*
    + equipment
    + feature
    + lacrima
+   + milestone
    + potion
    + recipe
    + relationship
@@ -29,20 +32,33 @@ TODO
    + trinket
    + vehicle
    + weapon
+ * Finish the character's character-sheet
+ * Finish the NPC's character sheet
+ * Finish the Monster's character sheet
  * Make it so an item sheet adds its dice to the actor sheet in a rollable area
  * Make it so the item's dice get added to the pool
  * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset
  * Make it so that armor dice degrade and can be repaired
+<-- Playable by here -->
+
  * Add the important sub-types of NPCs and Monsters:
    + Add Bosses which have more hit points or "life dice" and alert the GM when they reach different levels of health
    + Add Mobs which are similar, but weaken as they lose hit points or life dice, instead of strengthening
  * Make it so that if a character is targeting another character, they can click a button on the pool which will add any complications, injuries or other stuff to their dice pool
- * Make it so a character can add an existing roll (from chat log) back to their dice pool
  * Make it so a character can add an existing roll to their hotbar
- * Make it so a character can reroll from the chat log
  * Make it so GM can easily roll difficulties
  * Make it so GM can easily add complications
  * Make it so GM can easily add Stress/Injuries
+ * Make it so GM can easily grant PP/MP to a character
  * Make it so potions/lacrima/magic/abilities can heal conditions or health/stress/injuries
- 
+ * Make it so there is a GM Bank / Doom Pool / etc for the GM's MP to come from
+ * Make it so a player can click a chat message button and add that message's Difficulty or VS role to roll against
+ * Make it so this versus roll can check for Heroic Successes
+ * Make it so this versus roll/check will add Heroic Successes to the player that rolled them
+ * Make it so if a player fails a versus check of only 1 exchange, they can click a chat button to "bow out gracefully" and gain a PP/MP
+
+
+
+
+
 

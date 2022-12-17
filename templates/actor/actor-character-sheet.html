@@ -14,7 +14,7 @@
         and it will add a small amount of padding, a border, and will
         center all of its child elements content and text. --}}
         <div class="resource flex-group-center">
-          <label for="system.health.value" class="resource-label">Health</label>
+          <label for="system.health.value" class="resource-label">Hit Points</label>
           <div class="resource-content flexrow flex-center flex-between">
           <input type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number"/>
           <span> / </span>
@@ -23,11 +23,17 @@
         </div>
 
         <div class="resource flex-group-center">
-          <label for="system.magic.value" class="resource-label">Magic</label>
+          <label for="system.magic.value" class="resource-label">Magic Points</label>
           <div class="resource-content flexrow flex-center flex-between">
           <input type="text" name="system.magic.value" value="{{system.magic.value}}" data-dtype="Number"/>
+          </div>
+        </div>
+        <div class="resource flex-group-center">
+          <label for="system.energy.value" class="resource-label">Energy</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="system.energy.value" value="{{system.energy.value}}" data-dtype="Number"/>
           <span> / </span>
-          <input type="text" name="system.magic.max" value="{{system.magic.max}}" data-dtype="Number"/>
+          <input type="text" name="system.energy.max" value="{{system.energy.max}}" data-dtype="Number"/>
           </div>
         </div>
 
@@ -85,11 +91,23 @@
               <input type="text" name="system.roles.{{key}}.value" value="{{role.value}}" data-dtype="String"/>
             </div>
             {{/each}}
+            <br/>
+            <hr/>
+            <br/>
+            <h3>Classes</h3>
+            {{#each system.classes as |class key|}}
+            <div class="class flexrow flex-group-center">
+              <button class="class rollable" data-rolltype="actor" data-roll="@classes.{{key}}.value" data-label="{{key}}" data-kind="Class"><i class="fas fa-dice-d20"></i></button>
+              <label for="system.classes.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="@classes.{{key}}.value" data-label="{{class.label}}" data-kind="Class">{{class.label}}</label>
+              <input type="text" name="system.classes.{{key}}.value" value="{{class.value}}" data-dtype="String"/>
+            </div>
+            {{/each}}
+
           </div>
 
           <div class="distinctions">
             <h3>Distinctions</h3>
-            <div class="role flexrow flex-group-center">
+            <div class="distinction flexrow flex-group-center">
        {{> "systems/earthland/templates/actor/parts/actor-distinctions.html"}}
             </div>
           </div>
