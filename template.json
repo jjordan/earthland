@@ -8,6 +8,8 @@
       "templates":{
          "base":{
             "description":"",
+            "species":"",
+            "subspecies":"",
             "health":{
                "value":10,
                "min":0,
@@ -179,7 +181,7 @@
             "rarity":"common",
             "weight":0,
             "value":0,
-            "durability":""
+            "durability":0
          },
          "equippable_item":{
             "equippable":false,
@@ -228,8 +230,7 @@
          ],
          "resistances":"",
          "immunities":"",
-         "weaknesses":"",
-         "worn":false
+         "weaknesses":""
       },
       "complication":{
          "templates":[
@@ -252,7 +253,9 @@
             "rollable",
             "magic"
          ],
-         "duration":""
+         "duration":"",
+         "charges":1,
+         "consumed_on_use": true
       },
       "lacrima":{
          "templates":[
@@ -261,7 +264,9 @@
             "rollable",
             "magic"
          ],
-         "charges":1
+         "spell":"",
+          "charges":1,
+         "consumed_on_use": true
       },
       "container":{
          "templates":[
@@ -282,7 +287,8 @@
             "wondrous",
             "magic"
          ],
-         "charges":1
+         "charges":1,
+         "consumed_on_use": false
       },
       "trinket":{
          "templates":[
@@ -294,6 +300,7 @@
             "magic"
          ],
          "charges":1,
+         "consumed_on_use": false,
          "active_effects":[
          ]
       },
@@ -347,6 +354,9 @@
          ],
          "kind":"",
          "requirements":"",
+         "isClassAbility": false,
+         "isRaceAbility": false,
+         "isMonsterAbility": false,
          "cost":0
       },
       "feature":{
@@ -357,6 +367,9 @@
          "requirements":"",
          "dice":"",
          "effects":"",
+         "isClassFeature": false,
+         "isRaceFeature": false,
+         "isMonsterFeature": false,
          "description":""
       },
       "class":{

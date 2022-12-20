@@ -11,15 +11,15 @@ Done
 
 Still To Do
  * Finish all the Item sheets:
-   + ability
-   + armor
+   + ability *CHECK*
+   + armor *CHECK*
    + asset
    + class
    + complication
    + container
    + distinction *CHECK*
-   + equipment
-   + feature
+   + equipment *CHECK*
+   + feature *CHECK*
    + lacrima
    + milestone
    + potion

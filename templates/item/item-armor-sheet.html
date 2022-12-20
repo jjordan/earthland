@@ -1,0 +1,68 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="description">Description</a>
+    <a class="item" data-tab="attributes">Attributes</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{!-- Attributes Tab --}}
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      <div class="resource">
+        <label class="resource-label">Requirements</label>
+        <input type="text" name="system.requirements" value="{{system.requirements}}" data-dtype="String"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">Resistances</label>
+        <input type="text" name="system.resistances" value="{{system.resistances}}" data-dtype="String"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">Immunities</label>
+        <input type="text" name="system.Immunities" value="{{system.immunities}}" data-dtype="String"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">Weaknesses</label>
+        <input type="text" name="system.weaknesses" value="{{system.weaknesses}}" data-dtype="String"/>
+      </div>
+
+      <div>
+        {{> "systems/earthland/templates/item/parts/rollable.html"}}
+      </div>
+
+      <div>
+        {{> "systems/earthland/templates/item/parts/magic.html"}}
+      </div>
+
+      <div>
+        {{> "systems/earthland/templates/item/parts/physical-item.html"}}
+      </div>
+
+      <div>
+        {{> "systems/earthland/templates/item/parts/equipment.html"}}
+      </div>
+
+      <div>
+        {{> "systems/earthland/templates/item/parts/wondrous.html"}}
+      </div>
+    </div>
+
+    {{!-- Description Tab --}}
+    <div>
+      {{> "systems/earthland/templates/item/parts/base.html"}}
+    </div>
+
+  </section>
+
+</form>

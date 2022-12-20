@@ -18,6 +18,11 @@
     {{!-- Attributes Tab --}}
     <div class="tab attributes" data-group="primary" data-tab="attributes">
       <div class="resource">
+        <label class="resource-label">Cost</label>
+        <input type="text" name="system.cost" value="{{system.cost}}" data-dtype="Number"/>
+      </div>
+
+      <div class="resource">
         <label class="resource-label">Kind</label>
         <input type="text" name="system.kind" value="{{system.kind}}" data-dtype="String"/>
       </div>
@@ -33,23 +38,23 @@
       </div>
 
       <div class="resource">
-        <label class="resource-label">Effects</label>
-        <input type="text" name="system.effects" value="{{system.effects}}" data-dtype="String"/>
+        <label class="resource-label">Special Effects</label>
+        <input type="text" name="system.sfx" value="{{system.sfx}}" data-dtype="String"/>
       </div>
 
       <div class="resource">
-        <label class="resource-label">Is this a Class Feature?</label>
-        <input class="input-checkbox-cpt" name="system.isClassFeature" type="checkbox" {{checked system.isClassFeature}}>
+        <label class="resource-label">Is this a Class Ability?</label>
+        <input class="input-checkbox-cpt" name="system.isClassAbility" type="checkbox" {{checked system.isClassAbility}}>
       </div>
 
       <div class="resource">
-        <label class="resource-label">Is this a Race Feature?</label>
-        <input class="input-checkbox-cpt" name="system.isRaceFeature" type="checkbox" {{checked system.isRaceFeature}}>
+        <label class="resource-label">Is this a Race Ability?</label>
+        <input class="input-checkbox-cpt" name="system.isRaceAbility" type="checkbox" {{checked system.isRaceAbility}}>
       </div>
 
       <div class="resource">
-        <label class="resource-label">Is this a Monster Feature?</label>
-        <input class="input-checkbox-cpt" name="system.isMonsterFeature" type="checkbox" {{checked system.isMonsterFeature}}>
+        <label class="resource-label">Is this a Monster Ability?</label>
+        <input class="input-checkbox-cpt" name="system.isMonsterAbility" type="checkbox" {{checked system.isMonsterAbility}}>
       </div>
     </div>
 
