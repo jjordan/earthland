@@ -24,10 +24,6 @@
                "value":0,
                "min":0
             },
-            "experience":{
-               "min":0,
-               "value":0
-            },
             "size":"",
             "attributes":{
                "strength": { "value": ""},
@@ -53,6 +49,10 @@
            "gp": 0,
            "sp": 0,
            "cp": 0
+         },
+         "experience":{
+            "min":0,
+            "value":0
          },
          "biography":"",
          "classes":{
