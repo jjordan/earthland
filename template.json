@@ -334,6 +334,9 @@
             "magic"
          ],
          "requirements":"",
+         "range":"",
+         "duration":"",
+         "shape":"",
          "school":"",
          "level":1,
          "cost":0

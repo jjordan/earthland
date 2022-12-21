@@ -8,25 +8,61 @@
 
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="attributes">Attributes</a>
     <a class="item" data-tab="description">Description</a>
+    <a class="item" data-tab="attributes">Attributes</a>
   </nav>
 
   {{!-- Sheet Body --}}
   <section class="sheet-body">
 
-    {{!-- Description Tab --}}
-    <div class="tab" data-group="primary" data-tab="description">
-      {{editor system.description target="system.description" rollData=rollData button=true owner=owner editable=editable}}
-    </div>
-
     {{!-- Attributes Tab --}}
     <div class="tab attributes" data-group="primary" data-tab="attributes">
-      {{!-- As you add new fields, add them in here! --}}
       <div class="resource">
         <label class="resource-label">Spell Level</label>
         <input type="text" name="system.level" value="{{system.level}}" data-dtype="Number"/>
       </div>
+
+      <div class="resource">
+        <label class="resource-label">Spell Cost</label>
+        <input type="text" name="system.cost" value="{{system.cost}}" data-dtype="Number"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">Requirements</label>
+        <input type="text" name="system.requirements" value="{{system.requirements}}" data-dtype="String"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">School</label>
+        <input type="text" name="system.school" value="{{system.school}}" data-dtype="String"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">Range</label>
+        <input type="text" name="system.range" value="{{system.range}}" data-dtype="String"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">Duration</label>
+        <input type="text" name="system.duration" value="{{system.duration}}" data-dtype="String"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">Shape</label>
+        <input type="text" name="system.shape" value="{{system.shape}}" data-dtype="String"/>
+      </div>
+
+      <div>
+        {{> "systems/earthland/templates/item/parts/magic.html"}}
+      </div>
+
+      <div>
+        {{> "systems/earthland/templates/item/parts/rollable.html"}}
+      </div>
+
     </div>
+
+    {{!-- Description Tab --}}
+    {{> "systems/earthland/templates/item/parts/base.html"}}
   </section>
 </form>

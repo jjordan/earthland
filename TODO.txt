@@ -24,9 +24,9 @@ Still To Do
    + milestone *CHECK*
    + potion *CHECK*
    + recipe *CHECK*
-   + relationship
+   + relationship *CHECK*
    + resource *CHECK*
-   + spell
+   + spell *CHECK*
    + subclass *CHECK*
    + treasure *CHECK*
    + trinket *CHECK*
