@@ -90,7 +90,16 @@ export class earthlandActorSheet extends ActorSheet {
     // Initialize containers.
     const distinctions = [];
     const complications = [];
-    const gear = [];
+    const weapons = [];
+    const armor = [];
+    const potions = [];
+    const lacrima = [];
+    const equipment = [];
+    const trinkets = [];
+    const containers = [];
+    const recipes = [];
+    const resources = [];
+    const treasures = [];
     const class_abilities = [];
     const class_features = [];
     const species_abilities = [];
@@ -122,13 +131,49 @@ export class earthlandActorSheet extends ActorSheet {
       else if (i.type === 'milestone') {
         milestones.push(i);
       }
-      // Append to milestones
+      // Append to relationships
       else if (i.type === 'relationship') {
         relationships.push(i);
       }
-      // Append to gear.
-      else if (i.system.is_physical_item) {
-        gear.push(i);
+      // Append to weapons
+      else if (i.type === 'weapon') {
+        weapons.push(i);
+      }
+      // Append to armor
+      else if (i.type === 'armor') {
+        armor.push(i);
+      }
+      // Append to potions
+      else if (i.type === 'potion') {
+        potions.push(i);
+      }
+      // Append to potions
+      else if (i.type === 'lacrima') {
+        lacrima.push(i);
+      }
+      // Append to equipment
+      else if (i.type === 'equipment') {
+        equipment.push(i);
+      }
+      // Append to trinkets
+      else if (i.type === 'trinket') {
+        trinkets.push(i);
+      }
+      // Append to containers
+      else if (i.type === 'container') {
+        containers.push(i);
+      }
+      // Append to recipes
+      else if (i.type === 'recipe') {
+        recipes.push(i);
+      }
+      // Append to resources
+      else if (i.type === 'resource') {
+        resources.push(i);
+      }
+      // Append to treasures
+      else if (i.type === 'treasure') {
+        treasures.push(i);
       }
       // Append to features.
       else if (i.system.is_capability) {
@@ -162,7 +207,16 @@ export class earthlandActorSheet extends ActorSheet {
     context.complications     = complications;
     context.relationships     = relationships;
     context.milestones        = milestones;
-    context.gear              = gear;
+    context.weapons           = weapons;
+    context.armors            = armor; // pseudo plural
+    context.potions           = potions;
+    context.lacrimas          = lacrima; // pseudo plural
+    context.equipment         = equipment;
+    context.trinkets          = trinkets;
+    context.containers        = containers;
+    context.recipes           = recipes;
+    context.resources         = resources;
+    context.treasures         = treasures;
     context.class_features    = class_features;
     context.class_abilities   = class_abilities;
     context.species_features  = species_features;
