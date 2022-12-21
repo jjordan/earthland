@@ -18,8 +18,8 @@
     {{!-- Attributes Tab --}}
     <div class="tab attributes" data-group="primary" data-tab="attributes">
       <div class="resource">
-        <label class="resource-label">Kind</label>
-        <input type="text" name="system.kind" value="{{system.kind}}" data-dtype="String"/>
+        <label class="resource-label">Class</label>
+        <input type="text" name="system.class" value="{{system.class}}" data-dtype="String"/>
       </div>
 
       <div class="resource">
@@ -27,32 +27,17 @@
         <input type="text" name="system.requirements" value="{{system.requirements}}" data-dtype="String"/>
       </div>
 
-      <div class="resource">
-        <label class="resource-label">Dice</label>
-        <input type="text" name="system.dice" value="{{system.dice}}" data-dtype="String"/>
+      <div>
+        {{> "systems/earthland/templates/item/parts/magic.html"}}
       </div>
 
-      <div class="resource">
-        <label class="resource-label">Effects</label>
-        <input type="text" name="system.effects" value="{{system.effects}}" data-dtype="String"/>
+      <div>
+        {{> "systems/earthland/templates/item/parts/rollable.html"}}
       </div>
 
-      <div class="resource">
-        <label class="resource-label">Is this a Class Feature?</label>
-	<input class="input-checkbox-cpt" name="system.isClassFeature" type="checkbox" {{checked system.isClassFeature}}>
-      </div>
-
-      <div class="resource">
-        <label class="resource-label">Is this a Race Feature?</label>
-	<input class="input-checkbox-cpt" name="system.isRaceFeature" type="checkbox" {{checked system.isRaceFeature}}>
-      </div>
     </div>
 
     {{!-- Description Tab --}}
-    <div class="tab" data-group="primary" data-tab="description">
-      {{editor system.description target="system.description" rollData=rollData button=true owner=owner editable=editable}}
-    </div>
-
+    {{> "systems/earthland/templates/item/parts/base.html"}}
   </section>
-
 </form>

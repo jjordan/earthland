@@ -13,31 +13,31 @@ Still To Do
  * Finish all the Item sheets:
    + ability *CHECK*
    + armor *CHECK*
-   + asset
-   + class
-   + complication
-   + container
+   + asset *CHECK*
+   + class *REMOVED*
+   + complication *CHECK*
+   + container *CHECK*
    + distinction *CHECK*
    + equipment *CHECK*
    + feature *CHECK*
-   + lacrima
-   + milestone
-   + potion
-   + recipe
+   + lacrima *CHECK*
+   + milestone *CHECK*
+   + potion *CHECK*
+   + recipe *CHECK*
    + relationship
-   + resource
+   + resource *CHECK*
    + spell
-   + subclass
-   + treasure
-   + trinket
-   + vehicle
-   + weapon
+   + subclass *CHECK*
+   + treasure *CHECK*
+   + trinket *CHECK*
+   + vehicle *REMOVED*
+   + weapon *CHECK*
  * Finish the character's character-sheet
  * Finish the NPC's character sheet
  * Finish the Monster's character sheet
  * Make it so an item sheet adds its dice to the actor sheet in a rollable area
  * Make it so the item's dice get added to the pool
- * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset
+ * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset *NOT NEEDED*
  * Make it so that armor dice degrade and can be repaired
 <-- Playable by here -->
 

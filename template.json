@@ -153,7 +153,6 @@
          "ability",
          "armor",
          "asset",
-         "class",
          "complication",
          "container",
          "distinction",
@@ -169,7 +168,6 @@
          "subclass",
          "treasure",
          "trinket",
-         "vehicle",
          "weapon"
       ],
       "templates":{
@@ -215,9 +213,9 @@
             "magic",
             "wondrous"
          ],
+         "kind":"",
          "damage_type":"",
-         "effects":"",
-         "wielded":false
+         "range":""
       },
       "armor":{
          "templates":[
@@ -235,9 +233,10 @@
       "complication":{
          "templates":[
             "base",
+            "magic",
             "rollable"
          ],
-         "effects":""
+         "kind":""
       },
       "distinction":{
          "templates":[
@@ -270,11 +269,10 @@
       },
       "container":{
          "templates":[
-            "base"
+            "base",
+            "magic",
+            "physical_item"
          ],
-         "effects":"",
-         "quantity":1,
-         "weight":0,
          "contents":[
          ]
       },
@@ -310,6 +308,7 @@
             "physical_item",
             "magic"
          ],
+         "kind":"",
          "components":"",
          "features":""
       },
@@ -322,13 +321,6 @@
          "sequence":""
       },
       "treasure":{
-         "templates":[
-            "base",
-            "physical_item"
-         ],
-         "features":""
-      },
-      "vehicle":{
          "templates":[
             "base",
             "physical_item"
@@ -354,9 +346,9 @@
          ],
          "kind":"",
          "requirements":"",
-         "isClassAbility": false,
-         "isRaceAbility": false,
-         "isMonsterAbility": false,
+         "is_class_ability": false,
+         "is_race_ability": false,
+         "is_monster_ability": false,
          "cost":0
       },
       "feature":{
@@ -372,20 +364,11 @@
          "isMonsterFeature": false,
          "description":""
       },
-      "class":{
+      "subclass":{
          "templates":[
             "base",
             "magic",
             "rollable"
-         ],
-         "level":1,
-         "dice":"",
-         "isResource":true
-      },
-      "subclass":{
-         "templates":[
-            "base",
-            "magic"
          ],
          "class":"",
          "requirements":""
@@ -398,16 +381,19 @@
          ],
          "kind":"",
          "character":"",
-         "isOrg":false
+         "is_organization":false
       },
       "milestone":{
          "templates":[
            "base"
          ],
          "level":"basic",
+         "kind":"",
          "xp":1,
-         "completed":false,
-         "shared":false
+         "is_repeatable":false,
+         "is_hidden":false,
+         "is_completed":false,
+         "is_shared":false
       }
    }
 }
