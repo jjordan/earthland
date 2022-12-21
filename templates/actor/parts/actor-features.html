@@ -25,6 +25,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Species Feature" data-type="feature-species"><i class="fas fa-plus"></i> Add Species Feature</a>
       </div>
@@ -36,6 +37,11 @@
             <a class="rollable" data-roll-type="item"><img src="{{feature.img}}" title="{{feature.name}}" width="24" height="24"/></a>
           </div>
           <h4>{{feature.name}}</h4>
+        </div>
+        <div class="item-name">
+          {{#if feature.system.dice}}
+            <button title="Roll Normally" class="role rollable" data-rolltype="actor" data-roll="{{feature.system.dice}}" data-label="{{feature.name}}" data-kind="feature"><i class="fas fa-dice-d20"></i></button>
+          {{/if}}
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
@@ -51,6 +57,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Ability" data-type="ability-species"><i class="fas fa-plus"></i> Add Species Ability</a>
       </div>
@@ -62,6 +69,11 @@
             <a class="rollable" data-roll-type="item"><img src="{{ability.img}}" title="{{ability.name}}" width="24" height="24"/></a>
           </div>
           <h4>{{ability.name}}</h4>
+        </div>
+        <div class="item-name">
+          {{#if ability.system.dice}}
+            <button title="Roll Normally" class="role rollable" data-rolltype="actor" data-roll="{{ability.system.dice}}" data-label="{{ability.name}}" data-kind="ability"><i class="fas fa-dice-d20"></i></button>
+          {{/if}}
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
@@ -81,6 +93,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Subclass" data-type="subclass"><i class="fas fa-plus"></i> Add Subclass</a>
       </div>
@@ -92,6 +105,11 @@
             <a class="rollable" data-roll-type="item"><img src="{{subclass.img}}" title="{{subclass.name}}" width="24" height="24"/></a>
           </div>
           <h4>{{subclass.name}}</h4>
+        </div>
+        <div class="item-name">
+          {{#if subclass.system.dice}}
+            <button title="Roll Normally" class="role rollable" data-rolltype="actor" data-roll="{{subclass.system.dice}}" data-label="{{subclass.name}}" data-kind="subclass"><i class="fas fa-dice-d20"></i></button>
+          {{/if}}
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
@@ -112,6 +130,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Class Feature" data-type="feature-class"><i class="fas fa-plus"></i> Add Class Feature</a>
       </div>
@@ -123,6 +142,11 @@
             <a class="rollable" data-roll-type="item"><img src="{{feature.img}}" title="{{feature.name}}" width="24" height="24"/></a>
           </div>
           <h4>{{feature.name}}</h4>
+        </div>
+        <div class="item-name">
+          {{#if feature.system.dice}}
+            <button title="Roll Normally" class="role rollable" data-rolltype="actor" data-roll="{{feature.system.dice}}" data-label="{{feature.name}}" data-kind="feature"><i class="fas fa-dice-d20"></i></button>
+          {{/if}}
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
@@ -138,6 +162,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Ability" data-type="ability-class"><i class="fas fa-plus"></i> Add Class Ability</a>
       </div>
@@ -149,6 +174,11 @@
             <a class="rollable" data-roll-type="item"><img src="{{ability.img}}" title="{{ability.name}}" width="24" height="24"/></a>
           </div>
           <h4>{{ability.name}}</h4>
+        </div>
+        <div class="item-name">
+          {{#if ability.system.dice}}
+            <button title="Roll Normally" class="role rollable" data-rolltype="actor" data-roll="{{ability.system.dice}}" data-label="{{ability.name}}" data-kind="ability"><i class="fas fa-dice-d20"></i></button>
+          {{/if}}
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
