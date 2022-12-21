@@ -174,13 +174,32 @@
          "base":{
             "description":""
          },
+         "capability": {
+            "is_physical_item": false,
+            "is_capability": true,
+            "is_spell": false,
+            "is_relation": false,
+            "is_goal": false
+         },
          "physical_item":{
             "quantity":1,
+            "is_physical_item": true,
+            "is_spell": false,
+            "is_relation": false,
+            "is_capability": false,
+            "is_goal": false,
             "rarity":"common",
             "weight":0,
             "value":0,
             "durability":0
          },
+         "special":{
+            "is_physical_item": false,
+            "is_spell": false,
+            "is_relation": false,
+            "is_capability": false,
+            "is_goal": false
+          },
          "equippable_item":{
             "equippable":false,
             "equipped":false
@@ -234,6 +253,7 @@
          "templates":[
             "base",
             "magic",
+            "special",
             "rollable"
          ],
          "kind":""
@@ -241,9 +261,10 @@
       "distinction":{
          "templates":[
             "base",
+            "special",
             "rollable"
          ],
-         "hinder_die":"1d4"
+          "hinder_die":"1d4"
       },
       "potion":{
          "templates":[
@@ -333,6 +354,11 @@
             "rollable",
             "magic"
          ],
+         "is_physical_item": false,
+         "is_spell": true,
+         "is_relation": false,
+         "is_capability": false,
+         "is_goal": false,
          "requirements":"",
          "range":"",
          "duration":"",
@@ -345,6 +371,7 @@
          "templates":[
             "base",
             "rollable",
+            "capability",
             "magic"
          ],
          "kind":"",
@@ -356,21 +383,23 @@
       },
       "feature":{
          "templates":[
+            "capability",
             "base"
          ],
          "kind":"",
          "requirements":"",
          "dice":"",
          "effects":"",
-         "isClassFeature": false,
-         "isRaceFeature": false,
-         "isMonsterFeature": false,
+         "is_class_feature": false,
+         "is_race_feature": false,
+         "is_monster_feature": false,
          "description":""
       },
       "subclass":{
          "templates":[
             "base",
             "magic",
+            "capability",
             "rollable"
          ],
          "class":"",
@@ -382,6 +411,11 @@
             "rollable",
             "magic"
          ],
+         "is_physical_item": false,
+         "is_spell": false,
+         "is_relation": true,
+         "is_capability": false,
+         "is_goal": false,
          "kind":"",
          "character":"",
          "is_organization":false
@@ -393,6 +427,11 @@
          "level":"basic",
          "kind":"",
          "xp":1,
+         "is_physical_item": false,
+         "is_spell": false,
+         "is_relation": false,
+         "is_capability": false,
+         "is_goal": true,
          "is_repeatable":false,
          "is_hidden":false,
          "is_completed":false,

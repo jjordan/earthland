@@ -33,6 +33,11 @@ Still To Do
    + vehicle *REMOVED*
    + weapon *CHECK*
  * Finish the character's character-sheet
+   + Add Milestones tab and complete it
+   + Finish the Magic tab
+   + Finish the Features tab
+   + Finish the Equipment tab
+   + Finish the Relationships tab (does this include drag & drop?)
  * Finish the NPC's character sheet
  * Finish the Monster's character sheet
  * Make it so an item sheet adds its dice to the actor sheet in a rollable area
