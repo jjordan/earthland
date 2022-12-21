@@ -89,35 +89,65 @@ export class earthlandActorSheet extends ActorSheet {
   _prepareItems(context) {
     // Initialize containers.
     const distinctions = [];
+    const complications = [];
     const gear = [];
-    const features = [];
+    const class_abilities = [];
+    const class_features = [];
+    const species_abilities = [];
+    const species_features = [];
+    const subclasses = [];
+    const relationships = [];
+    const milestones = [];
     const spells = {
       0: [],
       1: [],
       2: [],
       3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: []
+      4: []
     };
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
+      console.log("Got to here with context item: %o", i);
       i.img = i.img || DEFAULT_TOKEN;
       // Append to distinctions.
       if (i.type === 'distinction') {
         distinctions.push(i);
       }
+      // Append to complications.
+      else if (i.type === 'complication') {
+        complications.push(i);
+      }
+      // Append to milestones
+      else if (i.type === 'milestone') {
+        milestones.push(i);
+      }
+      // Append to milestones
+      else if (i.type === 'relationship') {
+        relationships.push(i);
+      }
       // Append to gear.
-      if (i.type === 'item') {
+      else if (i.system.is_physical_item) {
         gear.push(i);
       }
       // Append to features.
-      else if (i.type === 'feature') {
-        features.push(i);
+      else if (i.system.is_capability) {
+        if (i.type == "subclass") {
+          console.log("about to add subclass");
+          subclasses.push(i);
+        }
+        if (i.system.is_class_feature){
+          class_features.push(i);
+        }
+        else if (i.system.is_class_ability){
+          class_abilities.push(i);
+        }
+        else if (i.system.is_species_ability){
+          species_abilities.push(i);
+        }
+        else if (i.system.is_species_feature){
+          species_features.push(i);
+        }
       }
       // Append to spells.
       else if (i.type === 'spell') {
@@ -128,10 +158,17 @@ export class earthlandActorSheet extends ActorSheet {
     }
 
     // Assign and return
-    context.distinctions = distinctions;
-    context.gear = gear;
-    context.features = features;
-    context.spells = spells;
+    context.distinctions      = distinctions;
+    context.complications     = complications;
+    context.relationships     = relationships;
+    context.milestones        = milestones;
+    context.gear              = gear;
+    context.class_features    = class_features;
+    context.class_abilities   = class_abilities;
+    context.species_features  = species_features;
+    context.species_abilities = species_abilities;
+    context.subclasses        = subclasses;
+    context.spells            = spells;
   }
 
   /* -------------------------------------------- */
@@ -187,10 +224,21 @@ export class earthlandActorSheet extends ActorSheet {
   async _onItemCreate(event) {
     event.preventDefault();
     const header = event.currentTarget;
-    // Get the type of item to create.
-    const type = header.dataset.type;
     // Grab any data associated with this control.
     const data = duplicate(header.dataset);
+    // Get the type of item to create.
+    let type = '';
+    const metatype = header.dataset.type;
+    // check for subtype
+    if (metatype.match(/-/)) {
+      const parts = metatype.split('-');
+      type = parts[0];
+      let subtype = parts[1];
+      data[`is_${subtype}_${type}`] = true;
+    } else {
+      type = metatype;
+    }
+    console.log("Got type: %o and data: %o", type, data);
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
     // Prepare the item object.

@@ -9,6 +9,7 @@
     // Actor partials.
     "systems/earthland/templates/actor/parts/actor-features.html",
     "systems/earthland/templates/actor/parts/actor-items.html",
+    "systems/earthland/templates/actor/parts/actor-milestones.html",
     "systems/earthland/templates/actor/parts/actor-relationships.html",
     "systems/earthland/templates/actor/parts/actor-distinctions.html",
     "systems/earthland/templates/actor/parts/actor-spells.html",

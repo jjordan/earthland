@@ -176,18 +176,12 @@
          },
          "capability": {
             "is_physical_item": false,
-            "is_capability": true,
-            "is_spell": false,
-            "is_relation": false,
-            "is_goal": false
+            "is_capability": true
          },
          "physical_item":{
             "quantity":1,
             "is_physical_item": true,
-            "is_spell": false,
-            "is_relation": false,
             "is_capability": false,
-            "is_goal": false,
             "rarity":"common",
             "weight":0,
             "value":0,
@@ -195,10 +189,7 @@
          },
          "special":{
             "is_physical_item": false,
-            "is_spell": false,
-            "is_relation": false,
-            "is_capability": false,
-            "is_goal": false
+            "is_capability": false
           },
          "equippable_item":{
             "equippable":false,
@@ -355,16 +346,13 @@
             "magic"
          ],
          "is_physical_item": false,
-         "is_spell": true,
-         "is_relation": false,
          "is_capability": false,
-         "is_goal": false,
          "requirements":"",
          "range":"",
          "duration":"",
          "shape":"",
          "school":"",
-         "level":1,
+         "level":0,
          "cost":0
       },
       "ability":{
@@ -376,6 +364,9 @@
          ],
          "kind":"",
          "requirements":"",
+         "is_class_feature": false,
+         "is_race_feature": false,
+         "is_monster_feature": false,
          "is_class_ability": false,
          "is_race_ability": false,
          "is_monster_ability": false,
@@ -390,6 +381,9 @@
          "requirements":"",
          "dice":"",
          "effects":"",
+         "is_class_ability": false,
+         "is_race_ability": false,
+         "is_monster_ability": false,
          "is_class_feature": false,
          "is_race_feature": false,
          "is_monster_feature": false,
@@ -402,6 +396,12 @@
             "capability",
             "rollable"
          ],
+         "is_class_feature": false,
+         "is_race_feature": false,
+         "is_monster_feature": false,
+         "is_class_ability": false,
+         "is_race_ability": false,
+         "is_monster_ability": false,
          "class":"",
          "requirements":""
       },
@@ -412,10 +412,7 @@
             "magic"
          ],
          "is_physical_item": false,
-         "is_spell": false,
-         "is_relation": true,
          "is_capability": false,
-         "is_goal": false,
          "kind":"",
          "character":"",
          "is_organization":false
@@ -428,10 +425,7 @@
          "kind":"",
          "xp":1,
          "is_physical_item": false,
-         "is_spell": false,
-         "is_relation": false,
          "is_capability": false,
-         "is_goal": true,
          "is_repeatable":false,
          "is_hidden":false,
          "is_completed":false,
