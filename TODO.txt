@@ -8,6 +8,8 @@ Done
  * Make it so that you can 'roll for effect', 'roll for total', and 'roll and select' *CHECK*
  * Make it so a character can add an existing roll (from chat log) back to their dice pool *CHECK*
  * Make it so a character can reroll from the chat log *CHECK*
+ * Make it so an item sheet adds its dice to the actor sheet in a rollable area *CHECK*
+ * Make it so the item's dice get added to the pool *CHECK*
 
 Still To Do
  * Finish all the Item sheets:
@@ -32,24 +34,24 @@ Still To Do
    + trinket *CHECK*
    + vehicle *REMOVED*
    + weapon *CHECK*
- * Finish the character's character-sheet
-   + Add Milestones tab and complete it
-   + Finish the Magic tab
+ * Finish the character's character-sheet *CHECK*
+   + Add Milestones tab and complete it *CHECK*
+   + Finish the Magic tab *CHECK*
    + Finish the Features tab *CHECK*
-   + Finish the Equipment tab
-   + Finish the Relationships tab (does this include drag & drop?)
- * Make it so if an ability or spell has a cost, it doesn't "spend" it, but instead adds it to the pool
+   + Finish the Equipment tab *CHECK*
+   + Finish the Relationships tab (does this include drag & drop? No) *CHECK*
+
  * Finish the NPC's character sheet
  * Finish the Monster's character sheet
- * Make it so an item sheet adds its dice to the actor sheet in a rollable area
- * Make it so the item's dice get added to the pool
- * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset *NOT NEEDED*
- * Make it so that armor dice degrade and can be repaired
-<-- Playable by here -->
-
  * Add the important sub-types of NPCs and Monsters:
    + Add Bosses which have more hit points or "life dice" and alert the GM when they reach different levels of health
    + Add Mobs which are similar, but weaken as they lose hit points or life dice, instead of strengthening
+
+ * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset
+ * Make it so that armor dice degrade and can be repaired
+ * Make it so if an ability or spell has a cost, it doesn't "spend" it, but instead adds it to the pool<-- Playable by here -->
+
+ * WORKFLOWS:
  * Make it so that if a character is targeting another character, they can click a button on the pool which will add any complications, injuries or other stuff to their dice pool
  * Make it so a character can add an existing roll to their hotbar
  * Make it so GM can easily roll difficulties
@@ -62,8 +64,9 @@ Still To Do
  * Make it so this versus roll can check for Heroic Successes
  * Make it so this versus roll/check will add Heroic Successes to the player that rolled them
  * Make it so if a player fails a versus check of only 1 exchange, they can click a chat button to "bow out gracefully" and gain a PP/MP
-
-
+ * Make it so that a player can easily mark a milestone as "Complete" and gain the XP for it
+   + Should it send a request to the GM to approve before granting it?
+ * Make it so you can drag and drop characters onto each other, which forms a relationship object
 
 
 

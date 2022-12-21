@@ -89,6 +89,7 @@ export class earthlandActorSheet extends ActorSheet {
   _prepareItems(context) {
     // Initialize containers.
     const distinctions = [];
+    const specialties = [];
     const complications = [];
     const weapons = [];
     const armor = [];
@@ -122,6 +123,10 @@ export class earthlandActorSheet extends ActorSheet {
       // Append to distinctions.
       if (i.type === 'distinction') {
         distinctions.push(i);
+      }
+      // Append to specialties.
+      if (i.type === 'specialty') {
+        specialties.push(i);
       }
       // Append to complications.
       else if (i.type === 'complication') {
@@ -196,14 +201,16 @@ export class earthlandActorSheet extends ActorSheet {
       }
       // Append to spells.
       else if (i.type === 'spell') {
-        if (i.system.spellLevel != undefined) {
-          spells[i.system.spellLevel].push(i);
+        console.log("got to here with spell!!!!!!!");
+        if (i.system.level != undefined) {
+          spells[i.system.level].push(i);
         }
       }
     }
 
     // Assign and return
     context.distinctions      = distinctions;
+    context.specialties       = specialties;
     context.complications     = complications;
     context.relationships     = relationships;
     context.milestones        = milestones;

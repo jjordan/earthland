@@ -7,11 +7,13 @@
   return loadTemplates([
 
     // Actor partials.
+    "systems/earthland/templates/actor/parts/actor-complications.html",
     "systems/earthland/templates/actor/parts/actor-features.html",
     "systems/earthland/templates/actor/parts/actor-equipment.html",
     "systems/earthland/templates/actor/parts/actor-milestones.html",
     "systems/earthland/templates/actor/parts/actor-relationships.html",
     "systems/earthland/templates/actor/parts/actor-distinctions.html",
+    "systems/earthland/templates/actor/parts/actor-specialties.html",
     "systems/earthland/templates/actor/parts/actor-spells.html",
     "systems/earthland/templates/actor/parts/actor-effects.html",
     "systems/earthland/templates/item/parts/base.html",

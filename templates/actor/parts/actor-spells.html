@@ -2,8 +2,9 @@
   {{#each spells as |spells spellLevel|}}
     <li class="item flexrow items-header">
       <div class="item-name">Level {{spellLevel}} Spells</div>
+      <div class="item-name">Actions</div>
       <div class="item-controls">
-        <a class="item-control item-create" title="Create item" data-type="spell" data-spell-level="{{spellLevel}}"><i class="fas fa-plus"></i> Add LVL {{spellLevel}}</a>
+        <a class="item-control item-create" title="Create item" data-type="spell" data-level="{{spellLevel}}"><i class="fas fa-plus"></i> Add LVL {{spellLevel}}</a>
       </div>
     </li>
     {{#each spells as |item id|}}
@@ -13,6 +14,11 @@
             <a class="rollable" data-roll-type="item"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></a>
           </div>
           <h4>{{item.name}}</h4>
+        </div>
+        <div class="item-name">
+          {{#if item.system.dice}}
+            <button title="Roll Normally" class="role rollable" data-rolltype="actor" data-roll="{{item.system.dice}}" data-label="{{item.name}}" data-kind="spell" data-level="{{spellLevel}}"><i class="fas fa-dice-d20"></i></button>
+          {{/if}}
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>

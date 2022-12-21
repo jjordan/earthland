@@ -1,0 +1,20 @@
+<ol class="items-list">
+  <li class="item flexrow items-header">
+    <div class="item-name">Name</div>
+    <div class="item-controls">
+      <a class="item-control item-create" title="Create a Complication" data-type="complication"><i class="fas fa-plus"></i> Add a Complication</a>
+    </div>
+  </li>
+  {{#each complications as |complication id|}}
+    <li class="item flexrow" data-item-id="{{complication._id}}">
+      <div class="item-name">
+        <button title="Roll Normally" class="role rollable" data-rolltype="actor" data-roll="{{complication.system.dice}}" data-label="{{complication.name}}" data-kind="Complication"><i class="fas fa-dice-d8"></i></button>
+       <h4>{{complication.name}}</h4>
+      </div>
+      <div class="item-controls">
+        <a class="item-control item-edit" title="Edit Complication"><i class="fas fa-edit"></i></a>
+        <a class="item-control item-delete" title="Delete Complication"><i class="fas fa-trash"></i></a>
+      </div>
+    </li>
+  {{/each}}
+</ol>

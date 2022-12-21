@@ -1,0 +1,20 @@
+<ol class="items-list">
+  <li class="item flexrow items-header">
+    <div class="item-name">Name</div>
+    <div class="item-controls">
+      <a class="item-control item-create" title="Create a Specialty" data-type="specialty"><i class="fas fa-plus"></i> Add a Specialty</a>
+    </div>
+  </li>
+  {{#each specialties as |specialty id|}}
+    <li class="item flexrow" data-item-id="{{specialty._id}}">
+      <div class="item-name">
+        <button title="Roll Normally" class="role rollable" data-rolltype="actor" data-roll="{{specialty.system.dice}}" data-label="{{specialty.name}}" data-kind="Specialty"><i class="fas fa-dice-d8"></i></button>
+       <h4>{{specialty.name}}</h4>
+      </div>
+      <div class="item-controls">
+        <a class="item-control item-edit" title="Edit Specialty"><i class="fas fa-edit"></i></a>
+        <a class="item-control item-delete" title="Delete Specialty"><i class="fas fa-trash"></i></a>
+      </div>
+    </li>
+  {{/each}}
+</ol>

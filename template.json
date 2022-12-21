@@ -164,6 +164,7 @@
          "recipe",
          "relationship",
          "resource",
+         "specialty",
          "spell",
          "subclass",
          "treasure",
@@ -256,6 +257,14 @@
             "rollable"
          ],
           "hinder_die":"1d4"
+      },
+      "specialty":{
+         "templates":[
+            "base",
+            "special",
+            "rollable"
+         ],
+         "effects":""
       },
       "potion":{
          "templates":[
