@@ -5,14 +5,19 @@ export const earthland = {};
  * @type {Object}
  */
  earthland.attributes = {
-  "strength": "earthland.AbilityStr",
-  "precision": "earthland.AbilityPre",
-  "speed": "earthland.AbilitySpd",
+  "strength":     "earthland.AbilityStr",
+  "brawn":        "earthland.AbilityBrn",
+  "precision":    "earthland.AbilityPre",
+  "speed":        "earthland.AbilitySpd",
   "constitution": "earthland.AbilityCon",
+  "grit":         "earthland.AbilityGrt",
   "intelligence": "earthland.AbilityInt",
-  "perception": "earthland.AbilityPer",
-  "willpower": "earthland.AbilityWil",
-  "charisma": "earthland.AbilityCha"
+  "knowledge":    "earthland.AbilityKnw",
+  "perception":   "earthland.AbilityPer",
+  "awareness":    "earthland.AbilityAwr",
+  "willpower":    "earthland.AbilityWil",
+  "presence":     "earthland.AbilityPrs",
+  "charisma":     "earthland.AbilityCha"
 };
 
 earthland.roles = {
@@ -25,6 +30,7 @@ earthland.roles = {
   "burglar":     "earthland.RoleBurglar",
   "controller":  "earthland.RoleController",
   "courtesean":  "earthland.RoleCourtesean",
+  "craftsperson":"earthland.RoleCraftsperson",
   "defender":    "earthland.RoleDefender",
   "detective":   "earthland.RoleDetective",
   "entertainer": "earthland.RoleEntertainer",

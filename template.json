@@ -26,14 +26,37 @@
             },
             "size":"",
             "attributes":{
-               "strength": { "value": ""},
-               "precision":{ "value": ""},
-               "speed":{ "value": ""},
-               "constitution":{ "value": ""},
-               "intelligence":{ "value": ""},
-               "perception":{ "value": ""},
-               "willpower":{ "value": ""},
-               "charisma":{ "value": ""}
+               "brawn": { "value": "1d4"},
+               "precision":{ "value": "1d4"},
+               "speed":{ "value": "1d4"},
+               "grit":{ "value": "1d4"},
+               "knowledge":{ "value": "1d4"},
+               "awareness":{ "value": "1d4"},
+               "willpower":{ "value": "1d4"},
+               "presence":{ "value": "1d4"}
+            }
+         },
+         "humanoid": {
+            "classes":{
+               "artificer":{ "value": "1d2"},
+               "barbarian":{ "value": "1d2"},
+               "fighter":{ "value": "1d2"},
+               "monk":{ "value": "1d2"},
+               "rogue":{ "value": "1d2"},
+               "sorcerer":{ "value": "1d2"},
+               "summoner":{ "value": "1d2"},
+               "warlock":{ "value": "1d2"},
+               "wizard":{ "value": "1d2"}
+            },
+            "roles":{
+               "athlete":{ "value": "1d4"},
+               "burglar":{ "value": "1d4"},
+               "courtesean":{ "value": "1d4"},
+               "craftsperson":{ "value": "1d4"},
+               "detective":{ "value": "1d4"},
+               "entertainer":{ "value": "1d4"},
+               "explorer":{ "value": "1d4"},
+               "scholar":{ "value": "1d4"}
             }
          }
       },
@@ -42,7 +65,8 @@
       ],
       "character":{
          "templates":[
-            "base"
+            "base",
+            "humanoid"
          ],
          "money": {
            "pp": 0,
@@ -54,27 +78,7 @@
             "min":0,
             "value":0
          },
-         "biography":"",
-         "classes":{
-            "artificer":{ "value": "1d2"},
-            "barbarian":{ "value": "1d2"},
-            "fighter":{ "value": "1d2"},
-            "monk":{ "value": "1d2"},
-            "rogue":{ "value": "1d2"},
-            "sorcerer":{ "value": "1d2"},
-            "summoner":{ "value": "1d2"},
-            "warlock":{ "value": "1d2"},
-            "wizard":{ "value": "1d2"}
-         },
-         "roles":{
-            "athlete":{ "value": "1d4"},
-            "burglar":{ "value": "1d4"},
-            "courtesean":{ "value": "1d4"},
-            "detective":{ "value": "1d4"},
-            "entertainer":{ "value": "1d4"},
-            "explorer":{ "value": "1d4"},
-            "scholar":{ "value": "1d4"}
-         }
+         "biography":""
       },
       "monster":{
          "templates":[
@@ -106,26 +110,13 @@
       },
       "npc":{
          "templates":[
-            "base"
+            "base",
+            "humanoid"
          ],
+         "kind":"minion",
          "backstory":"",
-         "roles":{
-            "arcanist":{ "value": ""},
-            "assassin":{ "value": ""},
-            "athlete":{ "value": ""},
-            "brawler":{ "value": ""},
-            "burglar":{ "value": ""},
-            "courtesean":{ "value": ""},
-            "defender":{ "value": ""},
-            "detective":{ "value": ""},
-            "entertainer":{ "value": ""},
-            "explorer":{ "value": ""},
-            "fencer":{ "value": ""},
-            "healer":{ "value": ""},
-            "marksman":{ "value": ""},
-            "scholar":{ "value": ""},
-            "tinkerer":{ "value": ""}
-         },
+         "goals":"",
+         "motivations":"",
          "morality":{
             "virtues":{
                "compassion":{ "value": ""},

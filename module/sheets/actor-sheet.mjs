@@ -31,6 +31,29 @@ export class earthlandActorSheet extends ActorSheet {
     // sheets are the actor object, the data object, whether or not it's
     // editable, the items array, and the effects array.
     const context = super.getData();
+    context.npc_kind_options = [
+      {
+        name: 'Boss',
+        value: 'boss',
+        selected: false
+      },
+      {
+        name: 'Elite',
+        value: 'elite',
+        selected: false
+      },
+      {
+        name: 'Minion',
+        value: 'minion',
+        selected: false
+      },
+      {
+        name: 'Mob',
+        value: 'mob',
+        selected: false
+      }
+    ];
+
     console.log("What is context? %o", context);
     // Use a safe clone of the actor data for further operations.
     const actorData = this.actor.toObject(false);
@@ -38,6 +61,30 @@ export class earthlandActorSheet extends ActorSheet {
     // Add the actor's data to context.data for easier access, as well as flags.
     context.system = actorData.system;
     context.flags = actorData.flags;
+
+    let kind_name = context.system.kind;
+    context.npc_kind_options[0].selected = false; // reset zero option
+    const kind = context.npc_kind_options.find( element => element.value === kind_name);
+    console.log("in set with kind_name and kind: %o, %o", kind_name, kind);
+    context.is_mob    = false;
+    context.is_minion = false;
+    context.is_elite  = false;
+    context.is_boss   = false;
+    if (!!kind) {
+      kind.selected = true;
+      console.log("selected kind: %o", kind);
+      if (kind.value == 'mob') {
+        context.is_mob = true;
+      } else if (kind.value == 'minion') {
+        context.is_minion = true;
+      } else if (kind.value == 'elite') {
+        context.is_elite = true;
+      } else if (kind.value == 'boss') {
+        context.is_boss = true;
+      } else {
+        context.is_minion = true;
+      }
+    }
 
     // Prepare character data and items.
     if (actorData.type == 'character') {
@@ -47,6 +94,7 @@ export class earthlandActorSheet extends ActorSheet {
 
     // Prepare NPC data and items.
     if (actorData.type == 'npc') {
+      this._prepareCharacterData(context);
       this._prepareItems(context);
     }
 

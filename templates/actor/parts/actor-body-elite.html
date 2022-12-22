@@ -1,0 +1,107 @@
+{{!-- Sheet Tab Navigation --}}
+<nav class="sheet-tabs tabs" data-group="primary">
+  {{!-- Default tab is specified in actor-sheet.mjs --}}
+  <a class="item" data-tab="traits">Traits</a>
+  <a class="item" data-tab="features">Features</a>
+  <a class="item" data-tab="equipment">Gear</a>
+  <a class="item" data-tab="spells">Magic</a>
+  <a class="item" data-tab="relationships">Relationships</a>
+  <a class="item" data-tab="milestones">Milestones</a>
+  <a class="item" data-tab="effects">Effects</a>
+  <a class="item" data-tab="notes">Notes</a>
+</nav>
+
+{{!-- Sheet Body --}}
+<section class="sheet-body">
+
+  {{!-- Owned Traits Tab --}}
+  <div class="tab traits" data-group="primary" data-tab="traits">
+    <section class="grid grid-3col">
+      <aside class="sidebar">
+        <h3>Attributes</h3>
+        {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+        use both the "grid" and "grid-Ncol" class where "N" can be any number
+        from 1 to 12 and will create that number of columns.  --}}
+        <div class="attributes flexcol">
+          {{#each system.attributes as |attribute key|}}
+          <div class="attribute flexrow flex-group-center">
+            <button class="attribute rollable" data-rolltype="actor" data-roll="@attributes.{{key}}.value" data-label="{{key}}" data-kind="Attribute"><i class="fas fa-dice-d20"></i></button>
+            <label for="system.attributes.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="@attributes.{{key}}.value" data-label="{{attribute.label}}" data-kind="Attribute">{{attribute.label}}</label>
+            <input type="text" name="system.attributes.{{key}}.value" value="{{attribute.value}}" data-dtype="String"/>
+          </div>
+          {{/each}}
+        </div>
+      </aside>
+
+        <div class="roles flexcol">
+          <h3>Roles</h3>
+          {{#each system.roles as |role key|}}
+          <div class="role flexrow flex-group-center">
+            <button class="role rollable" data-rolltype="actor" data-roll="@roles.{{key}}.value" data-label="{{key}}" data-kind="Role"><i class="fas fa-dice-d20"></i></button>
+            <label for="system.roles.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="@roles.{{key}}.value" data-label="{{role.label}}" data-kind="Role">{{role.label}}</label>
+            <input type="text" name="system.roles.{{key}}.value" value="{{role.value}}" data-dtype="String"/>
+          </div>
+          {{/each}}
+          <br/>
+          <hr/>
+          <br/>
+          <h3>Classes</h3>
+          {{#each system.classes as |class key|}}
+          <div class="class flexrow flex-group-center">
+            <button class="class rollable" data-rolltype="actor" data-roll="@classes.{{key}}.value" data-label="{{key}}" data-kind="Class"><i class="fas fa-dice-d20"></i></button>
+            <label for="system.classes.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="@classes.{{key}}.value" data-label="{{class.label}}" data-kind="Class">{{class.label}}</label>
+            <input type="text" name="system.classes.{{key}}.value" value="{{class.value}}" data-dtype="String"/>
+          </div>
+          {{/each}}
+
+        </div>
+
+        <div class="distinctions">
+          <h3>Distinctions</h3>
+          <div class="distinction flexrow flex-group-center">
+            {{> "systems/earthland/templates/actor/parts/actor-distinctions.html"}}
+          </div>
+          <br/>
+          <hr/>
+          <br/>
+          <h3>Specialties</h3>
+          <div class="specialty flexrow flex-group-center">
+            {{> "systems/earthland/templates/actor/parts/actor-specialties.html"}}
+          </div>
+          <br/>
+          <hr/>
+          <br/>
+          <h3>Complications</h3>
+          <div class="complication flexrow flex-group-center">
+            {{> "systems/earthland/templates/actor/parts/actor-complications.html"}}
+          </div>
+        </div>
+    </section>
+  </div>
+
+  {{!-- Features --}}
+  <div class="tab features" data-group="primary" data-tab="features">
+     {{> "systems/earthland/templates/actor/parts/actor-features.html"}}
+  </div>
+
+  {{!-- Relationships --}}
+  <div class="tab features" data-group="primary" data-tab="relationships">
+     {{> "systems/earthland/templates/actor/parts/actor-relationships.html"}}
+  </div>
+
+  {{!-- Owned Equipment Tab --}}
+  <div class="tab equipment" data-group="primary" data-tab="equipment">
+     {{> "systems/earthland/templates/actor/parts/actor-equipment.html"}}
+  </div>
+
+  {{!-- Owned Spells Tab --}}
+  <div class="tab spells" data-group="primary" data-tab="spells">
+    {{> "systems/earthland/templates/actor/parts/actor-spells.html"}}
+  </div>
+
+  {{!-- Biography Tab --}}
+  <div class="tab biography" data-group="primary" data-tab="notes">
+    {{!-- If you want TinyMCE editors to output inline rolls when rendered, you need to pass the actor's roll data to the rollData property. --}}
+    {{editor system.biography target="system.biography" rollData=rollData button=true owner=owner editable=editable}}
+  </div>
+</section>
