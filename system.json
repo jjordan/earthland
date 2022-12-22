@@ -25,10 +25,10 @@
   "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "power",
-  "url": "",
-  "manifest": "",
-  "download": "",
+  "secondaryTokenAttribute": "energy",
+  "url": "https://github.com/jjordan/earthland",
+  "manifest": "https://raw.githubusercontent.com/jjordan/earthland/master/system.json",
+  "download": "https://github.com/jjordan/cortexprime/archive/refs/tags/v0.0.1.zip",
   "license": "LICENSE.txt",
   "changelog": "CHANGELOG.md"
 }
