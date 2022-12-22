@@ -2,14 +2,14 @@
   "id": "earthland",
   "title": "earthland",
   "description": "The earthland system for FoundryVTT!",
-  "version": "1.2.0",
+  "version": "0.0.1",
   "compatibility": {
     "minimum": 10,
     "verified": "10.287",
     "maximum": 10
   },
   "authors": [{
-    "name": "Asacolips"
+    "name": "Jeremiah Jordan"
   }],
   "esmodules": ["module/earthland.mjs"],
   "styles": ["css/earthland.css"],
