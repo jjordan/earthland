@@ -84,6 +84,12 @@
          "templates":[
             "base"
          ],
+         "health_die": {
+            "value": {
+               "0": "4"
+            }
+         },
+         "health_dice": [],
          "kind":"",
          "category":"",
          "environments":"",
@@ -113,6 +119,12 @@
             "base",
             "humanoid"
          ],
+         "health_die": {
+            "value": {
+               "0": "4"
+            }
+         },
+         "health_dice": [],
          "kind":"minion",
          "backstory":"",
          "goals":"",
@@ -402,7 +414,7 @@
          "is_class_ability": false,
          "is_race_ability": false,
          "is_monster_ability": false,
-         "class":"",
+         "super_class":"",
          "requirements":""
       },
       "relationship":{

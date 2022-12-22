@@ -1,5 +1,6 @@
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
-import {times} from "../../lib/helpers.js"
+import { times, getLength, objectMapValues, objectReindexFilter, objectFindValue, objectSome } from '../../lib/helpers.js'
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -139,6 +140,8 @@ export class earthlandActorSheet extends ActorSheet {
     const distinctions = [];
     const specialties = [];
     const complications = [];
+    const gear = [];
+    const abilities = [];
     const weapons = [];
     const armor = [];
     const potions = [];
@@ -171,6 +174,9 @@ export class earthlandActorSheet extends ActorSheet {
       // Append to distinctions.
       if (i.type === 'distinction') {
         distinctions.push(i);
+      }
+      if (i.system.is_physical_item) {
+        gear.push(i);
       }
       // Append to specialties.
       if (i.type === 'specialty') {
@@ -230,8 +236,8 @@ export class earthlandActorSheet extends ActorSheet {
       }
       // Append to features.
       else if (i.system.is_capability) {
+        abilities.push(i);
         if (i.type == "subclass") {
-          console.log("about to add subclass");
           subclasses.push(i);
         }
         if (i.system.is_class_feature){
@@ -240,22 +246,22 @@ export class earthlandActorSheet extends ActorSheet {
         else if (i.system.is_class_ability){
           class_abilities.push(i);
         }
-        else if (i.system.is_species_ability){
+        else if (i.system.is_race_ability){
           species_abilities.push(i);
         }
-        else if (i.system.is_species_feature){
+        else if (i.system.is_race_feature){
           species_features.push(i);
         }
       }
       // Append to spells.
       else if (i.type === 'spell') {
-        console.log("got to here with spell!!!!!!!");
         if (i.system.level != undefined) {
           spells[i.system.level].push(i);
         }
       }
     }
-
+    console.log("what are abilities? %o", abilities);
+    console.log("what are species features? %o", species_features);
     // Assign and return
     context.distinctions      = distinctions;
     context.specialties       = specialties;
@@ -278,6 +284,8 @@ export class earthlandActorSheet extends ActorSheet {
     context.species_abilities = species_abilities;
     context.subclasses        = subclasses;
     context.spells            = spells;
+    context.gear              = gear;
+    context.abilities         = abilities;
   }
 
   /* -------------------------------------------- */
@@ -299,6 +307,11 @@ export class earthlandActorSheet extends ActorSheet {
 
     // Add Inventory Item
     html.find('.item-create').click(this._onItemCreate.bind(this));
+
+    // Dynamic Dice Selectors
+    html.find('.die-select').change(this._onDieChange.bind(this))
+    html.find('.die-select').on('mouseup', this._onDieRemove.bind(this))
+    html.find('.new-die').click(this._newDie.bind(this))
 
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
@@ -323,6 +336,71 @@ export class earthlandActorSheet extends ActorSheet {
         li.addEventListener("dragstart", handler, false);
       });
     }
+  }
+
+
+  async _newDie (event) {
+    console.log("in _newDie with event: %o", event);
+    event.preventDefault();
+    const $targetNewDie = $(event.currentTarget);
+    const target = $targetNewDie.data('target');
+    const currentDiceData = getProperty(this.actor, target);
+    const currentDice = currentDiceData?.value ?? {};
+    const newIndex = getLength(currentDice);
+    const newValue = currentDice[newIndex - 1] ?? '8';
+    console.log("have target: %o", target);
+    console.log("have new index: %o and new value: %o", newIndex, newValue);
+
+    await this.actor.update({
+      [target]: {
+        value: {
+          ...currentDice,
+          [newIndex]: newValue
+        }
+      }
+    })
+  }
+
+
+  async _onDieChange (event) {
+    event.preventDefault()
+    const $targetNewDie = $(event.currentTarget)
+    const target = $targetNewDie.data('target')
+    const targetKey = $targetNewDie.data('key')
+    const targetValue = $targetNewDie.val()
+    const currentDiceData = getProperty(this.actor, target)
+    console.log("What is target? %o", target);
+
+    const newValue = objectMapValues(currentDiceData.value ?? {}, (value, index) => parseInt(index, 10) === targetKey ? targetValue : value)
+
+    await this._resetDataPoint(target, 'value', newValue)
+  }
+
+
+  async _onDieRemove (event) {
+    event.preventDefault()
+
+    if (event.button === 2) {
+      const $target = $(event.currentTarget)
+      const target = $target.data('target')
+      const targetKey = $target.data('key')
+      const currentDiceData = getProperty(this.actor.data, target)
+
+      const newValue = objectReindexFilter(currentDiceData.value ?? {}, (_, key) => parseInt(key, 10) !== parseInt(targetKey))
+
+      await this._resetDataPoint(target, 'value', newValue)
+    }
+  }
+
+
+  async _resetDataPoint(path, target, value) {
+    await this.actor.update({
+      [`${path}.-=${target}`]: null
+    })
+
+    await this.actor.update({
+      [`${path}.${target}`]: value
+    })
   }
 
   /**
@@ -390,7 +468,12 @@ export class earthlandActorSheet extends ActorSheet {
       let trait = dataset.roll;
       let rollData = this.actor.getRollData();
       let value = this.replaceFormulaData(trait, rollData);
-      let object = this.formulaToDiceObject(value);
+      let object;
+      if (typeof value === 'string') {
+        object = this.formulaToDiceObject(value);
+      } else if (typeof value === 'object') {
+        object = value
+      }
 
       game.earthland.UserDicePool._addTraitToPool(this.actor.name, label, object)
       return null;
