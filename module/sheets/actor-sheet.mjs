@@ -246,10 +246,10 @@ export class earthlandActorSheet extends ActorSheet {
         else if (i.system.is_class_ability){
           class_abilities.push(i);
         }
-        else if (i.system.is_race_ability){
+        else if (i.system.is_species_ability){
           species_abilities.push(i);
         }
-        else if (i.system.is_race_feature){
+        else if (i.system.is_species_feature){
           species_features.push(i);
         }
       }

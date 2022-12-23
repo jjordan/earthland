@@ -377,10 +377,10 @@
          "kind":"",
          "requirements":"",
          "is_class_feature": false,
-         "is_race_feature": false,
+         "is_species_feature": false,
          "is_monster_feature": false,
          "is_class_ability": false,
-         "is_race_ability": false,
+         "is_species_ability": false,
          "is_monster_ability": false,
          "cost":0
       },
@@ -394,10 +394,10 @@
          "dice":"",
          "effects":"",
          "is_class_ability": false,
-         "is_race_ability": false,
+         "is_species_ability": false,
          "is_monster_ability": false,
          "is_class_feature": false,
-         "is_race_feature": false,
+         "is_species_feature": false,
          "is_monster_feature": false,
          "description":""
       },
@@ -409,10 +409,10 @@
             "rollable"
          ],
          "is_class_feature": false,
-         "is_race_feature": false,
+         "is_species_feature": false,
          "is_monster_feature": false,
          "is_class_ability": false,
-         "is_race_ability": false,
+         "is_species_ability": false,
          "is_monster_ability": false,
          "super_class":"",
          "requirements":""

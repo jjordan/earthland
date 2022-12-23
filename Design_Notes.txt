@@ -77,13 +77,14 @@ Martial Roles (Elite & Boss mostly):
 
 Non-Combat Roles:
  * Athlete - uses their superior physique to attack in a broad way or defend by fleeing quickly
+ * Burglar - has access to hiding, sneaking and stealth, so tries to hide or get away
  * Courtesean - tries to confuse or charm the opponent
+ * Craftsperson - builds and repairs mundane equipment
  * Detective - tries to discover the opponent's strengths & weaknesses
  * Entertainer - tries to confuse or charm the opponent
  * Explorer - tries to use their knowledge of the environment to their advantage
- * Scholar - ???
- * Thief/Burglar - has access to hiding, sneaking and stealth, so tries to hide or get away
- * Tinkerer - tries to use a gadget to fight with
+ * Scholar - knows things about the world, sciences and the occult
+
 
 So the Non-combat roles indicate what other types of game systems I want to have in this world.
 
@@ -314,4 +315,90 @@ Relationships (Other Character, Relationship Type, Die)
 Milestones (Milestone: name, level, XP, description, completed?)
 Effects (active effects)
 Notes
+
+================================================================================
+
+What is combat like?
+
+Duels
+
+Back and forth where the character that logically started the contest goes first, followed by the opponent.
+The Duel continues until either:
+ * Both sides agree to stop fighting
+ * One side is KO'ed either because their Health or Hit Die is at zero
+ * One side is KO'ed because of a Complication boosting above a D12
+ * Narrative reasons
+
+Brawls
+
+Since a brawl involves multiple characters/creatures, it can't be just a back-and-forth.
+There's likely an "inciting incident" that changes it from free-form roleplaying into a combat.
+In that case, the character that did the inciting likely goes first (before Initiative).
+Then Initiative is rolled.
+Each character can act on their Initiative order, going from highest to lowest.
+If a character is the target of the character with Initiative, that targeted character can react.
+Once all characters have gone, the combat round is over.
+Combat continues until ones side can no longer participate, because:
+ * Both sides agree to stop fighting
+ * One side is KO'ed either because their Health or Hit Die is at zero
+ * One side is KO'ed because of a Complication boosting above a D12
+ * Narrative reasons
+
+
+In addition to those two major divisions (Duels and Brawls), there are rules on Attacking and Defending.
+
+Characters can use any method to attack that they can think of, but typically most attacks use the following combinations:
+
+ * Brawn + Fighter/Barbarian/Monk/Rogue = physical attack using Strength
+ * Precision + Fighter/Barbarian/Monk/Rogue/Artificer = ranged attack or melee attack using Dexterity
+ * Knowledge + Wizard/Warlock = magical attack
+ * Willpower + Sorcerer/Summoner = magical attack
+
+Defending is similar to attacking in that the defending character can use any methods that they can think of, but there are some standard ones:
+
+ * Precision + Fighter/Barbarian/Monk/Rogue = physical defense using Dexterity to deflect the blow
+ * Speed + Fighter/Barbarian/Monk/Rogue = physical defense using Agility to dodge the blow
+ * Willpower + Artificer/Sorcerer/Summoner/Warlock/Wizard = magical resistance
+
+Hitting & Damage
+
+If the Attacker’s Total is greater than the Defender’s Total, the attack is a hit. The defender can either use their defense Effect Die, or that of their Armor, but not both. If the Defender’s Effect Die is higher than the attacker’s, the attack does no damage, however:
+Non-magical armor will have its Armor Die reduced by 1 Step (if Armor was used) (magical armor is similarly reduced against magic weapons or magical attacks)
+If armor wasn’t used, the character becomes Unbalanced.
+If the Defender’s Effect Die is lower than the attacker’s, then the attack does damage:
+The Attacker rolls their Effect Die + any Weapon or Spell dice and takes the Total (in some cases, a Condition can also be applied, in which case the Effect Die is also considered out of the entire pool).
+
+If a character is Unbalanced, they can only use their Armor die to defend with.
+
+Recovery and Healing
+
+During combat a character can have healing magic applied to recover from injury.
+Health Potions can also be taken.
+The permanent status conditions can be healed by certain spells and potions.
+
+Conditions can also be healed with the Cortex recovery rules outside of combat:
+A character can have their condition/complication removed if they (or another character) rolls to heal them, with the difficulty being the level of injury (the Effect Die level rolled by the GM).
+If the resulting Effect die is the same as the Condition/Complication die, then that die is stepped down one level.
+If the resulting Effect die is greater thant he Condition/Complication die, then that die is stepped down two levels.
+If the die is at a D4 and is stepped down, the condition is removed completely.
+If the Effect die is less than the Condition/Complication die, then nothing changes.
+If the healing character rolls a Hitch, then its possible that the Condition/Complication is *worsened* and increased by one die step.
+If the healing character rolls a Botch, then the Condition/Complication is definitely worsened, and it's possible it can increase by two dice steps.
+
+================================================================================
+
+Main Subgames:
+
+ * Combat - 
+ * Stealth - 
+ * Crafting - 
+ * Mysteries - 
+ * Parley
+
+For Combat:
+
+ * How much should I make a structure?
+
+
+
 
