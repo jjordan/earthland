@@ -360,7 +360,6 @@
   display: flex;
   -webkit-box-flex: 0;
   -ms-flex: 0 0 100px;
-  flex: 0 0 100px;
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-end;

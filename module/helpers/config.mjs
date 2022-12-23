@@ -58,6 +58,17 @@ earthland.classes = {
   "wizard":     "earthland.ClassWizard"
 };
 
+earthland.packages = {
+  "assassin":       "earthland.PackageAssassin",
+  "brawler":        "earthland.PackageBrawler",
+  "defender":       "earthland.PackageDefender",
+  "fencer":         "earthland.PackageFencer",
+  "healer":         "earthland.PackageHealer",
+  "martial_artist": "earthland.PackageMA",
+  "sharpshooter":   "earthland.PackageSharp",
+  "spellbinder":    "earthland.PackageSB"
+};
+
 earthland.abilityAbbreviations = {
   "strength": "earthland.AbilityStrAbbr",
   "precision": "earthland.AbilityPreAbbr",

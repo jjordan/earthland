@@ -123,8 +123,8 @@ export class earthlandActorSheet extends ActorSheet {
     for (let [k, v] of Object.entries(context.system.roles)) {
       v.label = game.i18n.localize(CONFIG.earthland.roles[k]) ?? k;
     }
-    for (let [k, v] of Object.entries(context.system.classes)) {
-      v.label = game.i18n.localize(CONFIG.earthland.classes[k]) ?? k;
+    for (let [k, v] of Object.entries(context.system.packages)) {
+      v.label = game.i18n.localize(CONFIG.earthland.packages[k]) ?? k;
     }
   }
 
@@ -469,6 +469,7 @@ export class earthlandActorSheet extends ActorSheet {
       let rollData = this.actor.getRollData();
       let value = this.replaceFormulaData(trait, rollData);
       let object;
+      console.log("what is dice value: %o", value);
       if (typeof value === 'string') {
         object = this.formulaToDiceObject(value);
       } else if (typeof value === 'object') {

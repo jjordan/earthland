@@ -9,7 +9,7 @@
     <li class="item flexrow" data-item-id="{{complication._id}}">
       <div class="item-name">
         <button title="Roll Normally" class="role rollable small-button" data-rolltype="actor" data-roll="{{complication.system.dice}}" data-label="{{complication.name}}" data-kind="Complication"><i class="fas fa-dice-d8"></i></button>
-       <h4>{{complication.name}}</h4>
+       <label class="resource-label rollable flexlarge align-left" data-rolltype="actor" data-roll="{{complication.system.dice}}" data-label="{{complication.name}}" data-kind="Complication">{{complication.name}}</label>
       </div>
       <div class="item-controls">
         <a class="item-control item-edit" title="Edit Complication"><i class="fas fa-edit"></i></a>

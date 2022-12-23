@@ -37,6 +37,15 @@
   "earthland.RoleSoldier":     "Soldier",
   "earthland.RoleTinkerer":    "Tinkerer",
 
+ "earthland.PackageAssassin": "Assassin",
+ "earthland.PackageBrawler":  "Brawler",
+ "earthland.PackageDefender": "Defender",
+ "earthland.PackageFencer":   "Fencer",
+ "earthland.PackageHealer":   "Healer",
+ "earthland.PackageMA":       "Martial Artist",
+ "earthland.PackageSharp":    "Sharpshooter",
+ "earthland.PackageSB":       "Spellbinder",
+
   "earthland.ClassArtificer":    "Artificer",
   "earthland.ClassBarbarian":    "Barbarian",
   "earthland.ClassFighter":      "Fighter",

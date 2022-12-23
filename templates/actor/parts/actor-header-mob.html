@@ -2,11 +2,11 @@
 <div class="resource flex-group-left">
   <label for="system.health.value" class="resource-label">Health Dice</label>
   <div class="flex-col pr-0 flex-s-1">
-                        {{> "systems/earthland/templates/partials/dice/select.html"
-                          dice=system.health_die.value
-                          edit=true
-                          selectName='system.health_die'
-                        }}
+    {{> "systems/earthland/templates/partials/dice/select.html"
+      dice=system.health_die.value
+      edit=true
+      selectName='system.health_die'
+    }}
   </div>
   <button class="attribute rollable small-button" data-rolltype="actor" data-roll="system.health_die.value" data-label="{{key}}" data-kind="Vitality"><i class="fas fa-dice-d20"></i></button>
 </div>

@@ -56,7 +56,11 @@ export const registerHandlebarHelpers = () => {
   })
 
   Handlebars.registerHelper('formulaFromObject', (object) => {
-   console.log('in formulaFromObject helper');
+   console.log('in formulaFromObject helper with object: %o', object);
+   if (typeof object === 'undefined') {
+     ui.notifications.error("object was undefined");
+     return '1d4';
+   }
    let diceCounter = {}
    for (const [index, sides] of Object.entries(object)) {
      if (diceCounter.hasOwnProperty(sides)) {

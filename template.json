@@ -26,37 +26,132 @@
             },
             "size":"",
             "attributes":{
-               "brawn": { "value": "1d4"},
-               "precision":{ "value": "1d4"},
-               "speed":{ "value": "1d4"},
-               "grit":{ "value": "1d4"},
-               "knowledge":{ "value": "1d4"},
-               "awareness":{ "value": "1d4"},
-               "willpower":{ "value": "1d4"},
-               "presence":{ "value": "1d4"}
+               "brawn": {
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "precision":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "speed":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "grit":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "knowledge":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "awareness":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "willpower":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "presence":{
+                   "value": {
+                      "0": "4"
+                   }
+               }
             }
          },
          "humanoid": {
-            "classes":{
-               "artificer":{ "value": "1d2"},
-               "barbarian":{ "value": "1d2"},
-               "fighter":{ "value": "1d2"},
-               "monk":{ "value": "1d2"},
-               "rogue":{ "value": "1d2"},
-               "sorcerer":{ "value": "1d2"},
-               "summoner":{ "value": "1d2"},
-               "warlock":{ "value": "1d2"},
-               "wizard":{ "value": "1d2"}
+            "packages":{
+               "assassin":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "brawler":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "defender":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "fencer":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "healer":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "martial_artist":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "sharpshooter":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "spellbinder":{
+                   "value": {
+                      "0": "4"
+                   }
+               }
             },
             "roles":{
-               "athlete":{ "value": "1d4"},
-               "burglar":{ "value": "1d4"},
-               "courtesean":{ "value": "1d4"},
-               "craftsperson":{ "value": "1d4"},
-               "detective":{ "value": "1d4"},
-               "entertainer":{ "value": "1d4"},
-               "explorer":{ "value": "1d4"},
-               "scholar":{ "value": "1d4"}
+               "athlete":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "burglar":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "courtesean":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "craftsperson":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "detective":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "entertainer":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "explorer":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "scholar":{
+                   "value": {
+                      "0": "4"
+                   }
+               }
             }
          }
       },
@@ -94,24 +189,88 @@
          "category":"",
          "environments":"",
          "behaviors":{
-            "aggression":{ "value": ""},
-            "alertness":{ "value": ""},
-            "coordination":{ "value": ""},
-            "cunning":{ "value": ""},
-            "ferocity":{ "value": ""},
-            "predation":{ "value": ""},
-            "protectivity":{ "value": ""},
-            "skittishness":{ "value": ""},
-            "territoriality":{ "value": ""}
+            "aggression":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "alertness":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "coordination":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "cunning":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "ferocity":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "predation":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "protectivity":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "skittishness":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "territoriality":{
+                "value": {
+                      "0": "4"
+                   }
+            }
          },
          "roles":{
-            "artillery":{ "value": ""},
-            "brute":{ "value": ""},
-            "controller":{ "value": ""},
-            "leader":{ "value": ""},
-            "lurker":{ "value": ""},
-            "skirmisher":{ "value": ""},
-            "soldier":{ "value": ""}
+            "artillery":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "brute":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "controller":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "leader":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "lurker":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "skirmisher":{
+                "value": {
+                      "0": "4"
+                   }
+            },
+            "soldier":{
+                "value": {
+                      "0": "4"
+                   }
+            }
          }
       },
       "npc":{
@@ -131,22 +290,78 @@
          "motivations":"",
          "morality":{
             "virtues":{
-               "compassion":{ "value": ""},
-               "courage":{ "value": ""},
-               "honor":{ "value": ""},
-               "humility":{ "value": ""},
-               "justice":{ "value": ""},
-               "prudence":{ "value": ""},
-               "temperance":{ "value": ""}
+               "compassion":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "courage":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "honor":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "humility":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "justice":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "prudence":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "temperance":{
+                   "value": {
+                      "0": "4"
+                   }
+               }
             },
             "vices":{
-               "envy":{ "value": ""},
-               "gluttony":{ "value": ""},
-               "greed":{ "value": ""},
-               "lust":{ "value": ""},
-               "pride":{ "value": ""},
-               "sloth":{ "value": ""},
-               "wrath":{ "value": ""}
+               "envy":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "gluttony":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "greed":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "lust":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "pride":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "sloth":{
+                   "value": {
+                      "0": "4"
+                   }
+               },
+               "wrath":{
+                   "value": {
+                      "0": "4"
+                   }
+               }
             }
          }
       }
