@@ -2,7 +2,7 @@
   "id": "earthland",
   "title": "earthland",
   "description": "The earthland system for FoundryVTT!",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "compatibility": {
     "minimum": 10,
     "verified": "10.287",
