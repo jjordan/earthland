@@ -75,7 +75,7 @@
           <div class="attributes flexcol">
             {{#each system.attributes as |attribute key|}}
             <div class="attribute flexrow flex-group-center">
-              <button class="attribute rollable" data-rolltype="actor" data-roll="@attributes.{{key}}.value" data-label="{{key}}" data-kind="Attribute"><i class="fas fa-dice-d20"></i></button>
+              <button class="attribute rollable small-button" data-rolltype="actor" data-roll="@attributes.{{key}}.value" data-label="{{key}}" data-kind="Attribute"><i class="fas fa-dice-d20"></i></button>
               <label for="system.attributes.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="@attributes.{{key}}.value" data-label="{{attribute.label}}" data-kind="Attribute">{{attribute.label}}</label>
               <input type="text" name="system.attributes.{{key}}.value" value="{{attribute.value}}" data-dtype="String"/>
             </div>
@@ -87,7 +87,7 @@
             <h3>Roles</h3>
             {{#each system.roles as |role key|}}
             <div class="role flexrow flex-group-center">
-              <button class="role rollable" data-rolltype="actor" data-roll="@roles.{{key}}.value" data-label="{{key}}" data-kind="Role"><i class="fas fa-dice-d20"></i></button>
+              <button class="role rollable small-button" data-rolltype="actor" data-roll="@roles.{{key}}.value" data-label="{{key}}" data-kind="Role"><i class="fas fa-dice-d20"></i></button>
               <label for="system.roles.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="@roles.{{key}}.value" data-label="{{role.label}}" data-kind="Role">{{role.label}}</label>
               <input type="text" name="system.roles.{{key}}.value" value="{{role.value}}" data-dtype="String"/>
             </div>
@@ -98,7 +98,7 @@
             <h3>Classes</h3>
             {{#each system.classes as |class key|}}
             <div class="class flexrow flex-group-center">
-              <button class="class rollable" data-rolltype="actor" data-roll="@classes.{{key}}.value" data-label="{{key}}" data-kind="Class"><i class="fas fa-dice-d20"></i></button>
+              <button class="class rollable small-button" data-rolltype="actor" data-roll="@classes.{{key}}.value" data-label="{{key}}" data-kind="Class"><i class="fas fa-dice-d20"></i></button>
               <label for="system.classes.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="@classes.{{key}}.value" data-label="{{class.label}}" data-kind="Class">{{class.label}}</label>
               <input type="text" name="system.classes.{{key}}.value" value="{{class.value}}" data-dtype="String"/>
             </div>

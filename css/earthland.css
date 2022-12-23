@@ -10,6 +10,10 @@
   cursor: pointer;
 }
 
+.small-button {
+  width: 30px;
+}
+
 .grid,
 .grid-2col {
   display: grid;
