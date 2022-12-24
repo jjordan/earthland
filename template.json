@@ -371,6 +371,7 @@
          "ability",
          "armor",
          "asset",
+         "class",
          "complication",
          "container",
          "distinction",
@@ -466,7 +467,9 @@
             "special",
             "rollable"
          ],
-         "kind":""
+         "kind":"",
+         "is_permanent": false,
+         "is_semi_permanent": false
       },
       "distinction":{
          "templates":[
@@ -615,6 +618,21 @@
          "is_species_feature": false,
          "is_monster_feature": false,
          "description":""
+      },
+      "class":{
+         "templates":[
+            "base",
+            "magic",
+            "capability",
+            "rollable"
+         ],
+         "is_class_feature": false,
+         "is_species_feature": false,
+         "is_monster_feature": false,
+         "is_class_ability": false,
+         "is_species_ability": false,
+         "is_monster_ability": false,
+         "requirements":""
       },
       "subclass":{
          "templates":[

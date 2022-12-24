@@ -3,10 +3,8 @@
   {{!-- Default tab is specified in actor-sheet.mjs --}}
   <a class="item" data-tab="traits">Traits</a>
   <a class="item" data-tab="features">Features</a>
-  <a class="item" data-tab="equipment">Gear</a>
-  <a class="item" data-tab="spells">Magic</a>
   <a class="item" data-tab="relationships">Relationships</a>
-  <a class="item" data-tab="milestones">Milestones</a>
+  <a class="item" data-tab="milestones">Goals</a>
   <a class="item" data-tab="effects">Effects</a>
   <a class="item" data-tab="notes">Notes</a>
 </nav>
@@ -26,7 +24,7 @@
           <br/>
           <hr/>
           <br/>
-          {{> "systems/earthland/templates/actor/parts/actor-combat-roles.html"}}
+          {{> "systems/earthland/templates/actor/parts/actor-behaviors.html"}}
         </div>
 
         <div class="distinctions flexcol">
@@ -52,9 +50,9 @@
     </section>
   </div>
 
-  {{!-- Features --}}
+  {{!-- Monsters have Species Features and Abilities only --}}
   <div class="tab features" data-group="primary" data-tab="features">
-     {{> "systems/earthland/templates/actor/parts/actor-features.html"}}
+     {{> "systems/earthland/templates/actor/parts/actor-monster-features.html"}}
   </div>
 
   {{!-- Relationships --}}
@@ -62,19 +60,9 @@
      {{> "systems/earthland/templates/actor/parts/actor-relationships.html"}}
   </div>
 
-  {{!-- Owned Equipment Tab --}}
-  <div class="tab equipment" data-group="primary" data-tab="equipment">
-     {{> "systems/earthland/templates/actor/parts/actor-equipment.html"}}
-  </div>
-
-  {{!-- Owned Spells Tab --}}
-  <div class="tab spells" data-group="primary" data-tab="spells">
-    {{> "systems/earthland/templates/actor/parts/actor-spells.html"}}
-  </div>
-
   {{!-- Owned Milestones Tab --}}
   <div class="tab milestones" data-group="primary" data-tab="milestones">
-    {{> "systems/earthland/templates/actor/parts/actor-milestones.html"}}
+    {{> "systems/earthland/templates/actor/parts/actor-monster-goals.html"}}
   </div>
 
   {{!-- Active Effects Tab --}}

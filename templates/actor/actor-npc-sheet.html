@@ -2,7 +2,7 @@
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="200" width="200"/>
     <div class="header-fields">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
       {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
@@ -20,38 +20,38 @@
       </div>
 
       {{#if is_mob}}
-        {{> "systems/earthland/templates/actor/parts/actor-header-mob.html"}}
+        {{> "systems/earthland/templates/actor/parts/actor-header-npc-mob.html"}}
       {{/if}}
 
       {{#if is_minion}}
-        {{> "systems/earthland/templates/actor/parts/actor-header-minion.html"}}
+        {{> "systems/earthland/templates/actor/parts/actor-header-npc-minion.html"}}
       {{/if}}
 
       {{#if is_elite}}
-        {{> "systems/earthland/templates/actor/parts/actor-header-elite.html"}}
+        {{> "systems/earthland/templates/actor/parts/actor-header-npc-elite.html"}}
       {{/if}}
 
       {{#if is_boss}}
-        {{> "systems/earthland/templates/actor/parts/actor-header-boss.html"}}
+        {{> "systems/earthland/templates/actor/parts/actor-header-npc-boss.html"}}
       {{/if}}
 
     </div>
   </header>
   <section class="sheet-body">
       {{#if is_mob}}
-        {{> "systems/earthland/templates/actor/parts/actor-body-mob.html"}}
+        {{> "systems/earthland/templates/actor/parts/actor-body-npc-mob.html"}}
       {{/if}}
 
       {{#if is_minion}}
-        {{> "systems/earthland/templates/actor/parts/actor-body-minion.html"}}
+        {{> "systems/earthland/templates/actor/parts/actor-body-npc-minion.html"}}
       {{/if}}
 
       {{#if is_elite}}
-        {{> "systems/earthland/templates/actor/parts/actor-body-elite.html"}}
+        {{> "systems/earthland/templates/actor/parts/actor-body-npc-elite.html"}}
       {{/if}}
 
       {{#if is_boss}}
-        {{> "systems/earthland/templates/actor/parts/actor-body-boss.html"}}
+        {{> "systems/earthland/templates/actor/parts/actor-body-npc-boss.html"}}
       {{/if}}
 
   </section>

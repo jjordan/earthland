@@ -100,6 +100,10 @@ export class earthlandActorSheet extends ActorSheet {
       this._prepareItems(context);
     }
 
+    if (actorData.type == 'monster') {
+      this._prepareItems(context);
+      this._prepareMonsterData(context);
+    }
     // Add roll data for TinyMCE editors.
     context.rollData = context.actor.getRollData();
 
@@ -139,6 +143,18 @@ export class earthlandActorSheet extends ActorSheet {
     }
   }
 
+  _prepareMonsterData(context) {
+    // handle monster only data
+    for (let [k, v] of Object.entries(context.system.attributes)) {
+      v.label = game.i18n.localize(CONFIG.earthland.attributes[k]) ?? k;
+    }
+    for (let [k, v] of Object.entries(context.system.roles)) {
+      v.label = game.i18n.localize(CONFIG.earthland.roles[k]) ?? k;
+    }
+    for (let [k, v] of Object.entries(context.system.behaviors)) {
+      v.label = game.i18n.localize(CONFIG.earthland.behaviors[k]) ?? k;
+    }
+  }
   /**
    * Organize and classify Items for Character sheets.
    *
@@ -167,6 +183,7 @@ export class earthlandActorSheet extends ActorSheet {
     const class_features = [];
     const species_abilities = [];
     const species_features = [];
+    const classes = [];
     const subclasses = [];
     const relationships = [];
     const milestones = [];
@@ -248,6 +265,9 @@ export class earthlandActorSheet extends ActorSheet {
       // Append to features.
       else if (i.system.is_capability) {
         abilities.push(i);
+        if (i.type == "class") {
+          classes.push(i);
+        }
         if (i.type == "subclass") {
           subclasses.push(i);
         }
@@ -294,6 +314,7 @@ export class earthlandActorSheet extends ActorSheet {
     context.species_features  = species_features;
     context.species_abilities = species_abilities;
     context.subclasses        = subclasses;
+    context.classes           = classes;
     context.spells            = spells;
     context.gear              = gear;
     context.abilities         = abilities;

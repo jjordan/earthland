@@ -100,3 +100,15 @@ earthland.vices = {
   "sloth":     "earthland.ViceSloth",
   "wrath":     "earthland.ViceWrath"
 };
+
+earthland.behaviors = {
+  "aggression":     "earthland.BehaviorAggr",
+  "alertness":      "earthland.BehaviorAlrt",
+  "coordination":   "earthland.BehaviorCoor",
+  "cunning":        "earthland.BehaviorCnng",
+  "ferocity":       "earthland.BehaviorFero",
+  "predation":      "earthland.BehaviorPred",
+  "protectivity":   "earthland.BehaviorProt",
+  "skittishness":   "earthland.BehaviorSkit",
+  "territoriality": "earthland.BehaviorTerr"
+}
