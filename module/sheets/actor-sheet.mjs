@@ -96,6 +96,7 @@ export class earthlandActorSheet extends ActorSheet {
     // Prepare NPC data and items.
     if (actorData.type == 'npc') {
       this._prepareCharacterData(context);
+      this._prepareNPCData(context);
       this._prepareItems(context);
     }
 
@@ -125,6 +126,16 @@ export class earthlandActorSheet extends ActorSheet {
     }
     for (let [k, v] of Object.entries(context.system.packages)) {
       v.label = game.i18n.localize(CONFIG.earthland.packages[k]) ?? k;
+    }
+  }
+
+  _prepareNPCData(context) {
+    // handle npc only data
+    for (let [k, v] of Object.entries(context.system.morality.virtues)) {
+      v.label = game.i18n.localize(CONFIG.earthland.virtues[k]) ?? k;
+    }
+    for (let [k, v] of Object.entries(context.system.morality.vices)) {
+      v.label = game.i18n.localize(CONFIG.earthland.vices[k]) ?? k;
     }
   }
 

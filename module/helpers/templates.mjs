@@ -26,6 +26,7 @@
     "systems/earthland/templates/actor/parts/actor-spells.html",
     "systems/earthland/templates/actor/parts/actor-attributes.html",
     "systems/earthland/templates/actor/parts/actor-roles.html",
+    "systems/earthland/templates/actor/parts/actor-npc-goals.html",
     "systems/earthland/templates/actor/parts/actor-combat-roles.html",
     "systems/earthland/templates/item/parts/base.html",
     "systems/earthland/templates/item/parts/equipment.html",

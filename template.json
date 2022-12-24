@@ -41,7 +41,7 @@
                       "0": "4"
                    }
                },
-               "grit":{
+               "vitality":{
                    "value": {
                       "0": "4"
                    }
@@ -69,6 +69,8 @@
             }
          },
          "humanoid": {
+            "goals":"",
+            "motivations":"",
             "packages":{
                "assassin":{
                    "value": {
@@ -286,8 +288,6 @@
          "health_dice": [],
          "kind":"minion",
          "backstory":"",
-         "goals":"",
-         "motivations":"",
          "morality":{
             "virtues":{
                "compassion":{

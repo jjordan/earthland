@@ -43,7 +43,6 @@ Still To Do
 
 --------------------------------------------------------------------------------
 Still ToDo
- * Remove Hit Points and replace with Stress and Trauma tracks (make it so we can switch back and forth between hit points and trauma track)
  * Complications should be makable as "Permanent", so that non-permanent ones (like "tied up") can be quickly removed at the end of a scene
  * Add Classes back as Item types, move Subclasses to the top with Classes
  * Add Virtues and Vices at least to the NPC sheet, though maybe also to the PC sheet under "Relationships"? Or change that tab to "Social"?
@@ -74,6 +73,8 @@ Still ToDo
 
 
 <-- Playable by here -->
+Heroic Die mod  needs this:
+ * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset
 
 
 --------------------------------------------------------------------------------
@@ -99,4 +100,5 @@ Nice to have
 
 
 
- * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset
+
+* Remove Hit Points and replace with Stress and Trauma tracks (make it so we can switch back and forth between hit points and trauma track)

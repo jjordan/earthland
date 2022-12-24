@@ -11,6 +11,7 @@ export const earthland = {};
   "speed":        "earthland.AbilitySpd",
   "constitution": "earthland.AbilityCon",
   "grit":         "earthland.AbilityGrt",
+  "vitality":     "earthland.AbilityVit",
   "intelligence": "earthland.AbilityInt",
   "knowledge":    "earthland.AbilityKnw",
   "perception":   "earthland.AbilityPer",
@@ -70,12 +71,32 @@ earthland.packages = {
 };
 
 earthland.abilityAbbreviations = {
-  "strength": "earthland.AbilityStrAbbr",
-  "precision": "earthland.AbilityPreAbbr",
-  "speed": "earthland.AbilitySpdAbbr",
-  "con": "earthland.AbilityConAbbr",
-  "int": "earthland.AbilityIntAbbr",
+  "strength":   "earthland.AbilityStrAbbr",
+  "precision":  "earthland.AbilityPreAbbr",
+  "speed":      "earthland.AbilitySpdAbbr",
+  "con":        "earthland.AbilityConAbbr",
+  "int":        "earthland.AbilityIntAbbr",
   "perception": "earthland.AbilityPerAbbr",
-  "willpower": "earthland.AbilityWilAbbr",
-  "cha": "earthland.AbilityChaAbbr"
+  "willpower":  "earthland.AbilityWilAbbr",
+  "cha":        "earthland.AbilityChaAbbr"
+};
+
+earthland.virtues = {
+  "compassion":  "earthland.VirtueComp",
+  "courage":     "earthland.VirtueCour",
+  "honor":       "earthland.VirtueHon",
+  "humility":    "earthland.VirtueHum",
+  "justice":     "earthland.VirtueJust",
+  "prudence":    "earthland.VirtuePrud",
+  "temperance":  "earthland.VirtueTemp"
+};
+
+earthland.vices = {
+  "envy":      "earthland.ViceEnvy",
+  "gluttony":  "earthland.ViceGlut",
+  "greed":     "earthland.ViceGreed",
+  "lust":      "earthland.ViceLust",
+  "pride":     "earthland.VicePride",
+  "sloth":     "earthland.ViceSloth",
+  "wrath":     "earthland.ViceWrath"
 };

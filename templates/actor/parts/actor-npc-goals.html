@@ -1,5 +1,6 @@
 <div class="trait-group">
   <h3>Motivations and Goals</h3>
+
   <div class="trait-group">
     <div class="resource flex-group-center">
       <label for="system.motivations" class="resource-label">Motivations</label>
@@ -14,6 +15,47 @@
       </div>
     </div>
   </div>
+  <br/>
+  <hr/>
+  <br/>
+  <section class="grid grid-2col">
+    <div class="roles flexcol">
+      <div class="virtues">
+        <h3>Virtues</h3>
+        {{#each system.morality.virtues as |virtue key|}}
+          <div class="virtue flexrow flex-group-center"><!--   -->
+            <button class="virtue rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject virtue.value}}" data-label="{{key}}" data-kind="Virtue"><i class="fas fa-dice-d20"></i></button>
+            <label for="system.morality.virtues.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="{{formulaFromObject virtue.value}}" data-label="{{virtue.label}}" data-kind="Virtue">{{virtue.label}}</label>
+            <div class="flex-col pr-0 flex-s-1">
+              {{> "systems/earthland/templates/partials/dice/select.html"
+                dice=virtue.value
+                edit=true
+                selectName=(concat 'system.morality.virtues.' key)
+              }}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="roles flexcol">
+      <div class="vices">
+        <h3>Vices</h3>
+        {{#each system.morality.vices as |vice key|}}
+          <div class="vice flexrow flex-group-center"><!--   -->
+            <button class="vice rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject vice.value}}" data-label="{{key}}" data-kind="Vice"><i class="fas fa-dice-d20"></i></button>
+            <label for="system.morality.vices.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="{{formulaFromObject vice.value}}" data-label="{{vice.label}}" data-kind="Vice">{{vice.label}}</label>
+            <div class="flex-col pr-0 flex-s-1">
+              {{> "systems/earthland/templates/partials/dice/select.html"
+                dice=vice.value
+                edit=true
+                selectName=(concat 'system.morality.vices.' key)
+              }}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
   <br/>
   <hr/>
   <br/>
