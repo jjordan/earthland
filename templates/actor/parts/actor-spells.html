@@ -19,7 +19,7 @@
           </div>
           <div class="item-name">
             {{#if item.system.dice}}
-              <button title="Roll Normally" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject item.system.dice}}" data-label="{{item.name}}" data-kind="spell" data-level="{{spellLevel}}"><i class="fas fa-dice-d20"></i></button>
+              <button title="Roll Normally" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject item.system.dice.value}}" data-label="{{item.name}}" data-kind="spell" data-level="{{spellLevel}}"><i class="fas fa-dice-d20"></i></button>
             {{/if}}
           </div>
           <div class="item-controls">

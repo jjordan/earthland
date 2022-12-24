@@ -501,7 +501,6 @@ export class earthlandActorSheet extends ActorSheet {
       let rollData = this.actor.getRollData();
       let value = this.replaceFormulaData(trait, rollData);
       let object;
-      console.log("what is dice value: %o", value);
       if (typeof value === 'string') {
         object = this.formulaToDiceObject(value);
       } else if (typeof value === 'object') {

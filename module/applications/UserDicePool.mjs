@@ -93,6 +93,7 @@ export class UserDicePool extends FormApplication {
 
   async _addTraitToPool (source, label, value) {
     const currentDice = game.user.getFlag('earthland', 'dicePool')
+
     const currentDiceLength = getLength(currentDice.pool[source] || {})
     setProperty(currentDice, `pool.${source}.${currentDiceLength}`, { label, value })
 
