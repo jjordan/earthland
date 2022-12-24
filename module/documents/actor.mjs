@@ -2,6 +2,8 @@
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
+import { formulaFromObject } from '../../lib/helpers.js'
+
 export class earthlandActor extends Actor {
 
   /** @override */
@@ -106,6 +108,42 @@ export class earthlandActor extends Actor {
     if (this.type !== 'npc') return;
 
     // Process additional NPC data here.
+  }
+
+  getDiceObjectForTrait(trait) {
+    let diceObj = null
+    // we need to search attributes
+    let myTrait = this.system.attributes[trait]
+    if((typeof myTrait == 'undefined')) {
+      myTrait = this.system.roles[trait]
+    }
+    if((typeof myTrait == 'undefined') && (typeof this.system.packages != 'undefined')) {
+      myTrait = this.system.packages[trait]
+    }
+    if((typeof myTrait == 'undefined') && (typeof this.system.behaviors != 'undefined')) {
+      myTrait = this.system.behaviors[trait]
+    }
+    if((typeof myTrait == 'undefined')) {
+      myTrait = {'value': {'0': '0'}}
+    }
+    console.log("found myTrait (%o) for name: %o", myTrait, trait);
+    diceObj = this._countDice(myTrait.value)
+    return diceObj
+  }
+
+  _countDice(diceObj){
+    console.log("in _countDice with diceObj: %o", diceObj);
+    let diceCounter = {}
+    for (const [index, sides] of Object.entries(diceObj)) {
+      if (sides > 0) {
+        if (diceCounter.hasOwnProperty(sides)) {
+          diceCounter[sides] += 1
+        } else {
+          diceCounter[sides] = 1
+        }
+      }
+    }
+    return diceCounter
   }
 
 }

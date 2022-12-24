@@ -1,4 +1,4 @@
-import { getLength, objectFindValue } from '../../lib/helpers.js'
+import { getLength, objectFindValue, formulaFromObject } from '../../lib/helpers.js'
 import { getBorderWidth } from '../scripts/foundryHelpers.mjs'
 
 export const registerHandlebarHelpers = () => {
@@ -56,24 +56,7 @@ export const registerHandlebarHelpers = () => {
   })
 
   Handlebars.registerHelper('formulaFromObject', (object) => {
-   console.log('in formulaFromObject helper with object: %o', object);
-   if (typeof object === 'undefined') {
-     console.log("object was undefined in formulaFromObject");
-     return '1d4';
-   }
-   let diceCounter = {}
-   for (const [index, sides] of Object.entries(object)) {
-     if (diceCounter.hasOwnProperty(sides)) {
-       diceCounter[sides] += 1
-     } else {
-       diceCounter[sides] = 1
-     }
-   }
-   let dice = [];
-   for (const [sides, number] of Object.entries(diceCounter)) {
-       dice.push(`${number}d${sides}`)
-   }
-   console.log("almost done with dice: %o", dice);
-   return dice.join(' ')
+   console.log('in formulaFromObject handlebars helper with object: %o', object);
+   return formulaFromObject(object);
   });
 }

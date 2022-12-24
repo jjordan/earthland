@@ -110,6 +110,8 @@
   "RollResultSourceCollapsed": "Roll Result Source Collapsed",
   "RollResultSourceCollapsedHint": "Roll result die sources initially collapsed in chat.",
   "ToPool": "To Pool",
+  "InitiativeTraits": "Initiative Traits",
+  "InitiativeTraitsHint": "The Traits used to roll initiative, separated by commas and optional spaces",
 
   "earthland.Add": "Add"
 }

@@ -1,6 +1,7 @@
 // Import document classes.
 import { earthlandActor } from "./documents/actor.mjs";
 import { earthlandItem } from "./documents/item.mjs";
+import { EarthlandCombatant } from "./documents/combatant.mjs";
 // Import sheet classes.
 import { earthlandActorSheet } from "./sheets/actor-sheet.mjs";
 import { earthlandItemSheet } from "./sheets/item-sheet.mjs";
@@ -33,20 +34,23 @@ Hooks.once('init', async function() {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: "1d20 + @abilities.dex.mod",
+    formula: "1d20",
     decimals: 2
   };
 
   // Define custom Document classes
   CONFIG.Actor.documentClass = earthlandActor;
   CONFIG.Item.documentClass = earthlandItem;
+  CONFIG.Combatant.documentClass = EarthlandCombatant;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("earthland", earthlandActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("earthland", earthlandItemSheet, { makeDefault: true });
+  console.log("about to register game settings");
   registerSettings()
+  console.log("just registered game settings");
 
   dicePoolHooks();
   registerHandlebarHelpers();
