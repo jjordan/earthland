@@ -10,12 +10,12 @@
   {{#each distinctions as |distinction id|}}
     <li class="item flexrow" data-item-id="{{distinction._id}}">
       <div class="item-button">
-        <button title="Roll Normally" class="role rollable small-button" data-rolltype="actor" data-roll="{{distinction.system.dice}}" data-label="{{distinction.name}}" data-kind="Distinction"><i class="fas fa-dice-d8"></i></button>
+        <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject distinction.system.dice.value}}" data-label="{{distinction.name}}" data-kind="Distinction"><i class="fas fa-dice-d8"></i></button>
       </div>
       <div class="item-name">
-        <label class="resource-label rollable flexlarge align-left" data-rolltype="actor" data-roll="{{distinction.system.dice}}" data-label="{{distinction.name}}" data-kind="Distinction">{{distinction.name}}</label>
+        <label class="resource-label rollable flexlarge align-left" data-rolltype="actor" data-roll="{{formulaFromObject distinction.system.dice.value}}" data-label="{{distinction.name}}" data-kind="Distinction">{{distinction.name}}</label>
       </div>
-      <div class="item-hinder item-prop"><button title="Roll as Hindrance" class="role rollable small-button" data-rolltype="actor" data-roll="{{distinction.system.hinder_die}}" data-label="{{distinction.name}}" data-kind="Hindrance"><i class="fas fa-dice-d4"></i></button></div>
+      <div class="item-hinder item-prop"><button title="Add a Hindrance to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{distinction.system.hinder_die}}" data-label="{{distinction.name}}" data-kind="Hindrance"><i class="fas fa-dice-d4"></i></button></div>
       <div class="item-controls">
         <a class="item-control item-edit" title="Edit Distinction"><i class="fas fa-edit"></i></a>
         <a class="item-control item-delete" title="Delete Distinction"><i class="fas fa-trash"></i></a>

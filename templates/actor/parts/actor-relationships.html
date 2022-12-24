@@ -18,7 +18,7 @@
         </div>
         <div class="item-name">
           {{#if relationship.system.dice}}
-            <button title="Roll Normally" class="role rollable small-button" data-rolltype="actor" data-roll="{{relationship.system.dice}}" data-label="{{relationship.name}}" data-kind="relationship"><i class="fas fa-dice-d20"></i></button>
+            <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject relationship.system.dice.value}}" data-label="{{relationship.name}}" data-kind="relationship"><i class="fas fa-dice-d20"></i></button>
           {{/if}}
         </div>
         <div class="item-controls">

@@ -8,7 +8,7 @@
   {{#each specialties as |specialty id|}}
     <li class="item flexrow" data-item-id="{{specialty._id}}">
       <div class="item-name">
-        <button title="Roll Normally" class="role rollable small-button" data-rolltype="actor" data-roll="{{specialty.system.dice}}" data-label="{{specialty.name}}" data-kind="Specialty"><i class="fas fa-dice-d8"></i></button>
+        <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject specialty.system.dice.value}}" data-label="{{specialty.name}}" data-kind="Specialty"><i class="fas fa-dice-d8"></i></button>
        <label class="resource-label rollable flexlarge align-left" data-rolltype="actor" data-roll="{{specialty.system.dice}}" data-label="{{specialty.name}}" data-kind="Specialty">{{specialty.name}}</label>
       </div>
       <div class="item-controls">

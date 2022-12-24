@@ -42,7 +42,7 @@
         <div class="item-name">{{milestone.system.kind}}</div>
         <div class="item-name">
           {{#if milestone.system.dice}}
-            <button title="Roll Normally" class="role rollable" data-rolltype="actor" data-roll="{{milestone.system.dice}}" data-label="{{milestone.name}}" data-kind="milestone"><i class="fas fa-dice-d20"></i></button>
+            <button title="Add to Dice-Pool" class="role rollable" data-rolltype="actor" data-roll="{{formulaFromObject milestone.system.dice.value}}" data-label="{{milestone.name}}" data-kind="milestone"><i class="fas fa-dice-d20"></i></button>
           {{/if}}
         </div>
         <div class="item-controls">

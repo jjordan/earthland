@@ -46,7 +46,7 @@
         </div>
         <div class="item-name">
           {{#if feature.system.dice}}
-            <button title="Roll Normally" class="role rollable small-button" data-rolltype="actor" data-roll="{{feature.system.dice}}" data-label="{{feature.name}}" data-kind="feature"><i class="fas fa-dice-d20"></i></button>
+            <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject feature.system.dice.value}}" data-label="{{feature.name}}" data-kind="feature"><i class="fas fa-dice-d20"></i></button>
           {{/if}}
         </div>
         <div class="item-controls">
@@ -78,7 +78,7 @@
         </div>
         <div class="item-name">
           {{#if ability.system.dice}}
-            <button title="Roll Normally" class="role rollable small-button" data-rolltype="actor" data-roll="{{ability.system.dice}}" data-label="{{ability.name}}" data-kind="ability"><i class="fas fa-dice-d20"></i></button>
+            <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject ability.system.dice.value}}" data-label="{{ability.name}}" data-kind="ability"><i class="fas fa-dice-d20"></i></button>
           {{/if}}
         </div>
         <div class="item-controls">
@@ -114,7 +114,7 @@
         </div>
         <div class="item-name">
           {{#if class.system.dice}}
-            <button title="Roll Normally" class="role rollable small-button" data-rolltype="actor" data-roll="{{class.system.dice}}" data-label="{{class.name}}" data-kind="class"><i class="fas fa-dice-d20"></i></button>
+            <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject class.system.dice.value}}" data-label="{{class.name}}" data-kind="class"><i class="fas fa-dice-d20"></i></button>
           {{/if}}
         </div>
         <div class="item-controls">
@@ -147,7 +147,7 @@
         </div>
         <div class="item-name">
           {{#if subclass.system.dice}}
-            <button title="Roll Normally" class="role rollable small-button" data-rolltype="actor" data-roll="{{subclass.system.dice}}" data-label="{{subclass.name}}" data-kind="subclass"><i class="fas fa-dice-d20"></i></button>
+            <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject subclass.system.dice.value}}" data-label="{{subclass.name}}" data-kind="subclass"><i class="fas fa-dice-d20"></i></button>
           {{/if}}
         </div>
         <div class="item-controls">
@@ -184,7 +184,7 @@
         </div>
         <div class="item-name">
           {{#if feature.system.dice}}
-            <button title="Roll Normally" class="role rollable small-button" data-rolltype="actor" data-roll="{{feature.system.dice}}" data-label="{{feature.name}}" data-kind="feature"><i class="fas fa-dice-d20"></i></button>
+            <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject feature.system.dice.value}}" data-label="{{feature.name}}" data-kind="feature"><i class="fas fa-dice-d20"></i></button>
           {{/if}}
         </div>
         <div class="item-controls">
@@ -216,7 +216,7 @@
         </div>
         <div class="item-name">
           {{#if ability.system.dice}}
-            <button title="Roll Normally" class="role rollable small-button" data-rolltype="actor" data-roll="{{ability.system.dice}}" data-label="{{ability.name}}" data-kind="ability"><i class="fas fa-dice-d20"></i></button>
+            <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject ability.system.dice.value}}" data-label="{{ability.name}}" data-kind="ability"><i class="fas fa-dice-d20"></i></button>
           {{/if}}
         </div>
         <div class="item-controls">
