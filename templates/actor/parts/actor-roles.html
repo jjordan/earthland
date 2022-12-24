@@ -1,0 +1,16 @@
+<div class="roles">
+  <h3>Roles</h3>
+  {{#each system.roles as |role key|}}
+    <div class="role flexrow flex-group-center">
+      <button class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject role.value}}" data-label="{{key}}" data-kind="Role"><i class="fas fa-dice-d20"></i></button>
+      <label for="system.roles.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="{{formulaFromObject role.value}}" data-label="{{role.label}}" data-kind="Role">{{role.label}}</label>
+      <div class="flex-col pr-0 flex-s-1">
+         {{> "systems/earthland/templates/partials/dice/select.html"
+           dice=role.value
+           edit=true
+           selectName=(concat 'system.roles.' key)
+         }}
+      </div>
+    </div>
+  {{/each}}
+</div>
