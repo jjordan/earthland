@@ -45,6 +45,20 @@
         </div>
 
       </div>
+      <div class="resources">
+        <div class="resource flex-group-left">
+          <section class="grid grid-3col" style="width: 400px;">
+            <div class="flex-col pr-0 flex-s-1">
+              <label for="system.armor_class.value" class="resource-label">Armor Class</label>
+              {{> "systems/earthland/templates/partials/dice/select.html"
+                dice=system.armor_class.value
+                edit=true
+                selectName='system.armor_class'
+              }}
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
   </header>
 

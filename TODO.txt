@@ -51,28 +51,27 @@ Still To Do
    + Minions & Elites
    + Add Bosses which have more hit points or "life dice"
    + Add Mobs which are similar as they have more Life Dice, but weaken as they lose hit points or life dice, instead of strengthening
+ * Make it so that we can roll initiative (port my fix from the other cortex system)
 
  --------------------------------------------------------------------------------
 Still ToDo
 
-
- * Make it so that we can roll initiative (port my fix from the other cortex system)
-
- * Make Milestones checkable on the main list sheet
- * Make it so that Milestones can add XP to the character's XP pool, but when they do so they become "locked"
- * Make it so that only reusable Milestones can be unlocked
-
- * Make it so that armor dice degrade and can be repaired
+ * Add an AC die to all characters as a main resource (top of sheet) this can be multiple dice
 
  * Make it so Abilities and Spells can require Energy and/or Magic Points (from 0 to 5 of each maybe?)
  * Make it so if an ability or spell has a cost, it doesn't "spend" it, but instead adds it to the pool
  * Make it so that the dice pool can contain Energy and Magic Points
+
+ * Make Milestones checkable on the main list sheet
+ * Make it so that Milestones can add XP to the character's XP pool, but when they do so they become "locked"
+ * Make it so that only reusable Milestones can be unlocked
 
 
 <-- Playable by here -->
 Heroic Die mod  needs this:
  * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset
 
+ * Make it so that armor dice degrade and can be repaired
 
 --------------------------------------------------------------------------------
 Nice to have
@@ -103,5 +102,6 @@ WORKFLOWS:
 
 
 
+ * Make it so that "Combat Reflexes" adds +1 to a character's initiative for each level they have
 
-* Remove Hit Points and replace with Stress and Trauma tracks (make it so we can switch back and forth between hit points and trauma track)
+ * Remove Hit Points and replace with Stress and Trauma tracks (make it so we can switch back and forth between hit points and trauma track)
