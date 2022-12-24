@@ -59,7 +59,7 @@ Still ToDo
  * Finish the Monster's character sheet
 
  * Finish the NPC's character sheet
-    + refactor it a bit to use parts of the player character sheet
+    + refactor it a bit to use parts of the player character sheet *check*
 
  * Add the important sub-types of NPCs and Monsters:
    + Add Bosses which have more hit points or "life dice"
