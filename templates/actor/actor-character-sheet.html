@@ -69,63 +69,15 @@
       <section class="grid grid-3col">
 
         <div class="attributes flexcol">
-          {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-          use both the "grid" and "grid-Ncol" class where "N" can be any number
-          from 1 to 12 and will create that number of columns.  --}}
-          <div class="attributes">
-            <h3>Attributes</h3>
-            {{#each system.attributes as |attribute key|}}
-              <div class="attribute flexrow flex-group-center"><!--   -->
-                <button class="attribute rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject attribute.value}}" data-label="{{key}}" data-kind="Attribute"><i class="fas fa-dice-d20"></i></button>
-                <label for="system.attributes.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="{{formulaFromObject attribute.value}}" data-label="{{attribute.label}}" data-kind="Attribute">{{attribute.label}}</label>
-                <div class="flex-col pr-0 flex-s-1">
-                  {{> "systems/earthland/templates/partials/dice/select.html"
-                    dice=attribute.value
-                    edit=true
-                    selectName=(concat 'system.attributes.' key)
-                  }}
-                </div>
-              </div>
-            {{/each}}
-          </div>
+          {{> "systems/earthland/templates/actor/parts/actor-attributes.html"}}
         </div>
 
         <div class="roles flexcol">
-          <div class="roles">
-            <h3>Roles</h3>
-            {{#each system.roles as |role key|}}
-              <div class="role flexrow flex-group-center">
-                <button class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject role.value}}" data-label="{{key}}" data-kind="Role"><i class="fas fa-dice-d20"></i></button>
-                <label for="system.roles.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="{{formulaFromObject role.value}}" data-label="{{role.label}}" data-kind="Role">{{role.label}}</label>
-                <div class="flex-col pr-0 flex-s-1">
-                   {{> "systems/earthland/templates/partials/dice/select.html"
-                     dice=role.value
-                     edit=true
-                     selectName=(concat 'system.roles.' key)
-                   }}
-                </div>
-              </div>
-            {{/each}}
-          </div>
+          {{> "systems/earthland/templates/actor/parts/actor-roles.html"}}
           <br/>
           <hr/>
           <br/>
-          <div class="combat-roles">
-            <h3>Combat Roles</h3>
-            {{#each system.packages as |package key|}}
-              <div class="package flexrow flex-group-center">
-                <button class="package rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject package.value}}" data-label="{{key}}" data-kind="Role"><i class="fas fa-dice-d20"></i></button>
-                <label for="system.packages.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="{{formulaFromObject package.value}}" data-label="{{package.label}}" data-kind="Role">{{package.label}}</label>
-                <div class="flex-col pr-0 flex-s-1">
-                  {{> "systems/earthland/templates/partials/dice/select.html"
-                  dice=package.value
-                  edit=true
-                  selectName=(concat 'system.packages.' key)
-                  }}
-                </div>
-              </div>
-            {{/each}}
-          </div>
+          {{> "systems/earthland/templates/actor/parts/actor-combat-roles.html"}}
         </div>
 
         <div class="distinctions flexcol">

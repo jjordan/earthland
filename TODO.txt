@@ -41,15 +41,43 @@ Still To Do
    + Finish the Equipment tab *CHECK*
    + Finish the Relationships tab (does this include drag & drop? No) *CHECK*
 
- * Finish the NPC's character sheet
- * Finish the Monster's character sheet
- * Add the important sub-types of NPCs and Monsters:
-   + Add Bosses which have more hit points or "life dice" and alert the GM when they reach different levels of health
-   + Add Mobs which are similar, but weaken as they lose hit points or life dice, instead of strengthening
+--------------------------------------------------------------------------------
+Still ToDo
+ * Remove Hit Points and replace with Stress and Trauma tracks (make it so we can switch back and forth between hit points and trauma track)
+ * Complications should be makable as "Permanent", so that non-permanent ones (like "tied up") can be quickly removed at the end of a scene
+ * Add Classes back as Item types, move Subclasses to the top with Classes
+ * Add Virtues and Vices at least to the NPC sheet, though maybe also to the PC sheet under "Relationships"? Or change that tab to "Social"?
+ * Add Motives and Goals to the PC and NPC sheets
+ * Make Milestones checkable on the main list sheet
+ * Make it so that Milestones can add XP to the character's XP pool, but when they do so they become "locked"
+ * Make it so that only reusable Milestones can be unlocked
+ * Make it so that we can roll initiative (port my fix from the other cortex system)
 
- * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset
+
+ * Make it so Abilities and Spells can require Energy and/or Magic Points (from 0 to 5 of each maybe?)
+
+ * Finish the Monster's character sheet
+
+ * Finish the NPC's character sheet
+    + refactor it a bit to use parts of the player character sheet
+
+ * Add the important sub-types of NPCs and Monsters:
+   + Add Bosses which have more hit points or "life dice"
+   + Add Mobs which are similar as they have more Life Dice, but weaken as they lose hit points or life dice, instead of strengthening
+
  * Make it so that armor dice degrade and can be repaired
- * Make it so if an ability or spell has a cost, it doesn't "spend" it, but instead adds it to the pool<-- Playable by here -->
+ * Make it so if an ability or spell has a cost, it doesn't "spend" it, but instead adds it to the pool
+
+ * Make it so that the dice pool can contain Energy and Magic Points
+
+ * Create a macro/tool to roll difficulty for the GM automatically (or add them to a pool, at least)
+
+
+<-- Playable by here -->
+
+
+--------------------------------------------------------------------------------
+Nice to have
 
  * WORKFLOWS:
  * Make it so that if a character is targeting another character, they can click a button on the pool which will add any complications, injuries or other stuff to their dice pool
@@ -67,7 +95,8 @@ Still To Do
  * Make it so that a player can easily mark a milestone as "Complete" and gain the XP for it
    + Should it send a request to the GM to approve before granting it?
  * Make it so you can drag and drop characters onto each other, which forms a relationship object
+ * Make it so that Bosses alert the GM when they reach different levels of health (so that new abilities can trigger)
 
 
 
-
+ * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset

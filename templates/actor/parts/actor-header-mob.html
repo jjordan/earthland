@@ -1,12 +1,19 @@
 <h2>Mob of Humanoids</h2>
+
 <div class="resource flex-group-left">
-  <label for="system.health.value" class="resource-label">Health Dice</label>
-  <div class="flex-col pr-0 flex-s-1">
-    {{> "systems/earthland/templates/partials/dice/select.html"
-      dice=system.health_die.value
-      edit=true
-      selectName='system.health_die'
-    }}
-  </div>
-  <button class="attribute rollable small-button" data-rolltype="actor" data-roll="system.health_die.value" data-label="{{key}}" data-kind="Vitality"><i class="fas fa-dice-d20"></i></button>
+  <section class="grid grid-3col" style="width: 400px;">
+    <div class="flexcol" style="width: 50px;">
+    <label for="system.health.value" class="resource-label">Health Dice</label>
+    </div>
+    <div class="flexcol" style="width: 50px;">
+    <button class="attribute rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject system.health_die.value}}" data-label="Physique" data-kind="Mob"><i class="fas fa-dice-d20"></i></button>
+    </div>
+    <div class="flex-col pr-0 flex-s-1">
+      {{> "systems/earthland/templates/partials/dice/select.html"
+        dice=system.health_die.value
+        edit=true
+        selectName='system.health_die'
+      }}
+    </div>
+  </section>
 </div>
