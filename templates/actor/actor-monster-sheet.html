@@ -2,23 +2,43 @@
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="200" width="200"/>
-    <div class="header-fields">
+    <div class="align-left slim-header">
+      <div class="">
+        <h2>{{system.category}} {{capitalize system.kind}} Monster</h2>
+      </div>
+      <div class="">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="200" width="200"/>
+      </div>
+    </div>
+    <div class="header-fields align-left">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
       {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
       use both the "grid" and "grid-Ncol" class where "N" can be any number
       from 1 to 12 and will create that number of columns.  --}}
-      <div class="resources">
-        <div class="personality flexrow flex-group-center">
-          <label for="system.kind" class="resource-label">Type</label>
-          <select class='tiny-input' name="system.kind" value="{{system.kind}}" data-dtype="String">
-            {{#each npc_kind_options }}
-            <option value="{{value}}" {{#selected}} selected="selected"{{/selected}}>{{name}}</option>
-            {{/each}}
-          </select>
+      <div class="resources grid grid-3col">
+        <div class="resource flex-group-center">
+          <label for="system.kind" class="resource-label">Kind</label>
+          <div class="kind flexrow flex-group-center">
+            <select class='tiny-input' name="system.kind" value="{{system.kind}}" data-dtype="String">
+              {{#each npc_kind_options }}
+              <option value="{{value}}" {{#selected}} selected="selected"{{/selected}}>{{name}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="resource flex-group-center">
+          <label for="system.category" class="resource-label">Type</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.category" value="{{system.category}}" data-dtype="String"/>
+          </div>
+        </div>
+        <div class="resource flex-group-center">
+          <label for="system.environments" class="resource-label">Environments</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.environments" value="{{system.environments}}" data-dtype="String"/>
+          </div>
         </div>
       </div>
-
       {{#if is_mob}}
         {{> "systems/earthland/templates/actor/parts/actor-header-monster-mob.html"}}
       {{/if}}

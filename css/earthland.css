@@ -227,12 +227,48 @@
   text-align: center;
 }
 
+.die-rating-cpt .fill {
+  fill: var(--die-rating-fill, #b30044);
+}
+.die-rating-cpt .stroke {
+  fill: var(--die-rating-stroke, #b30044);
+}
+.die-rating-cpt .number {
+  color: var(--die-rating-number, #ffffff);
+}
+.die-cpt {
+  height: 2rem;
+  position: relative;
+  width: 2rem;
+}
+.die-cpt .number {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+.d4-cpt .number {
+  -webkit-transform: translate(-50%, -60%);
+  -ms-transform: translate(-50%, -60%);
+  transform: translate(-50%, -60%);
+}
+
+
 /* Styles limited to earthland sheets */
 .earthland {
   /* ----------------------------------------- */
   /*  Items Lists                              */
   /* ----------------------------------------- */
   /* Example style for earthland (can be removed if not needed) */
+}
+.earthland .slim-header {
+  flex: none  !important;
 }
 .earthland .item-form {
   font-family: "Roboto", sans-serif;
@@ -2592,5 +2628,217 @@ input[type=color][data-edit][data-edit] {
   box-shadow: 0 0 5px var(--input-focus-color, #b30044);
 }
 .earthland-character .input-cpt option, .earthland-character .color-picker input.color option {
+  color: black;
+}
+
+
+
+
+
+
+
+/* start here items */
+.earthland-item .die-cpt {
+  height: 2rem;
+  position: relative;
+  width: 2rem;
+}
+.earthland-item .die-cpt .number {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+.earthland-item .d4-cpt .number {
+  -webkit-transform: translate(-50%, -60%);
+  -ms-transform: translate(-50%, -60%);
+  transform: translate(-50%, -60%);
+}
+.earthland-item .chosen-cpt .fill {
+  fill: var(--chosen-fill, #ffffff);
+}
+.earthland-item .chosen-cpt .stroke {
+  fill: var(--chosen-stroke, #b30044);
+}
+.earthland-item .chosen-cpt .number {
+  color: var(--chosen-number, #1f2834);
+}
+.earthland-item .die-rating-cpt .fill {
+  fill: var(--die-rating-fill, #b30044);
+}
+.earthland-item .die-rating-cpt .stroke {
+  fill: var(--die-rating-stroke, #b30044);
+}
+.earthland-item .die-rating-cpt .number {
+  color: var(--die-rating-number, #ffffff);
+}
+.earthland-item .effect-cpt .fill {
+  fill: var(--effect-fill, #2d5931);
+}
+.earthland-item .effect-cpt .stroke {
+  fill: var(--effect-stroke, #2d5931);
+}
+.earthland-item .effect-cpt .number {
+  color: var(--effect-number, #ffffff);
+}
+.earthland-item .hitch-cpt .fill {
+  fill: var(--hitch-fill, #141c27);
+}
+.earthland-item .hitch-cpt .stroke {
+  fill: var(--hitch-stroke, #b30044);
+}
+.earthland-item .hitch-cpt .number {
+  color: var(--hitch-number, #ffffff);
+}
+.earthland-item .pp-cpt {
+  background-color: var(--plot-point-fill, #c9e2d1);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 0.125rem solid var(--plot-point-stroke, #c9e2d1);
+  border-radius: 50%;
+  position: relative;
+  height: 2rem;
+  width: 2rem;
+}
+.earthland-item .pp-cpt .pp-text-cpt {
+  position: absolute;
+  color: var(--plot-point-text, #141c27);
+  font-weight: 700;
+  font-size: 1.125rem;
+  left: 50%;
+  line-height: 1;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.earthland-item .pp-cpt.pp-lg {
+  height: 4rem;
+  width: 4rem;
+  border-width: 0.25rem;
+}
+.earthland-item .pp-cpt.pp-lg .pp-text-cpt {
+  font-size: 2.25rem;
+}
+.earthland-item .selected-cpt .fill {
+  fill: var(--selected-fill, #c9e2d1);
+}
+.earthland-item .selected-cpt .stroke {
+  fill: var(--selected-stroke, #b30044);
+}
+.earthland-item .selected-cpt .number {
+  color: var(--selected-number, #141c27);
+}
+.earthland-item .unchosen-cpt .fill {
+  fill: var(--unchosen-fill, #dedede);
+}
+.earthland-item .unchosen-cpt .stroke {
+  fill: var(--unchosen-stroke, #424c59);
+}
+.earthland-item .unchosen-cpt .number {
+  color: var(--unchosen-number, #424c59);
+}
+.earthland-item .descriptor-label-cpt {
+  color: var(--descriptor-label-font-color, #000000);
+  font-size: var(--descriptor-label-font-size, 14px);
+  font-style: var(--descriptor-label-font-style, italic);
+  font-weight: var(--descriptor-label-font-weight, 700);
+  text-transform: var(--descriptor-label-text-transform, none);
+}
+.earthland-item .section-primary-title-cpt {
+  border: 0;
+  color: var(--section-primary-title-font-color, #b30044);
+  font-size: var(--section-primary-title-font-size, 19px);
+  font-style: var(--section-primary-title-font-style, normal);
+  font-weight: var(--section-primary-title-font-weight, 700);
+  text-transform: var(--section-primary-title-text-transform, uppercase);
+}
+.earthland-item .sfx-bullet-cpt {
+  color: var(--sfx-bullet-color, #b30044);
+}
+.earthland-item .sfx-label-cpt {
+  color: var(--sfx-label-font-color, #2d5931);
+  font-size: var(--sfx-label-font-size, 15px);
+  font-style: var(--sfx-label-font-style, italic);
+  font-weight: var(--sfx-label-font-weight, 700);
+  text-transform: var(--sfx-label-text-transform, capitalize);
+}
+.earthland-item .section-secondary-title-cpt {
+  border: 0;
+  color: var(--section-secondary-title-font-color, #2d5931);
+  font-size: var(--section-secondary-title-font-size, 17px);
+  font-style: var(--section-secondary-title-font-style, normal);
+  font-weight: var(--section-secondary-title-font-weight, 700);
+  text-transform: var(--section-secondary-title-text-transform, uppercase);
+}
+.earthland-item .sub-trait-label-cpt {
+  color: var(--sub-trait-label-font-color, #2d5931);
+  font-size: var(--sub-trait-label-font-size, 14px);
+  font-style: var(--sub-trait-label-font-style, normal);
+  font-weight: var(--sub-trait-label-font-weight, 700);
+  text-transform: var(--sub-trait-label-text-transform, uppercase);
+}
+.earthland-item .tab-cpt {
+  background-color: var(--button-secondary-color, #b30044);
+  color: var(--button-secondary-font-color, #ffffff);
+  line-height: 1;
+  margin: 0 0.125rem 0.125rem;
+  padding: 0.25rem 0.5rem;
+  font-weight: bold;
+}
+.earthland-item .tab-cpt:hover, .earthland-item .tab-cpt:focus {
+  text-shadow: none;
+  -webkit-box-shadow: 0 0 5px var(--input-focus-color, #b30044);
+  box-shadow: 0 0 5px var(--input-focus-color, #b30044);
+}
+.earthland-item .tab-cpt.active {
+  background-color: var(--button-primary-color, #2d5931);
+  color: var(--button-primary-font-color, #ffffff);
+  text-shadow: none;
+}
+.earthland-item .tab-cpt.tab-rounded-cpt {
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+.earthland-item .trait-sub-title-cpt {
+  color: var(--trait-sub-title-font-color, #b30044);
+  font-size: var(--trait-sub-title-font-size, 15px);
+  font-style: var(--trait-sub-title-font-style, italic);
+  font-weight: var(--trait-sub-title-font-weight, 700);
+  text-transform: var(--trait-sub-title-text-transform, none);
+}
+.earthland-item .trait-title-cpt {
+  color: var(--trait-title-font-color, #424c59);
+  font-size: var(--trait-title-font-size, 16px);
+  font-style: var(--trait-title-font-style, normal);
+  font-weight: var(--trait-title-font-weight, 700);
+  text-transform: var(--trait-title-text-transform, uppercase);
+}
+.earthland-item .input-image-select-cpt {
+  border: var(--input-border-width, 2px) var(--input-border-style, solid) var(--input-border-color, #2d5931);
+}
+.earthland-item .input-cpt, .earthland-item .color-picker input.color {
+  background-color: var(--input-background-color, #c9e2d1);
+  border: 0;
+  border-width: var(--input-border-position, 0 0 2px 0);
+  border-color: var(--input-border-color, #2d5931);
+  border-style: var(--input-border-style, solid);
+  color: var(--input-color, #000000);
+  font-family: "Roboto", serif;
+  font-size: var(--body-font-size, 15px);
+  font-weight: var(--body-font-weight, 400);
+  height: auto;
+  padding: 0.1875rem 0.375rem;
+}
+.earthland-item .input-cpt:focus, .earthland-item .color-picker input.color:focus {
+  -webkit-box-shadow: 0 0 5px var(--input-focus-color, #b30044);
+  box-shadow: 0 0 5px var(--input-focus-color, #b30044);
+}
+.earthland-item .input-cpt option, .earthland-item .color-picker input.color option {
   color: black;
 }

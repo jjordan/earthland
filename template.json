@@ -191,10 +191,12 @@
                "0": "4"
             }
          },
-         "health_dice": [],
          "kind":"",
          "category":"",
          "environments":"",
+         "resistances":"",
+         "immunities":"",
+         "weaknesses":"",
          "behaviors":{
             "aggression":{
                 "value": {
@@ -290,7 +292,6 @@
                "0": "4"
             }
          },
-         "health_dice": [],
          "kind":"minion",
          "backstory":"",
          "morality":{
@@ -421,12 +422,18 @@
             "equipped":false
          },
          "rollable":{
-            "dice":""
+            "dice": {
+              "value": {
+                "0": "4"
+              }
+            }
          },
          "magic":{
             "sfx":""
          },
          "wondrous":{
+            "energy_cost":0,
+            "mp_cost":0,
             "attunable":false,
             "attuned":false
          }
@@ -588,7 +595,8 @@
          "shape":"",
          "school":"",
          "level":0,
-         "cost":0
+         "energy_cost":0,
+         "mp_cost":0
       },
       "ability":{
          "templates":[
@@ -605,17 +613,18 @@
          "is_class_ability": false,
          "is_species_ability": false,
          "is_monster_ability": false,
-         "cost":0
+         "energy_cost":0,
+         "mp_cost":0
       },
       "feature":{
          "templates":[
             "capability",
+            "rollable",
+            "magic",
             "base"
          ],
          "kind":"",
          "requirements":"",
-         "dice":"",
-         "effects":"",
          "is_class_ability": false,
          "is_species_ability": false,
          "is_monster_ability": false,

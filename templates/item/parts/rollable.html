@@ -1,6 +1,10 @@
 <div class="rollable">
   <div class="resource">
     <label class="resource-label">Dice</label>
-    <input type="text" name="system.dice" value="{{system.dice}}" data-dtype="String"/>
+    {{> "systems/earthland/templates/partials/dice/select.html"
+      dice=system.dice.value
+      edit=true
+      selectName='system.dice'
+    }}
   </div>
 </div>
