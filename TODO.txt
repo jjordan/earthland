@@ -59,14 +59,6 @@ Still To Do
  * Make Milestones checkable on the main list sheet
  * Make it so that Milestones can add XP to the character's XP pool, but when they do so they become "locked"
  * Make it so that Milestones can be unlocked by a GM
-
- --------------------------------------------------------------------------------
-Still ToDo
-
-
- * Add a "Use" button to the line of every Spell and Ability
- * Add a "Use" button conditionally to any Item that has either an Energy or MP cost
-
  * Make it so if an ability or spell has a cost, and the user clicks the "use" button, that resource doesn't get "spent" it, but instead the system adds it to the pool
  * Make it so that if an ability or spell has a cost that you can't pay, it returns an error message and does not add it to the pool
  * Make it so that the dice pool can contain Energy and Magic Points
@@ -74,13 +66,20 @@ Still ToDo
  * Make it so that if the pool has Energy or MP in it, but the character has insufficient MP or Energy, an error is displayed and the pool is not confirmed
  * Make it so that there is a way to remove abilities that require MP or Energy from the pool
 
+ --------------------------------------------------------------------------------
+Still ToDo
+
+ * Add a "Use" button on every Spell and Ability (remove Roll button, but add the dice to the pool if it has any).
+ * Make it optionally on any Wondrous Item that has a Magic or Energy cost
+
+ * Make it so that if a player confirms a dice pool that has a Hindrance die in it, that player's character gains 1 MP automatically
 
  * Make it so you can name your dice pool
  * Make it so you can drag the Dice Pool into your hotbar
- * Make it so that if a player confirms a dice pool that has a Hindrance die in it, that player's character gains 1 MP automatically
 
 
 <-- Playable by here -->
+
 Heroic Die mod  needs this:
  * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset
 
@@ -92,6 +91,7 @@ GM TOOLS:
  * Create a macro/tool to roll difficulty for the GM automatically (or add them to a pool, at least)
  * Tool to give PP (Magic Point) to a player character
  * Tool to give or take Energy from a character
+ * Add a "rest" button and "short rest" button to the character sheet
 
 
 WORKFLOWS:
