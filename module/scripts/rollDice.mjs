@@ -430,7 +430,58 @@ const removeCostsFromPool = async (pool) => {
       }
     }
   }
+  console.log("costs by actor id: %o", costs_by_actor_id);
   // eventually collect the costs from each actor
+  for (const [actor_id, object] of Object.entries(costs_by_actor_id)) {
+    console.log("Actor id: %o", actor_id);
+    let actor = await Actor.get(actor_id);
+    if(!!actor) {
+      if(actor.isOwner) {
+        const actor_en = actor.system.energy.value;
+        const actor_mp = actor.system.magic.value;
+        // collate all of the costs
+        const required_en = Object.values(object.value).filter(n => n == 'en').length
+        const required_mp = Object.values(object.value).filter(n => n == 'mp').length
+        console.log("required en: %o, required mp: %o", required_en, required_mp);
+        const error_messages = [];
+        if (actor_en < required_en) {
+          error_messages.push( `Energy (${actor_en})` );
+        }
+        if (actor_mp < required_mp) {
+          error_messages.push( `Magic (${actor_mp})` );
+        }
+        if (error_messages.length > 0) {
+          const messages = error_messages.join(' or ');
+          ui.notifications.error( `${actor.name} does not have enough ${messages} to use ${object.label}` );
+          return false;
+        } else {
+          const new_energy = actor_en - required_en;
+          const new_magic = actor_mp - required_mp;
+          console.log("new energy: %o, new magic: %o", new_energy, new_magic);
+          const updated = await actor.update({
+            data: {
+              magic: {
+                value: new_magic
+              },
+              energy: {
+                value: new_energy
+              }
+            }
+          });
+          if(!updated) {
+            ui.notifications.error( `Couldn't update resources for actor ${actor.name} (mp: ${required_mp}) (en: ${required_en})` );
+            return false;
+          }
+        }
+      } else {
+        ui.notifications.error("Can't currently support paying costs with characters you don't own.");
+        return false;
+      }
+    } else {
+      ui.notifications.error(`Couldn't find actor for ${object.label}`);
+      return false;
+    }
+  }
   return new_pool;
 }
 

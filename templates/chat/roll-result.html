@@ -13,7 +13,7 @@
           </div>
           <div class="flex flex-ac flex-wrap source-content mt-2 {{ternary ../sourceDefaultCollapsed ' hide' ''}}">
             {{#each sourcePool as |dice|}}
-              <div class="dice-tag flex-col ma-1 py-1" data-label="{{dice.label}}" data-type="{{dice.type}}" data-authorId="{{dice.author_id}}">
+              <div class="dice-tag flex-col ma-1 py-1" data-label="{{dice.label}}" data-type="{{dice.type}}" data-actorid="{{dice.actor_id}}">
                 <div class="flex-row flex-ac flex-wrap">
                   {{#if dice.label}}
                     <div class="flex-col pr-0">
