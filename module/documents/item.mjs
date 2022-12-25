@@ -65,4 +65,54 @@ export class earthlandItem extends Item {
       return roll;
     }
   }
+
+  async complete() {
+    console.log("what is item? %o", this);
+    if (this.type == 'milestone') {
+      console.log("attempting to complete a milestone");
+      if (this.system.completed_time != '') {
+        ui.notifications.info("This milestone has already been marked as completed. Ask the GM to reset your milestones.");
+        return '';
+      }
+      let updated = await this.update({
+          data: {
+              is_completed: true,
+              completed_user: game.user.name,
+              completed_time: new Date().toLocaleString(),
+          }
+      });
+      if (updated) {
+        let current_xp = this.parent.system.experience.value;
+        console.log("Found current XP: %o", current_xp);
+        current_xp += this.system.xp;
+        console.log("Updated xp to: %o", current_xp);
+        updated = this.parent.update({
+          data: {
+            experience: {
+              value: current_xp
+            }
+          }
+        });
+      }
+      console.log("updated: %o", updated);
+    }
+  }
+
+  async reset() {
+    if( game.user.isGM ) {
+      if (this.type == 'milestone') {
+        if (this.system.is_repeatable) {
+          console.log("attempting to complete a milestone");
+          let updated = await this.update({
+              data: {
+                  is_completed: false,
+                  completed_user: '',
+                  completed_time: '',
+              }
+          });
+          console.log("updated: %o", updated);
+        }
+      }
+    }
+  }
 }

@@ -31,23 +31,35 @@ export class earthlandItemSheet extends ItemSheet {
 
   /** @override */
   getData() {
+    console.log("What is item? %o", this);
     // Retrieve base data structure.
     const context = super.getData();
-
+    console.log("what is context? %o", context)
     // Use a safe clone of the item data for further operations.
     const itemData = context.item;
-
+    console.log("what is itemData: %o", itemData);
     // Retrieve the roll data for TinyMCE editors.
     context.rollData = {};
+    context.is_locked = false;
     let actor = this.object?.parent ?? null;
     if (actor) {
       context.rollData = actor.getRollData();
     }
 
+    if ( itemData.type == 'milestone' ) {
+      if (itemData.system.is_completed && itemData.system.completed_time == '') {
+        console.log("about to complete milestone");
+        itemData.complete();
+        console.log("milestone completed");
+      }
+      if ( itemData.system.completed_time != '' ) {
+        context.is_locked = true;
+      }
+    }
     // Add the actor's data to context.data for easier access, as well as flags.
     context.system = itemData.system;
     context.flags = itemData.flags;
-
+    console.log("what is new context? %o", context);
     return context;
   }
 
@@ -59,6 +71,19 @@ export class earthlandItemSheet extends ItemSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
+
+    html.find('input.checkbox').each( (i, val) => {
+      //console.log("in a checkbox with target: %o", val);
+      const isTrueSet = ($(val).val() === 'true');
+      //console.log("is true set? %o", isTrueSet);
+      $(val).prop("checked", isTrueSet);
+    });
+    html.find('input.checkbox').change(event => {
+      //console.log("looking at checkbox with event: %o", event);
+      if ($(this).is(':checked')) {
+        $(this).prop("checked", event.target.value);
+      }
+    });
 
     // Roll handlers, click handlers, etc. would go here.
     // Dynamic Dice Selectors

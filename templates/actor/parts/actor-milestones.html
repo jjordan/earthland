@@ -24,7 +24,7 @@
       <div class="item-name flex-group-center"><div class="flexrow flex-center flex-between">XP Value</div></div>
       <div class="item-name">Completed?</div>
       <div class="item-name">Kind</div>
-      <div class="item-name">Action</div>
+      <div class="item-name">Complete</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Milestone" data-type="milestone"><i class="fas fa-plus"></i> Add Milestone</a>
       </div>
@@ -38,12 +38,10 @@
           <h4>{{milestone.name}}</h4>
         </div>
         <div class="item-name flex-group-center"><div class="flexrow flex-center flex-between">{{milestone.system.xp}}</div></div>
-        <div class="item-name">{{#if milestone.system.is_complete}}COMPLETED{{else}}incomplete{{/if}}</div>
+        <div class="item-name">{{#if milestone.system.is_completed}}COMPLETED{{else}}incomplete{{/if}}</div>
         <div class="item-name">{{milestone.system.kind}}</div>
         <div class="item-name">
-          {{#if milestone.system.dice}}
-            <button title="Add to Dice-Pool" class="role rollable" data-rolltype="actor" data-roll="{{formulaFromObject milestone.system.dice.value}}" data-label="{{milestone.name}}" data-kind="milestone"><i class="fas fa-dice-d20"></i></button>
-          {{/if}}
+          <input class="input-checkbox-cpt milestone-checkbox" name="system.is_completed" type="checkbox" {{checked milestone.system.is_completed}} value="{{milestone.system.is_completed}}" data-id="{{milestone._id}}" {{disabled milestone.system.is_completed}}  />
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>

@@ -2,7 +2,7 @@
   <h3>Behaviors</h3>
   {{#each system.behaviors as |behavior key|}}
     <div class="behavior flexrow flex-group-center">
-      <button class="behavior rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject behavior.value}}" data-label="{{key}}" data-kind="Behavior"><i class="fas fa-dice-d20"></i></button>
+      <button title="Add to Dice-Pool" class="behavior rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject behavior.value}}" data-label="{{key}}" data-kind="Behavior"><i class="fas fa-dice-d20"></i></button>
       <label for="system.behaviors.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="{{formulaFromObject behavior.value}}" data-label="{{behavior.label}}" data-kind="Behavior">{{behavior.label}}</label>
       <div class="flex-col pr-0 flex-s-1">
         {{> "systems/earthland/templates/partials/dice/select.html"

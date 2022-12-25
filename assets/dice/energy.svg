@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 30 30" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 15 1 L 29 11.695 L 23.653 29 L 6.347 29 L 1 11.695 L 15 1 Z" style="paint-order: fill; fill: rgb(112, 144, 207); stroke: rgb(168, 194, 83);" transform="matrix(-1, 0, 0, -1, 30, 30)"/>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; white-space: pre;" x="11.219" y="10.394" dx="-1.578" dy="7.957">E</text>
+</svg>

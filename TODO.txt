@@ -55,11 +55,14 @@ Still To Do
  * Add an AC die to all characters as a main resource (top of sheet) this can be multiple dice
  * Make it so Abilities and Spells can require Energy and/or Magic Points (from 0 to 5 of each maybe?)
  * Make it so that Monsters have elemental Reistances, Immunities and Weaknesses
+ * Change the Item templates to use the Dice Selector instead of a text field
+ * Make Milestones checkable on the main list sheet
+ * Make it so that Milestones can add XP to the character's XP pool, but when they do so they become "locked"
+ * Make it so that Milestones can be unlocked by a GM
 
  --------------------------------------------------------------------------------
 Still ToDo
 
- * Change the Item templates to use the Dice Selector instead of a text field
 
  * Add a "Use" button to the line of every Spell and Ability
  * Add a "Use" button conditionally to any Item that has either an Energy or MP cost
@@ -71,9 +74,6 @@ Still ToDo
  * Make it so that if the pool has Energy or MP in it, but the character has insufficient MP or Energy, an error is displayed and the pool is not confirmed
  * Make it so that there is a way to remove abilities that require MP or Energy from the pool
 
- * Make Milestones checkable on the main list sheet
- * Make it so that Milestones can add XP to the character's XP pool, but when they do so they become "locked"
- * Make it so that only reusable Milestones can be unlocked by a player
 
  * Make it so you can name your dice pool
  * Make it so you can drag the Dice Pool into your hotbar

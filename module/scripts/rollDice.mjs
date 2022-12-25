@@ -13,6 +13,7 @@ const getRollFormula = (pool) => {
 }
 
 const getRollResults = async pool => {
+
   const rollFormula = getRollFormula(pool)
 
   const r = new Roll(rollFormula)
@@ -415,8 +416,31 @@ const dicePicker = async rollResults => {
   })
 }
 
+const removeCostsFromPool = async (pool) => {
+  // basically we're going to return a new pool without the costs
+  const new_pool = {};
+  const costs_by_actor_id = {};
+  for (const [source, value] of Object.entries(pool)) {
+    new_pool[source] = {};
+    for (const [index, object] of Object.entries(value)) {
+      if (object.type == 'trait') {
+        new_pool[source][index] = object;
+      } else if (object.type == 'cost') {
+        costs_by_actor_id[object.actor_id] = object;
+      }
+    }
+  }
+  // eventually collect the costs from each actor
+  return new_pool;
+}
+
 export default async function (pool, rollType) {
-  const rollResults = await getRollResults(pool)
+  // remove costs from the pool, so we can extract them from the appropriate actors,
+  // and add the cost counters back to the template after the roll
+  const new_pool = await removeCostsFromPool(pool);
+  console.log("What is the pool? %o", new_pool);
+  const rollResults = await getRollResults(new_pool)
+  console.log("What are rollResults? %o", rollResults);
   const themes = game.settings.get('earthland', 'themes')
   const theme = themes.current === 'custom' ? themes.custom : themes.list[themes.current]
   const sourceDefaultCollapsed = game.settings.get('earthland', 'rollResultSourceCollapsed')

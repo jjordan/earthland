@@ -17,26 +17,29 @@
 
     {{!-- Attributes Tab --}}
     <div class="tab attributes" data-group="primary" data-tab="attributes">
+      {{#if is_locked }}
+      <h2>Goal Locked Due to Completion</h2>
+      {{/if}}
       <div class="resource">
         <label class="resource-label">Kind</label>
-        <input type="text" name="system.kind" value="{{system.kind}}" data-dtype="String"/>
+        <input type="text" name="system.kind" value="{{system.kind}}" data-dtype="String" {{disabled is_locked}} />
       </div>
 
       <div class="resource">
         <label class="resource-label">Level</label>
-        <input type="text" name="system.level" value="{{system.level}}" data-dtype="String"/>
+        <input type="text" name="system.level" value="{{system.level}}" data-dtype="String"  {{disabled is_locked}} />
       </div>
 
       <div class="resource">
         <label class="resource-label">XP</label>
-        <input type="text" name="system.xp" value="{{system.xp}}" data-dtype="Number"/>
+        <input type="text" name="system.xp" value="{{system.xp}}" data-dtype="Number"  {{disabled is_locked}} />
       </div>
 
       <div class="resource">
         <label class="resource-label">Can this Milestone be Completed Multiple Times?</label>
-        <input class="input-checkbox-cpt" name="system.is_repeatable" type="checkbox" {{checked system.is_repeatable}}>
+        <input class="input-checkbox-cpt" name="system.is_repeatable" type="checkbox" {{checked system.is_repeatable}}  {{disabled is_locked}} />
       </div>
-
+<!-- Don't need these yet
       <div class="resource">
         <label class="resource-label">Is it Shared?</label>
         <input class="input-checkbox-cpt" name="system.is_shared" type="checkbox" {{checked system.is_shared}}>
@@ -46,11 +49,22 @@
         <label class="resource-label">Is it Hidden from the Player?</label>
         <input class="input-checkbox-cpt" name="system.is_hidden" type="checkbox" {{checked system.is_hidden}}>
       </div>
-
+-->
       <div class="resource">
         <label class="resource-label">Is it Complete?</label>
-        <input class="input-checkbox-cpt" name="system.is_complete" type="checkbox" {{checked system.is_complete}}>
+        <input class="input-checkbox-cpt" name="system.is_completed" type="checkbox" {{checked system.is_completed}} {{disabled is_locked}} />
       </div>
+
+      <div class="resource">
+        <label class="resource-label">User that Updated</label>
+        <input type="text" name="system.completed_user" value="{{system.completed_user}}" data-dtype="String" disabled="disabled"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">Updated Time</label>
+        <input type="text" name="system.completed_time" value="{{system.completed_time}}" data-dtype="String" disabled="disabled"/>
+      </div>
+
     </div>
 
     {{!-- Description Tab --}}

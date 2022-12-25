@@ -2,7 +2,7 @@
   <h3>Combat Roles</h3>
   {{#each system.packages as |package key|}}
     <div class="package flexrow flex-group-center">
-      <button class="package rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject package.value}}" data-label="{{key}}" data-kind="Role"><i class="fas fa-dice-d20"></i></button>
+      <button title="Add to Dice-Pool" class="package rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject package.value}}" data-label="{{key}}" data-kind="Role"><i class="fas fa-dice-d20"></i></button>
       <label for="system.packages.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="{{formulaFromObject package.value}}" data-label="{{package.label}}" data-kind="Role">{{package.label}}</label>
       <div class="flex-col pr-0 flex-s-1">
         {{> "systems/earthland/templates/partials/dice/select.html"

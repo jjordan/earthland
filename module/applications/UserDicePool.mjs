@@ -3,6 +3,7 @@ import { getLength, objectFilter, objectMapValues, objectReindexFilter } from '.
 import rollDice from '../scripts/rollDice.mjs'
 
 const blankPool = {
+  name: '',
   customAdd: {
     label: '',
     value: { 0: '8' }
@@ -64,11 +65,44 @@ export class UserDicePool extends FormApplication {
     html.find('.reset-custom-pool-trait').click(this._resetCustomPoolTrait.bind(this))
     html.find('.roll-dice-pool').click(this._rollDicePool.bind(this))
     html.find('.clear-source').click(this._clearSource.bind(this))
+    html.find('.remove-pool-cost').click(this._removeCostFromPool.bind(this));
   }
 
   async initPool () {
     await game.user.setFlag('earthland', 'dicePool', null)
     await game.user.setFlag('earthland', 'dicePool', this.dicePool)
+  }
+
+  // value { energy: 0, mp: 0 }
+  async _addCostToPool (source, label, value, actor_id) {
+    console.log("in _addCostFromPool with source (%o) label (%o) value (%o)", source, label, value);
+    const currentPool = game.user.getFlag('earthland', 'dicePool')
+    const currentPoolLength = getLength(currentPool.pool[source] || {})
+    const type = 'cost';
+    setProperty(currentPool, `pool.${source}.${currentPoolLength}`, { label, value, type, actor_id })
+
+    console.log("Have currentPool: %o", currentPool);
+
+    await game.user.setFlag('earthland', 'dicePool', null)
+
+    await game.user.setFlag('earthland', 'dicePool', currentPool)
+
+    await this.render(true)
+  }
+
+  async _removeCostFromPool (event) {
+    console.log("in _removeCostFromPool");
+    event.preventDefault()
+    const $target = $(event.currentTarget)
+    const source = $target.data('source')
+    let currentDicePool = game.user.getFlag('earthland', 'dicePool')
+
+    delete currentDicePool.pool[source][$target.data('key')];
+
+    await game.user.setFlag('earthland', 'dicePool', null)
+    await game.user.setFlag('earthland', 'dicePool', currentDicePool)
+
+    this.render(true);
   }
 
   async _addCustomTraitToPool (event) {
@@ -95,7 +129,8 @@ export class UserDicePool extends FormApplication {
     const currentDice = game.user.getFlag('earthland', 'dicePool')
 
     const currentDiceLength = getLength(currentDice.pool[source] || {})
-    setProperty(currentDice, `pool.${source}.${currentDiceLength}`, { label, value })
+    const type = 'trait'
+    setProperty(currentDice, `pool.${source}.${currentDiceLength}`, { label, value, type })
 
     await game.user.setFlag('earthland', 'dicePool', null)
 

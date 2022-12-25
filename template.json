@@ -682,6 +682,8 @@
          ],
          "level":"basic",
          "kind":"",
+         "completed_user":"",
+         "completed_time":"",
          "xp":1,
          "is_physical_item": false,
          "is_capability": false,

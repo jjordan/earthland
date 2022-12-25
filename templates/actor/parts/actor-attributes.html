@@ -2,7 +2,7 @@
   <h3>Attributes</h3>
   {{#each system.attributes as |attribute key|}}
     <div class="attribute flexrow flex-group-center"><!--   -->
-      <button class="attribute rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject attribute.value}}" data-label="{{key}}" data-kind="Attribute"><i class="fas fa-dice-d20"></i></button>
+      <button title="Add to Dice-Pool" class="attribute rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject attribute.value}}" data-label="{{key}}" data-kind="Attribute"><i class="fas fa-dice-d20"></i></button>
       <label for="system.attributes.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="{{formulaFromObject attribute.value}}" data-label="{{attribute.label}}" data-kind="Attribute">{{attribute.label}}</label>
       <div class="flex-col pr-0 flex-s-1">
         {{> "systems/earthland/templates/partials/dice/select.html"

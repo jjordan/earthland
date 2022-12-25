@@ -329,7 +329,8 @@ export class earthlandActorSheet extends ActorSheet {
     // Render the item sheet for viewing/editing prior to the editable check.
     html.find('.item-edit').click(ev => {
       const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
+      const item = this.actor.getEmbeddedDocument("Item", li.data("itemId"));
+      //const item = this.actor.items.get(li.data("itemId"));
       item.sheet.render(true);
     });
 
@@ -353,11 +354,29 @@ export class earthlandActorSheet extends ActorSheet {
       li.slideUp(200, () => this.render(false));
     });
 
+    html.find('.milestone-checkbox').change(this._onMilestoneCheck.bind(this));
+    //html.find('.milestone-checkbox').click(this._onMilestoneCheck.bind(this));
+    //html.find('.milestone-checkbox').on('mousedown',this._onMilestoneCheck.bind(this));
+
     // Active Effect management
     html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.actor));
 
     // Rollable attributes.
     html.find('.rollable').click(this._onRoll.bind(this));
+    html.find('.usable').click(this._onUse.bind(this));
+
+    html.find('input.checkbox').each( (i, val) => {
+      //console.log("in a checkbox with target: %o", val);
+      const isTrueSet = ($(val).val() === 'true');
+      //console.log("is true set? %o", isTrueSet);
+      $(val).prop("checked", isTrueSet);
+    });
+    html.find('input.checkbox').change(event => {
+      //console.log("looking at checkbox with event: %o", event);
+      if ($(this).is(':checked')) {
+        $(this).prop("checked", event.target.value);
+      }
+    });
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -370,6 +389,33 @@ export class earthlandActorSheet extends ActorSheet {
     }
   }
 
+  async _onMilestoneCheck(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+    const $targetNewDie = $(event.currentTarget);
+    const target = $targetNewDie.data('target');
+
+    const li = $(event.currentTarget).parents(".item");
+    //const item = this.actor.items.get(li.data("itemId"));
+    const item = this.actor.getEmbeddedDocument("Item", dataset.id);
+    //let item = Item.get(dataset.id);
+    //console.log("looking for item with id: %o", dataset.id);
+    console.log("Found item: %o", item);
+    if (!!item) {
+      if (item.system.is_completed == false) { // complete the item
+        console.log("trying to complete milestone");
+        await item.complete();
+        element.checked = true;
+      } else { // cannot uncheck it, but first just see if we can toggle it
+        console.log("milestone was completed, trying to reverse");
+        element.checked = false;
+        await item.update({
+          is_complete: false
+        });
+      }
+    }
+  }
 
   async _newDie (event) {
     console.log("in _newDie with event: %o", event);
@@ -510,6 +556,48 @@ export class earthlandActorSheet extends ActorSheet {
       game.earthland.UserDicePool._addTraitToPool(this.actor.name, label, object)
       return null;
     }
+  }
+
+  _onUse(event) {
+    console.log("in onUse with event: %o", event);
+    event.preventDefault();
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+    console.log("element: %o, dataset: %o", element, dataset);
+    // check if the user has the energy and/or MP
+    // at this point just warn if the actor does not have enough
+    const error_messages = [];
+    let label = dataset.label ? `[${dataset.kind}] ${dataset.label}` : '';
+    const actor_energy = this.actor.system.energy.value;
+    const actor_mp = this.actor.system.magic.value;
+    if (actor_energy < dataset.energycost) {
+      error_messages.push( `Energy (${actor_energy})` );
+    }
+    if (actor_mp < dataset.mpcost) {
+      error_messages.push( `Magic Points (${actor_mp})` );
+    }
+    if (error_messages.length > 0) {
+      const messages = error_messages.join(' or ');
+      ui.notifications.error( `${this.actor.name} does not have enough ${messages} to use ${label}` );
+    } else {
+      const object = this.unwrapCostObject({ en: dataset.energycost, mp: dataset.mpcost });
+      // added but not yet deducted
+      game.earthland.UserDicePool._addCostToPool(this.actor.name, label, object, this.actor.id);
+    }
+  }
+
+  unwrapCostObject( object ) {
+    const invertedObject = {};
+    let j = 0;
+    for (const [trait, number] of Object.entries(object)) {
+      console.log(`${trait}: ${number}`);
+      for (let i = 0; i < number; i++) {
+        console.log(`Iteration is #${j}`);
+        invertedObject[j] = trait;
+        j++;
+      }
+    }
+    return invertedObject;
   }
 
   replaceFormulaData(formula, data, {missing, warn=false}={}) {

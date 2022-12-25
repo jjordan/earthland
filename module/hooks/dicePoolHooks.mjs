@@ -78,6 +78,8 @@ export default () => {
                   ...dice,
                   [dieIndex]: {
                     label: $die.data('label'),
+                    type: $die.data('type'),
+                    author_id: $die.data('authorId'),
                     value: $die.find('.die').get()
                       .reduce((diceValues, dieValue, dieValueIndex) => {
                         return {
@@ -94,11 +96,13 @@ export default () => {
       $rollResult.find('.re-roll').click(async (event) => {
         event.preventDefault()
         const pool = getPool($rollResult)
+        console.log("what is pool in re-roll? %o", pool);
         await rollDice(pool)
       })
       $rollResult.find('.send-to-pool').click(async (event) => {
         event.preventDefault()
         const pool = getPool($rollResult)
+        console.log("what is pool in send-to-pool? %o", pool);
         await game.earthland.UserDicePool._setPool(pool)
       })
     }
