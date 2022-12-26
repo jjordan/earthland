@@ -65,33 +65,39 @@ Still To Do
  * Make it so that if the user clicks "Confirm" on a dice pool that has Magic or Energy in it, those are deducted from the character's sheet
  * Make it so that if the pool has Energy or MP in it, but the character has insufficient MP or Energy, an error is displayed and the pool is not confirmed
  * Make it so that there is a way to remove abilities that require MP or Energy from the pool
+ * Add a "Use" button on every Spell and Ability (remove Roll button, but add the dice to the pool if it has any).
+ * Make it optionally on any Wondrous Item that has a Magic or Energy cost
+ * Change dice colors to Blue instead of blood red
 
  --------------------------------------------------------------------------------
 Still ToDo
 
- * Add a "Use" button on every Spell and Ability (remove Roll button, but add the dice to the pool if it has any).
- * Make it optionally on any Wondrous Item that has a Magic or Energy cost
 
  * Make it so that if a player confirms a dice pool that has a Hindrance die in it, that player's character gains 1 MP automatically
 
  * Make it so you can name your dice pool
  * Make it so you can drag the Dice Pool into your hotbar
 
+ * Give lots of things damage dice and healing dice
+ * Make it so that there's a way to roll just Damage Dice or Healing Dice together without the "selection" process and without worrying about hitches and adding the total together.
+ * Make it so that things with charges have their charge deducted as part of the rolling process
 
 <-- Playable by here -->
-
-Heroic Die mod  needs this:
- * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset
-
-
---------------------------------------------------------------------------------
-Nice to have
 
 GM TOOLS:
  * Create a macro/tool to roll difficulty for the GM automatically (or add them to a pool, at least)
  * Tool to give PP (Magic Point) to a player character
  * Tool to give or take Energy from a character
  * Add a "rest" button and "short rest" button to the character sheet
+ * Add a GM only button that gives a Player a MP on a hitch roll
+ * Add a button to the player character sheet where they can use an MP any time
+
+
+--------------------------------------------------------------------------------
+Nice to have
+
+Heroic Die mod  needs this:
+ * Make it so there are "Resource Dice", which are consumed when rolled, but can be reset
 
 
 WORKFLOWS:

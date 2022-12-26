@@ -579,10 +579,28 @@ export class earthlandActorSheet extends ActorSheet {
     if (error_messages.length > 0) {
       const messages = error_messages.join(' or ');
       ui.notifications.error( `${this.actor.name} does not have enough ${messages} to use ${label}` );
+      return null;
     } else {
       const object = this.unwrapCostObject({ en: dataset.energycost, mp: dataset.mpcost });
       // added but not yet deducted
-      game.earthland.UserDicePool._addCostToPool(this.actor.name, label, object, this.actor.id);
+      if ((parseInt(dataset.energycost) > 0) || (parseInt(dataset.mpcost) > 0)) {
+        game.earthland.UserDicePool._addCostToPool(this.actor.name, label, object, this.actor.id);
+      }
+    }
+    if (dataset.roll) {
+      let label = dataset.label ? `[${dataset.kind}] ${dataset.label}` : '';
+      let trait = dataset.roll;
+      let rollData = this.actor.getRollData();
+      let value = this.replaceFormulaData(trait, rollData);
+      let object;
+      if (typeof value === 'string') {
+        object = this.formulaToDiceObject(value);
+      } else if (typeof value === 'object') {
+        object = value
+      }
+
+      game.earthland.UserDicePool._addTraitToPool(this.actor.name, label, object)
+      return null;
     }
   }
 

@@ -77,9 +77,7 @@
           <h4>{{ability.name}}</h4>
         </div>
         <div class="item-name">
-          {{#if ability.system.dice}}
-            <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject ability.system.dice.value}}" data-label="{{ability.name}}" data-kind="ability"><i class="fas fa-dice-d20"></i></button>
-          {{/if}}
+          <button title="Use Ability (add to dice-pool)" class="usable small-button" data-usetype="actor" data-energycost="{{ability.system.energy_cost}}" data-mpcost="{{ability.system.mp_cost}}" data-label="{{ability.name}}" data-kind="ability" data-roll="{{formulaFromObject ability.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
@@ -215,9 +213,7 @@
           <h4>{{ability.name}}</h4>
         </div>
         <div class="item-name">
-          {{#if ability.system.dice}}
-            <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject ability.system.dice.value}}" data-label="{{ability.name}}" data-kind="ability"><i class="fas fa-dice-d20"></i></button>
-          {{/if}}
+          <button title="Use Ability (add to dice-pool)" class="usable small-button" data-usetype="actor" data-energycost="{{ability.system.energy_cost}}" data-mpcost="{{ability.system.mp_cost}}" data-label="{{ability.name}}" data-kind="ability" data-roll="{{formulaFromObject ability.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
