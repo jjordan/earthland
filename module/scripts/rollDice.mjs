@@ -521,9 +521,10 @@ const removeCostsFromPool = async (pool) => {
   return new_pool;
 }
 
-export default async function (pool, rollType) {
+export default async function (pool, rollType, name) {
   // remove costs from the pool, so we can extract them from the appropriate actors,
   // and add the cost counters back to the template after the roll
+  console.log("What is pool name? %o", name);
   const new_pool = await removeCostsFromPool(pool);
   console.log("What is the pool? %o", new_pool);
   const rollResults = await getRollResults(new_pool)
@@ -541,6 +542,7 @@ export default async function (pool, rollType) {
       : await dicePicker(rollResults)
 
   const content = await renderTemplate('systems/earthland/templates/chat/roll-result.html', {
+    name: name,
     dicePool: pool,
     effectDice: selectedDice.effectDice,
     rollResults: { hitches: rollResults.hitches, results: selectedDice.dice },

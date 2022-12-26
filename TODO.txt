@@ -75,6 +75,7 @@ Still ToDo
 
  * Make it so you can name your dice pool
  * Make it so you can drag the Dice Pool into your hotbar
+ * Create a "DicePool" item type for the character to store these saved pools
 
  * Give lots of things damage dice and healing dice
  * Make it so that there's a way to roll just Damage Dice or Healing Dice together without the "selection" process and without worrying about hitches and adding the total together.

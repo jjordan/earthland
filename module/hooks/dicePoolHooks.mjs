@@ -64,6 +64,10 @@ export default () => {
             .toggleClass('hide')
         })
 
+      const getPoolName = html => {
+        return html.find('.dicepool-name').data('name')
+      }
+
       const getPool = html => {
         return html.find('.source').get().reduce((sources, source) => {
           const $source = $(source)
@@ -96,14 +100,18 @@ export default () => {
       $rollResult.find('.re-roll').click(async (event) => {
         event.preventDefault()
         const pool = getPool($rollResult)
+        const name = getPoolName($rollResult)
         console.log("what is pool in re-roll? %o", pool);
-        await rollDice(pool)
+        console.log("what is name in reroll? %o", name);
+        await rollDice(pool, 'pick', {value: name})
       })
       $rollResult.find('.send-to-pool').click(async (event) => {
         event.preventDefault()
         const pool = getPool($rollResult)
+        const name = getPoolName($rollResult)
         console.log("what is pool in send-to-pool? %o", pool);
-        await game.earthland.UserDicePool._setPool(pool)
+        console.log("what is name in send-to-pool? %o", name);
+        await game.earthland.UserDicePool._setPool(pool, name)
       })
     }
   })

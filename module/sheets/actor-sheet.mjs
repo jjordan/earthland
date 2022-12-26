@@ -55,7 +55,6 @@ export class earthlandActorSheet extends ActorSheet {
       }
     ];
 
-    console.log("What is context? %o", context);
     // Use a safe clone of the actor data for further operations.
     const actorData = this.actor.toObject(false);
 
@@ -66,14 +65,12 @@ export class earthlandActorSheet extends ActorSheet {
     let kind_name = context.system.kind;
     context.npc_kind_options[0].selected = false; // reset zero option
     const kind = context.npc_kind_options.find( element => element.value === kind_name);
-    console.log("in set with kind_name and kind: %o, %o", kind_name, kind);
     context.is_mob    = false;
     context.is_minion = false;
     context.is_elite  = false;
     context.is_boss   = false;
     if (!!kind) {
       kind.selected = true;
-      console.log("selected kind: %o", kind);
       if (kind.value == 'mob') {
         context.is_mob = true;
       } else if (kind.value == 'minion') {
@@ -197,7 +194,6 @@ export class earthlandActorSheet extends ActorSheet {
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
-      console.log("Got to here with context item: %o", i);
       i.img = i.img || DEFAULT_TOKEN;
       // Append to distinctions.
       if (i.type === 'distinction') {
@@ -291,8 +287,6 @@ export class earthlandActorSheet extends ActorSheet {
         }
       }
     }
-    console.log("what are abilities? %o", abilities);
-    console.log("what are species features? %o", species_features);
     // Assign and return
     context.distinctions      = distinctions;
     context.specialties       = specialties;
@@ -366,13 +360,10 @@ export class earthlandActorSheet extends ActorSheet {
     html.find('.usable').click(this._onUse.bind(this));
 
     html.find('input.checkbox').each( (i, val) => {
-      //console.log("in a checkbox with target: %o", val);
       const isTrueSet = ($(val).val() === 'true');
-      //console.log("is true set? %o", isTrueSet);
       $(val).prop("checked", isTrueSet);
     });
     html.find('input.checkbox').change(event => {
-      //console.log("looking at checkbox with event: %o", event);
       if ($(this).is(':checked')) {
         $(this).prop("checked", event.target.value);
       }
@@ -400,15 +391,11 @@ export class earthlandActorSheet extends ActorSheet {
     //const item = this.actor.items.get(li.data("itemId"));
     const item = this.actor.getEmbeddedDocument("Item", dataset.id);
     //let item = Item.get(dataset.id);
-    //console.log("looking for item with id: %o", dataset.id);
-    console.log("Found item: %o", item);
     if (!!item) {
       if (item.system.is_completed == false) { // complete the item
-        console.log("trying to complete milestone");
         await item.complete();
         element.checked = true;
       } else { // cannot uncheck it, but first just see if we can toggle it
-        console.log("milestone was completed, trying to reverse");
         element.checked = false;
         await item.update({
           is_complete: false
@@ -418,7 +405,6 @@ export class earthlandActorSheet extends ActorSheet {
   }
 
   async _newDie (event) {
-    console.log("in _newDie with event: %o", event);
     event.preventDefault();
     const $targetNewDie = $(event.currentTarget);
     const target = $targetNewDie.data('target');
@@ -426,8 +412,6 @@ export class earthlandActorSheet extends ActorSheet {
     const currentDice = currentDiceData?.value ?? {};
     const newIndex = getLength(currentDice);
     const newValue = currentDice[newIndex - 1] ?? '8';
-    console.log("have target: %o", target);
-    console.log("have new index: %o and new value: %o", newIndex, newValue);
 
     await this.actor.update({
       [target]: {
@@ -447,7 +431,6 @@ export class earthlandActorSheet extends ActorSheet {
     const targetKey = $targetNewDie.data('key')
     const targetValue = $targetNewDie.val()
     const currentDiceData = getProperty(this.actor, target)
-    console.log("What is target? %o", target);
 
     const newValue = objectMapValues(currentDiceData.value ?? {}, (value, index) => parseInt(index, 10) === targetKey ? targetValue : value)
 
@@ -503,7 +486,6 @@ export class earthlandActorSheet extends ActorSheet {
     } else {
       type = metatype;
     }
-    console.log("Got type: %o and data: %o", type, data);
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
     // Prepare the item object.
@@ -525,15 +507,12 @@ export class earthlandActorSheet extends ActorSheet {
    * @private
    */
   _onRoll(event) {
-    console.log("in onRoll with event: %o", event);
     event.preventDefault();
     const element = event.currentTarget;
     const dataset = element.dataset;
-    console.log("element: %o, dataset: %o", element, dataset);
     // Handle item rolls.
     if (dataset.rollType) {
       if (dataset.rollType == 'item') {
-        console.log("Got an item with dataset: %o", dataset);
         const itemId = element.closest('.item').dataset.itemId;
         const item = this.actor.items.get(itemId);
         if (item) return item.roll();
@@ -559,11 +538,9 @@ export class earthlandActorSheet extends ActorSheet {
   }
 
   _onUse(event) {
-    console.log("in onUse with event: %o", event);
     event.preventDefault();
     const element = event.currentTarget;
     const dataset = element.dataset;
-    console.log("element: %o, dataset: %o", element, dataset);
     // check if the user has the energy and/or MP
     // at this point just warn if the actor does not have enough
     const error_messages = [];
@@ -608,9 +585,7 @@ export class earthlandActorSheet extends ActorSheet {
     const invertedObject = {};
     let j = 0;
     for (const [trait, number] of Object.entries(object)) {
-      console.log(`${trait}: ${number}`);
       for (let i = 0; i < number; i++) {
-        console.log(`Iteration is #${j}`);
         invertedObject[j] = trait;
         j++;
       }

@@ -3,8 +3,22 @@
   <div class="sheet-image"></div>
   <div class="sheet-content pa-2">
     <div class="section-cpt">
-      <div class="section-image"></div>
+      <div class="section-image">{{log 'pool name ' name}}</div>
       <div class="section-content">
+        <div class="relative-section pb-2 pt-0">
+          <div class="section-background"></div>
+          <h3 class="section-primary-title-cpt px-2 mb-0">{{localize 'DicePoolName'}}</h3>
+          <div class="flex flex-ae">
+            <div class="flex-col col-12">
+              <div class="flex-row flex-ac">
+                <label class="flex-col flex-g-1">
+                  <span class="input-label-cpt">{{localize 'Name'}}</span>
+                  <input class="dice-pool-name input-cpt" name="name.value" type="text" value="{{name.value}}" />
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="relative-section pb-2 pt-1">
           <div class="section-background"></div>
           <h3 class="section-primary-title-cpt px-2 mb-1">{{localize 'AddCustomDice'}}</h3>

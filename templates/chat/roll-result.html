@@ -1,5 +1,9 @@
 <div class="dice-pool roll-result" style="position: relative;">
   <div class="mb-1">
+    {{#if name.value}}
+      <h3>{{name.value}}</h3>
+      <input type="hidden" class="dicepool-name" data-name="{{name.value}}" value="{{name.value}}" />
+    {{/if}}
     {{#each dicePool as |sourcePool source|}}
       <div class="source my-1 section-cpt pa-1" data-source="{{source}}">
         <div class="section-image"></div>

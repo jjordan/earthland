@@ -21,6 +21,7 @@ export class UserDicePool extends FormApplication {
     }
 
     this.dicePool = userDicePool
+    this.name = userDicePool.name
   }
 
   static get defaultOptions () {
@@ -66,6 +67,22 @@ export class UserDicePool extends FormApplication {
     html.find('.roll-dice-pool').click(this._rollDicePool.bind(this))
     html.find('.clear-source').click(this._clearSource.bind(this))
     html.find('.remove-pool-cost').click(this._removeCostFromPool.bind(this));
+    html.find('.dice-pool-name').change(this._changeName.bind(this))
+  }
+
+  async _changeName (event) {
+    event.preventDefault();
+    const $target = $(event.currentTarget);
+    const value = $target.val();
+    console.log("got target: %o, and value: %o", $target, value);
+    const currentDice = game.user.getFlag('earthland', 'dicePool')
+    if (!!value) {
+      setProperty(currentDice, `name`, { value })
+    }
+    await game.user.setFlag('earthland', 'dicePool', null)
+    await game.user.setFlag('earthland', 'dicePool', currentDice)
+
+    await this.render(true)
   }
 
   async initPool () {
@@ -132,6 +149,8 @@ export class UserDicePool extends FormApplication {
     const currentDiceLength = getLength(currentDice.pool[source] || {})
     const type = 'trait'
     setProperty(currentDice, `pool.${source}.${currentDiceLength}`, { label, value, type, actor_id })
+
+    console.log("Have currentPool: %o", currentDice);
 
     await game.user.setFlag('earthland', 'dicePool', null)
 
@@ -260,11 +279,15 @@ export class UserDicePool extends FormApplication {
     await this.render(true)
   }
 
-  async _setPool (pool) {
+  async _setPool (pool, value) {
+    console.log("in _setPool with pool: %o and value: %o", pool, value);
     const currentDice = game.user.getFlag('earthland', 'dicePool')
 
     setProperty(currentDice, 'pool', pool)
 
+    if (!!value) {
+      setProperty(currentDice, `name`, { value })
+    }
     await game.user.setFlag('earthland', 'dicePool', null)
 
     await game.user.setFlag('earthland', 'dicePool', currentDice)
@@ -279,6 +302,8 @@ export class UserDicePool extends FormApplication {
     const currentDicePool = game.user.getFlag('earthland', 'dicePool')
 
     const dicePool = currentDicePool.pool
+    const name = currentDicePool.name
+    console.log("What is currentDicePool? %o", dicePool);
 
     const rollType = $target.hasClass('roll-for-total')
       ? 'total'
@@ -286,7 +311,7 @@ export class UserDicePool extends FormApplication {
         ? 'effect'
         : 'select'
 
-    await rollDice.call(this, dicePool, rollType)
+    await rollDice.call(this, dicePool, rollType, name)
   }
 
   async toggle () {
