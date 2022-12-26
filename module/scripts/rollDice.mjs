@@ -416,6 +416,39 @@ const dicePicker = async rollResults => {
   })
 }
 
+const  chat_message = (content) => {
+    let game_master = game.users.find( u => u.isGM );
+    console.log("sending message to gm: %o", game_master);
+    let chatData = {
+      user: game_master,
+      speaker: game_master,
+      content: content,
+      type: CONST.CHAT_MESSAGE_TYPES.OTHER
+    };
+    let message = ChatMessage.create(chatData);
+    return message;
+  }
+
+
+const addMPFromHindrance = async (actor_id) => {
+  let actor = await Actor.get(actor_id);
+  const actor_mp = actor.system.magic.value;
+  const new_mp = actor_mp + 1;
+  const updated = await actor.update({
+    data: {
+      magic: {
+        value: new_mp
+      }
+    }
+  });
+  if(!!updated) {
+    chat_message( `Character ${actor.name} awarded 1 MP for Hindrance roll.` )
+  } else {
+    ui.notifications.error( `Couldn't update resources for actor ${actor.name} (mp: ${required_mp})` );
+    return false;
+  }
+}
+
 const removeCostsFromPool = async (pool) => {
   // basically we're going to return a new pool without the costs
   const new_pool = {};
@@ -425,6 +458,9 @@ const removeCostsFromPool = async (pool) => {
     for (const [index, object] of Object.entries(value)) {
       if (object.type == 'trait') {
         new_pool[source][index] = object;
+        if (object.label.match(/hindrance/i) && object.actor_id) {
+          addMPFromHindrance(object.actor_id);
+        }
       } else if (object.type == 'cost') {
         costs_by_actor_id[object.actor_id] = object;
       }

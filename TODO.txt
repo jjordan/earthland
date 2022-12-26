@@ -68,12 +68,10 @@ Still To Do
  * Add a "Use" button on every Spell and Ability (remove Roll button, but add the dice to the pool if it has any).
  * Make it optionally on any Wondrous Item that has a Magic or Energy cost
  * Change dice colors to Blue instead of blood red
+ * Make it so that if a player confirms a dice pool that has a Hindrance die in it, that player's character gains 1 MP automatically
 
  --------------------------------------------------------------------------------
 Still ToDo
-
-
- * Make it so that if a player confirms a dice pool that has a Hindrance die in it, that player's character gains 1 MP automatically
 
  * Make it so you can name your dice pool
  * Make it so you can drag the Dice Pool into your hotbar

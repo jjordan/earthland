@@ -125,12 +125,13 @@ export class UserDicePool extends FormApplication {
     await this.render(true)
   }
 
-  async _addTraitToPool (source, label, value) {
+  async _addTraitToPool (source, label, value, actor_id) {
+    console.log("in _addTraitToPool with source (%o) label (%o) value (%o), actorid: %o", source, label, value, actor_id);
     const currentDice = game.user.getFlag('earthland', 'dicePool')
 
     const currentDiceLength = getLength(currentDice.pool[source] || {})
     const type = 'trait'
-    setProperty(currentDice, `pool.${source}.${currentDiceLength}`, { label, value, type })
+    setProperty(currentDice, `pool.${source}.${currentDiceLength}`, { label, value, type, actor_id })
 
     await game.user.setFlag('earthland', 'dicePool', null)
 

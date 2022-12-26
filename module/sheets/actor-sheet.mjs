@@ -553,7 +553,7 @@ export class earthlandActorSheet extends ActorSheet {
         object = value
       }
 
-      game.earthland.UserDicePool._addTraitToPool(this.actor.name, label, object)
+      game.earthland.UserDicePool._addTraitToPool(this.actor.name, label, object, this.actor.id)
       return null;
     }
   }
