@@ -3,12 +3,14 @@ import { getLength, objectFilter, objectMapValues, objectReindexFilter } from '.
 import rollDice from '../scripts/rollDice.mjs'
 
 const blankPool = {
+  itemid: {},
   name: '',
   customAdd: {
     label: '',
     value: { 0: '8' }
   },
-  pool: {}
+  pool: {},
+  draggable: {}
 }
 
 export class UserDicePool extends FormApplication {
@@ -22,6 +24,10 @@ export class UserDicePool extends FormApplication {
 
     this.dicePool = userDicePool
     this.name = userDicePool.name
+    this._onDragStart = this._onDragStart.bind(this);
+    this._onDragDrop = this._onDragDrop.bind(this);
+    this.data = {test: 1};
+    this.system = {test: 2};
   }
 
   static get defaultOptions () {
@@ -30,22 +36,47 @@ export class UserDicePool extends FormApplication {
       template: 'systems/earthland/templates/other/dice-pool.html',
       title: localizer('DicePool'),
       classes: ['dice-pool', 'user-dice-pool'],
-      width: 600,
+      width: 660,
       height: 'auto',
       top: 500,
       left: 20,
       resizable: true,
       closeOnSubmit: false,
       submitOnClose: true,
-      submitOnChange: true
+      submitOnChange: true,
+      dragDrop: [{
+          dragSelector: '.draggable',
+          dropSelector: '.macro-list',
+          callbacks: { dragstart: this._onDragStart, drop: this._onDragDrop }
+      }]
     })
   }
 
   async getData () {
+    console.log("in UserDicePool getData");
     const dice = game.user.getFlag('earthland', 'dicePool')
+    console.log("Have dicepool: %o", dice);
+    let items = [];
+    let draggable = {value: false};
+    if (!!dice.itemid && dice.itemid.value != '') {
+      const actor_ids = this._findActorIdsForPool(dice.pool);
+      if (actor_ids.length == 1) {
+        let actor = game.actors.get(actor_ids[0]);
+        let item = await actor.getEmbeddedDocument('Item', dice.itemid.value);
+        console.log("Got item: %o", item);
+        if(!!item) {
+          items.push( item );
+          draggable.value = false; // Setting to false so confusing draggable button doesn't appear
+        } else {
+          let value;
+          setProperty(dice, `itemid`, { value });
+        }
+      }
+    }
+    console.log("have items: %o", items);
     const themes = game.settings.get('earthland', 'themes')
     const theme = themes.current === 'custom' ? themes.custom : themes.list[themes.current]
-    return { ...dice, theme }
+    return { ...dice, theme, items, draggable }
   }
 
   async _updateObject (event, formData) {
@@ -68,6 +99,62 @@ export class UserDicePool extends FormApplication {
     html.find('.clear-source').click(this._clearSource.bind(this))
     html.find('.remove-pool-cost').click(this._removeCostFromPool.bind(this));
     html.find('.dice-pool-name').change(this._changeName.bind(this))
+    html.find('.make-dice-pool-item').click(this._makeDicePoolItem.bind(this));
+  }
+
+  _findActorIdsForPool(pool) {
+    const actor_ids = {};
+    for (const [source, value] of Object.entries(pool)) {
+      for (const [index, object] of Object.entries(value)) {
+        actor_ids[object.actor_id] = 1
+      }
+    }
+    return Object.keys(actor_ids);
+  }
+
+  async _makeDicePoolItem (event) {
+    // look for actor IDs
+    const currentDice = game.user.getFlag('earthland', 'dicePool')
+    if (!!currentDice.itemid && currentDice.itemid.value) {
+      ui.notifications.warn( `Already created Item for this dice pool: ${currentDice.itemid}` );
+      let value = true;
+      setProperty(currentDice, `draggable`, { value });
+      return currentDice.itemid.value;
+    }
+    const actor_ids = this._findActorIdsForPool(currentDice.pool);
+    // if we only find 1, we're good
+    if (actor_ids.length == 1) {
+      // create a new Dicepool item for the actor from the ID
+      const actor = game.actors.get(actor_ids[0]);
+      const pool = JSON.parse(JSON.stringify(currentDice.pool))
+      console.log("About to save pool: %o", pool);
+      const items = await actor.createEmbeddedDocuments('Item', [{
+        name: currentDice.name.value,
+        type: 'dicepool',
+        system: {
+          pool: pool
+        }
+      }]);
+      console.log("Got items: %o", items);
+      if (items.length > 0) {
+        let value = items[0].id
+        setProperty(currentDice, `itemid`, { value });
+        value = true;
+        setProperty(currentDice, `draggable`, { value });
+        console.log("Got currentDice: %o", currentDice);
+        await this.render(true)
+        return items[0].id;
+      } else {
+        ui.notifications.error( `Could not create DicePool item from dice pool.` );
+      }
+      // somehow add that item to the dicepool???
+    } else if (Object.keys(actor_ids).length > 1) {
+      // if we find more than 1, raise error
+      ui.notifications.error( `There is more than one actor's data in the pool, can't make DicePool item.` );
+    } else {
+      // if we find less than 1, also raise error
+      ui.notifications.error( `Can't find Actor ID in the pool, can't make DicePool item.` );
+    }
   }
 
   async _changeName (event) {
@@ -279,8 +366,8 @@ export class UserDicePool extends FormApplication {
     await this.render(true)
   }
 
-  async _setPool (pool, value) {
-    console.log("in _setPool with pool: %o and value: %o", pool, value);
+  async _setPool (pool, value, itemid=null) {
+    console.log("in _setPool with pool: %o and value: %o and itemid: %o", pool, value, itemid);
     const currentDice = game.user.getFlag('earthland', 'dicePool')
 
     setProperty(currentDice, 'pool', pool)
@@ -288,6 +375,10 @@ export class UserDicePool extends FormApplication {
     if (!!value) {
       setProperty(currentDice, `name`, { value })
     }
+    if (!!itemid) {
+      setProperty(currentDice, `itemid`, { value: itemid })
+    }
+    console.log("Got pool: %o", currentDice);
     await game.user.setFlag('earthland', 'dicePool', null)
 
     await game.user.setFlag('earthland', 'dicePool', currentDice)
@@ -320,5 +411,30 @@ export class UserDicePool extends FormApplication {
     } else {
       this.close()
     }
+  }
+
+  async _onDragStart(event) {
+    console.log("in _onDragStart()");
+    return {data: 1};
+  }
+
+  async _onDragDrop(event){
+    console.log("UserDicePool _onDragDrop called");
+    return {data: 2};
+  }
+
+  async _onDragOver(event) {
+    console.log("UserDicePool _onDragOver called");
+    return {data: 5};
+  }
+
+  async _onDrop(event){
+    console.log("UserDicePool _onDrop called");
+    return {data: 3};
+  }
+
+  async _handleDrop(event) {
+    console.log("UserDicePool _handleDrop called");
+    return {data: 4};
   }
 }

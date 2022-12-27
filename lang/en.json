@@ -102,6 +102,7 @@
   "AddToPool": "Add To Pool",
   "DicePoolName": "Dice Pool Name",
   "EffectDice": "Effect Dice",
+  "MakeDraggable":"Make DicePool Item",
   "Name": "Name",
   "NoTraitsInPool": "There are currently no traits or dice in this pool.",
   "Reroll": "Re-Roll",

@@ -380,6 +380,7 @@
          "class",
          "complication",
          "container",
+         "dicepool",
          "distinction",
          "equipment",
          "feature",
@@ -437,6 +438,9 @@
             "attunable":false,
             "attuned":false
          }
+      },
+      "dicepool":{
+        "pool": {}
       },
       "asset":{
          "templates":[

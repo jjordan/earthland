@@ -146,6 +146,11 @@ export class earthlandItemSheet extends ItemSheet {
     }
   }
 
+  async _reconstitute() {
+    let pool = this;
+    console.log("Got pool: %o", pool);
+    game.earthland.UserDicePool._setPool(pool.system.pool, pool.name, pool.id);
+  }
 
   async _resetDataPoint(path, target, value) {
     await this.item.update({

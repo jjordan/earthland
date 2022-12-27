@@ -98,17 +98,23 @@ Hooks.once("ready", async function() {
  * @returns {Promise}
  */
 async function createItemMacro(data, slot) {
+  console.log("in createItemMacros with data: %o and slot: %o", data, slot);
   // First, determine if this is a valid owned item.
   if (data.type !== "Item") return;
+  console.log("Got to here 1");
   if (!data.uuid.includes('Actor.') && !data.uuid.includes('Token.')) {
+    console.log("Got to here 2");
     return ui.notifications.warn("You can only create macro buttons for owned Items");
   }
   // If it is, retrieve it based on the uuid.
   const item = await Item.fromDropData(data);
+  console.log("Got to here 3 with item: %o", item);
 
   // Create the macro command using the uuid.
   const command = `game.earthland.rollItemMacro("${data.uuid}");`;
+  console.log("Got to here 4 with command: %o", command);
   let macro = game.macros.find(m => (m.name === item.name) && (m.command === command));
+  console.log("Got to here 5 with macro: %o", macro);
   if (!macro) {
     macro = await Macro.create({
       name: item.name,
@@ -118,7 +124,9 @@ async function createItemMacro(data, slot) {
       flags: { "earthland.itemMacro": true }
     });
   }
+  console.log("Got to here 6");
   game.user.assignHotbarMacro(macro, slot);
+  console.log("Got to here 7");
   return false;
 }
 
@@ -128,6 +136,7 @@ async function createItemMacro(data, slot) {
  * @param {string} itemUuid
  */
 function rollItemMacro(itemUuid) {
+  console.log("In rollItemMacro");
   // Reconstruct the drop data so that we can load the item.
   const dropData = {
     type: 'Item',
@@ -142,6 +151,11 @@ function rollItemMacro(itemUuid) {
     }
 
     // Trigger the item roll
-    item.roll();
+    console.log("Got to here in macro with item: %o", item);
+    if (item.type == 'dicepool') {
+      item.reconstitute();
+    } else {
+      ui.notifications.error("Can only use DicePool objects in Macros");
+    }
   });
 }

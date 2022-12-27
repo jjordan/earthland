@@ -98,6 +98,12 @@ export class earthlandItem extends Item {
     }
   }
 
+  async reconstitute() {
+    let pool = this;
+    console.log("Got pool: %o", pool);
+    game.earthland.UserDicePool._setPool(pool.system.pool, pool.name, pool.id);
+  }
+
   async reset() {
     if( game.user.isGM ) {
       if (this.type == 'milestone') {

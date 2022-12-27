@@ -11,6 +11,17 @@
           <div class="flex flex-ae">
             <div class="flex-col col-12">
               <div class="flex-row flex-ac">
+                {{#if draggable }}
+                  <div height="30px" width="30px">
+                    <ol class="items-list">
+                      {{#each items as |item id|}}
+                        <li class="item draggable flexrow" data-item-id="{{item._id}}">
+                          <i class="flex-col flex-g-1 fa-regular fa-hand fa-2xl"></i>
+                        </li>
+                      {{/each}}
+                    </ol>
+                  </div>
+                {{/if}}
                 <label class="flex-col flex-g-1">
                   <span class="input-label-cpt">{{localize 'Name'}}</span>
                   <input class="dice-pool-name input-cpt" name="name.value" type="text" value="{{name.value}}" />
@@ -107,6 +118,11 @@
         <div class="relative-section">
           <div class="section-background"></div>
           <div class="flex-col col-12 flex flex-je py-2">
+            {{#if name.value}}
+            <div class="flex-col">
+              <button class="make-dice-pool-item btn btn-secondary-cpt" type="button">{{localize 'MakeDraggable'}}</button>
+            </div>
+            {{/if}}
             <div class="flex-col">
               <button class="clear-dice-pool btn btn-secondary-cpt" type="button">{{localize 'Clear'}}</button>
             </div>

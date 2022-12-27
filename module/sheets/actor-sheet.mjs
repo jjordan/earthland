@@ -191,6 +191,7 @@ export class earthlandActorSheet extends ActorSheet {
       3: [],
       4: []
     };
+    const dicepools = [];
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
@@ -199,8 +200,13 @@ export class earthlandActorSheet extends ActorSheet {
       if (i.type === 'distinction') {
         distinctions.push(i);
       }
+      // append to gear for NPCs or PC "big list of items"
       if (i.system.is_physical_item) {
         gear.push(i);
+      }
+      // append to dicepools
+      if (i.type === 'dicepool') {
+        dicepools.push(i);
       }
       // Append to specialties.
       if (i.type === 'specialty') {
@@ -312,6 +318,8 @@ export class earthlandActorSheet extends ActorSheet {
     context.spells            = spells;
     context.gear              = gear;
     context.abilities         = abilities;
+    context.dicepools         = dicepools;
+    console.log("What are dicepools? %o", dicepools);
   }
 
   /* -------------------------------------------- */
@@ -358,6 +366,7 @@ export class earthlandActorSheet extends ActorSheet {
     // Rollable attributes.
     html.find('.rollable').click(this._onRoll.bind(this));
     html.find('.usable').click(this._onUse.bind(this));
+    html.find('.poolable').click(this._onPool.bind(this));
 
     html.find('input.checkbox').each( (i, val) => {
       const isTrueSet = ($(val).val() === 'true');
@@ -578,6 +587,17 @@ export class earthlandActorSheet extends ActorSheet {
 
       game.earthland.UserDicePool._addTraitToPool(this.actor.name, label, object)
       return null;
+    }
+  }
+
+  _onPool(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+    if(dataset.poolid) {
+      let pool = this.actor.getEmbeddedDocument('Item', dataset.poolid);
+      console.log("Got pool: %o", pool);
+      game.earthland.UserDicePool._setPool(pool.system.pool, pool.name, pool.id);
     }
   }
 

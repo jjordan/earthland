@@ -69,19 +69,17 @@ Still To Do
  * Make it optionally on any Wondrous Item that has a Magic or Energy cost
  * Change dice colors to Blue instead of blood red
  * Make it so that if a player confirms a dice pool that has a Hindrance die in it, that player's character gains 1 MP automatically
+ * Make it so you can name your dice pool
+ * Create a "DicePool" item type for the character to store these saved pools
+ * Make it so you can drag the Dice Pool into your hotbar, you can't, but you can create an item and drag that to the hotbar
 
  --------------------------------------------------------------------------------
 Still ToDo
-
- * Make it so you can name your dice pool
- * Make it so you can drag the Dice Pool into your hotbar
- * Create a "DicePool" item type for the character to store these saved pools
 
  * Give lots of things damage dice and healing dice
  * Make it so that there's a way to roll just Damage Dice or Healing Dice together without the "selection" process and without worrying about hitches and adding the total together.
  * Make it so that things with charges have their charge deducted as part of the rolling process
 
-<-- Playable by here -->
 
 GM TOOLS:
  * Create a macro/tool to roll difficulty for the GM automatically (or add them to a pool, at least)
@@ -91,6 +89,7 @@ GM TOOLS:
  * Add a GM only button that gives a Player a MP on a hitch roll
  * Add a button to the player character sheet where they can use an MP any time
 
+<-- Playable by here -->
 
 --------------------------------------------------------------------------------
 Nice to have
