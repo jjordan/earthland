@@ -5,6 +5,7 @@ import rollDice from '../scripts/rollDice.mjs'
 const blankPool = {
   itemid: {},
   name: '',
+  changed: { value: true },
   customAdd: {
     label: '',
     value: { 0: '8' }
@@ -58,6 +59,7 @@ export class UserDicePool extends FormApplication {
     console.log("Have dicepool: %o", dice);
     let items = [];
     let draggable = {value: false};
+    let changed = dice.changed;
     if (!!dice.itemid && dice.itemid.value != '') {
       const actor_ids = this._findActorIdsForPool(dice.pool);
       if (actor_ids.length == 1) {
@@ -76,7 +78,7 @@ export class UserDicePool extends FormApplication {
     console.log("have items: %o", items);
     const themes = game.settings.get('earthland', 'themes')
     const theme = themes.current === 'custom' ? themes.custom : themes.list[themes.current]
-    return { ...dice, theme, items, draggable }
+    return { ...dice, theme, items, draggable, changed }
   }
 
   async _updateObject (event, formData) {
@@ -115,37 +117,48 @@ export class UserDicePool extends FormApplication {
   async _makeDicePoolItem (event) {
     // look for actor IDs
     const currentDice = game.user.getFlag('earthland', 'dicePool')
-    if (!!currentDice.itemid && currentDice.itemid.value) {
-      ui.notifications.warn( `Already created Item for this dice pool: ${currentDice.itemid}` );
-      let value = true;
-      setProperty(currentDice, `draggable`, { value });
-      return currentDice.itemid.value;
-    }
     const actor_ids = this._findActorIdsForPool(currentDice.pool);
     // if we only find 1, we're good
     if (actor_ids.length == 1) {
       // create a new Dicepool item for the actor from the ID
       const actor = game.actors.get(actor_ids[0]);
-      const pool = JSON.parse(JSON.stringify(currentDice.pool))
+      const pool = JSON.stringify(currentDice.pool)
       console.log("About to save pool: %o", pool);
-      const items = await actor.createEmbeddedDocuments('Item', [{
-        name: currentDice.name.value,
-        type: 'dicepool',
-        system: {
-          pool: pool
-        }
-      }]);
+      let items;
+      if (currentDice.itemid.value) {
+        console.log("Saving dicepool: %o, %o, %o", currentDice.name.value, currentDice.itemid.value, pool);
+        items = await actor.updateEmbeddedDocuments('Item', [{
+          name: currentDice.name.value,
+          type: 'dicepool',
+          id: currentDice.itemid.value,
+          _id: currentDice.itemid.value,
+          system: {
+            pool: pool,
+            timestamp: Date.now()
+          }
+        }]);
+      } else {
+        console.log("Creating new dicepool");
+        items = await actor.createEmbeddedDocuments('Item', [{
+          name: currentDice.name.value,
+          type: 'dicepool',
+          system: {
+            pool: pool,
+            timestamp: Date.now()
+          }
+        }]);
+      }
       console.log("Got items: %o", items);
       if (items.length > 0) {
         let value = items[0].id
         setProperty(currentDice, `itemid`, { value });
-        value = true;
-        setProperty(currentDice, `draggable`, { value });
+        setProperty(currentDice, `changed`, { value: false });
+        setProperty(currentDice, `draggable`, { value: true });
         console.log("Got currentDice: %o", currentDice);
         await this.render(true)
         return items[0].id;
       } else {
-        ui.notifications.error( `Could not create DicePool item from dice pool.` );
+        ui.notifications.error( `Could not create or update DicePool item from dice pool.` );
       }
       // somehow add that item to the dicepool???
     } else if (Object.keys(actor_ids).length > 1) {
@@ -165,6 +178,7 @@ export class UserDicePool extends FormApplication {
     const currentDice = game.user.getFlag('earthland', 'dicePool')
     if (!!value) {
       setProperty(currentDice, `name`, { value })
+      setProperty(currentDice, `changed`, { value: true });
     }
     await game.user.setFlag('earthland', 'dicePool', null)
     await game.user.setFlag('earthland', 'dicePool', currentDice)
@@ -180,16 +194,17 @@ export class UserDicePool extends FormApplication {
   // value { energy: 0, mp: 0 }
   async _addCostToPool (source, label, value, actor_id) {
     console.log("in _addCostFromPool with source (%o) label (%o) value (%o)", source, label, value);
-    const currentPool = game.user.getFlag('earthland', 'dicePool')
-    const currentPoolLength = getLength(currentPool.pool[source] || {})
+    const currentDice = game.user.getFlag('earthland', 'dicePool')
+    const currentPoolLength = getLength(currentDice.pool[source] || {})
     const type = 'cost';
-    setProperty(currentPool, `pool.${source}.${currentPoolLength}`, { label, value, type, actor_id })
+    setProperty(currentDice, `pool.${source}.${currentPoolLength}`, { label, value, type, actor_id })
+    setProperty(currentDice, `changed`, { value: true });
 
-    console.log("Have currentPool: %o", currentPool);
+    console.log("Have currentDice: %o", currentDice);
 
     await game.user.setFlag('earthland', 'dicePool', null)
 
-    await game.user.setFlag('earthland', 'dicePool', currentPool)
+    await game.user.setFlag('earthland', 'dicePool', currentDice)
 
     await this.render(true)
   }
@@ -199,12 +214,13 @@ export class UserDicePool extends FormApplication {
     event.preventDefault()
     const $target = $(event.currentTarget)
     const source = $target.data('source')
-    let currentDicePool = game.user.getFlag('earthland', 'dicePool')
+    let currentDice = game.user.getFlag('earthland', 'dicePool')
 
-    delete currentDicePool.pool[source][$target.data('key')];
+    delete currentDice.pool[source][$target.data('key')];
+    setProperty(currentDice, `changed`, { value: true });
 
     await game.user.setFlag('earthland', 'dicePool', null)
-    await game.user.setFlag('earthland', 'dicePool', currentDicePool)
+    await game.user.setFlag('earthland', 'dicePool', currentDice)
 
     this.render(true);
   }
@@ -221,6 +237,7 @@ export class UserDicePool extends FormApplication {
       label: '',
       value: { 0: '8' }
     })
+    setProperty(currentDice, `changed`, { value: true });
 
     await game.user.setFlag('earthland', 'dicePool', null)
 
@@ -236,8 +253,9 @@ export class UserDicePool extends FormApplication {
     const currentDiceLength = getLength(currentDice.pool[source] || {})
     const type = 'trait'
     setProperty(currentDice, `pool.${source}.${currentDiceLength}`, { label, value, type, actor_id })
+    setProperty(currentDice, `changed`, { value: true });
 
-    console.log("Have currentPool: %o", currentDice);
+    console.log("Have currentDice: %o", currentDice);
 
     await game.user.setFlag('earthland', 'dicePool', null)
 
@@ -264,6 +282,7 @@ export class UserDicePool extends FormApplication {
     await game.user.setFlag('earthland', 'dicePool', null)
 
     currentDice.pool = objectFilter(currentDice.pool, (_, dieSource) => source !== dieSource)
+    setProperty(currentDice, `changed`, { value: true });
 
     await game.user.setFlag('earthland', 'dicePool', currentDice)
 
@@ -284,6 +303,7 @@ export class UserDicePool extends FormApplication {
     await game.user.setFlag('earthland', 'dicePool', null)
 
     setProperty(currentDice, `${target}.value`, objectMapValues(dataTargetValue, (value, index) => parseInt(index, 10) === parseInt(targetKey, 10) ? targetValue : value))
+    setProperty(currentDice, `changed`, { value: true });
 
     await game.user.setFlag('earthland', 'dicePool', currentDice)
 
@@ -305,6 +325,7 @@ export class UserDicePool extends FormApplication {
       await game.user.setFlag('earthland', 'dicePool', null)
 
       setProperty(currentDice, `${target}.value`, objectReindexFilter(dataTargetValue, (_, index) => parseInt(index, 10) !== parseInt(targetKey, 10)))
+      setProperty(currentDice, `changed`, { value: true });
 
       await game.user.setFlag('earthland', 'dicePool', currentDice)
 
@@ -322,6 +343,7 @@ export class UserDicePool extends FormApplication {
     const lastValue = dataTargetValue[currentLength - 1] || '8'
 
     setProperty(currentDice, `${target}.value`, { ...dataTargetValue, [currentLength]: lastValue })
+    setProperty(currentDice, `changed`, { value: true });
 
     await game.user.setFlag('earthland', 'dicePool', null)
 
@@ -342,6 +364,7 @@ export class UserDicePool extends FormApplication {
       delete currentDicePool.pool[source][$target.data('key')]
       currentDicePool.pool[source] = objectReindexFilter(currentDicePool.pool[source], (_, index) => parseInt(index, 10) !== parseInt($target.data('key'), 10))
     }
+    setProperty(currentDicePool, `changed`, { value: true });
 
     await game.user.setFlag('earthland', 'dicePool', null)
     await game.user.setFlag('earthland', 'dicePool', currentDicePool)
@@ -358,6 +381,7 @@ export class UserDicePool extends FormApplication {
       label: '',
       value: { 0: '8' }
     })
+    setProperty(currentDice, `changed`, { value: true });
 
     await game.user.setFlag('earthland', 'dicePool', null)
 
@@ -378,6 +402,7 @@ export class UserDicePool extends FormApplication {
     if (!!itemid) {
       setProperty(currentDice, `itemid`, { value: itemid })
     }
+    setProperty(currentDice, `changed`, { value: false });
     console.log("Got pool: %o", currentDice);
     await game.user.setFlag('earthland', 'dicePool', null)
 

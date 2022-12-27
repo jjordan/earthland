@@ -99,9 +99,11 @@ export class earthlandItem extends Item {
   }
 
   async reconstitute() {
-    let pool = this;
-    console.log("Got pool: %o", pool);
-    game.earthland.UserDicePool._setPool(pool.system.pool, pool.name, pool.id);
+    let poolObj = this;
+    console.log("Got pool: %o", poolObj);
+    let pool = JSON.parse(poolObj.system.pool);
+    console.log("What is parsed pool? %o", pool);
+    game.earthland.UserDicePool._setPool(pool, poolObj.name, poolObj.id);
   }
 
   async reset() {

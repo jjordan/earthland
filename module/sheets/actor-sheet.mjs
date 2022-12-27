@@ -585,7 +585,7 @@ export class earthlandActorSheet extends ActorSheet {
         object = value
       }
 
-      game.earthland.UserDicePool._addTraitToPool(this.actor.name, label, object)
+      game.earthland.UserDicePool._addTraitToPool(this.actor.name, label, object, this.actor.id)
       return null;
     }
   }
@@ -595,9 +595,10 @@ export class earthlandActorSheet extends ActorSheet {
     const element = event.currentTarget;
     const dataset = element.dataset;
     if(dataset.poolid) {
-      let pool = this.actor.getEmbeddedDocument('Item', dataset.poolid);
+      let poolObj = this.actor.getEmbeddedDocument('Item', dataset.poolid);
+      let pool = JSON.parse(poolObj.system.pool);
       console.log("Got pool: %o", pool);
-      game.earthland.UserDicePool._setPool(pool.system.pool, pool.name, pool.id);
+      game.earthland.UserDicePool._setPool(pool, poolObj.name, poolObj.id);
     }
   }
 

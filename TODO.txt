@@ -72,9 +72,16 @@ Still To Do
  * Make it so you can name your dice pool
  * Create a "DicePool" item type for the character to store these saved pools
  * Make it so you can drag the Dice Pool into your hotbar, you can't, but you can create an item and drag that to the hotbar
+ * Fix spell actor_id for dicepool
+ * Make buttons on save dicepool work better
+   + Make it so that the button disapears if you have an itemid
+   + Make it so that loading a pool from chat (that was added from an item) saves the itemid
+   + Make it so that adding or removing a trait from the pool removes the itemid
 
  --------------------------------------------------------------------------------
 Still ToDo
+
+ * Try to fix bug where you can't save a dicepool object if you only remove a die from it (adding and changing the name seem to work fine). Probably would work if I added a timestamp, I have a feeling it's only doing a shallow compare of the underlying item objects, so it thinks that nothing has changed.
 
  * Give lots of things damage dice and healing dice
  * Make it so that there's a way to roll just Damage Dice or Healing Dice together without the "selection" process and without worrying about hitches and adding the total together.
@@ -82,6 +89,7 @@ Still ToDo
 
 
 GM TOOLS:
+ * Create a tool to reset a user's Dice Pool in case it breaks
  * Create a macro/tool to roll difficulty for the GM automatically (or add them to a pool, at least)
  * Tool to give PP (Magic Point) to a player character
  * Tool to give or take Energy from a character
@@ -122,3 +130,5 @@ WORKFLOWS:
  * Make it so that "Combat Reflexes" adds +1 to a character's initiative for each level they have
 
  * Remove Hit Points and replace with Stress and Trauma tracks (make it so we can switch back and forth between hit points and trauma track)
+
+
