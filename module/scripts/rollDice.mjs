@@ -101,6 +101,19 @@ const getDiceByEffect = results => {
   return { dice: finalResults, total, effectDice }
 }
 
+const getAllDice = results => {
+  console.log("What are results? %o", results);
+  const finalResults = markResultTotals(results)
+  console.log("What are final results? %o", finalResults);
+  finalResults.forEach(result => {
+    result.total = true;
+  });
+  console.log("Did I set all results to be part of the total? %o", finalResults);
+  const total = finalResults.reduce((totalValue, result) => result.total ? totalValue + result.result : totalValue, 0)
+
+  return { dice: finalResults, total: total, effectDice: [] }
+}
+
 const getDiceByTotal = results => {
   const totalMarkedResults = markResultTotals(results)
   const finalResults = markResultEffect(totalMarkedResults)
@@ -116,8 +129,9 @@ const getDiceByTotal = results => {
   const total = finalResults.reduce((totalValue, result) => result.total ? totalValue + result.result : totalValue, 0)
   const targetEffectDie = finalResults.find(result => result.effect)
   const effectDice = targetEffectDie?.faces ? [targetEffectDie.faces] : []
-
-  return { dice: finalResults, total, effectDice }
+  const result = { dice: finalResults, total, effectDice }
+  console.log("what are results? %o", result);
+  return result
 }
 
 const updateDice = async (html, dice) => {
@@ -535,11 +549,23 @@ export default async function (pool, rollType, name) {
 
   await this?._clearDicePool()
 
-  const selectedDice = rollType === 'total'
-    ? getDiceByTotal(rollResults.results)
-    : rollType === 'effect'
-      ? getDiceByEffect(rollResults.results)
-      : await dicePicker(rollResults)
+  // const selectedDice = rollType === 'total'
+  //   ? getDiceByTotal(rollResults.results)
+  //   : rollType === 'effect'
+  //     ? getDiceByEffect(rollResults.results)
+  //     : await dicePicker(rollResults)
+
+  let selectedDice;
+
+  if (rollType === 'total') {
+    selectedDice = getDiceByTotal(rollResults.results)
+  } else if (rollType === 'effect') {
+    selectedDice = getDiceByEffect(rollResults.results)
+  } else if (rollType === 'all') {
+    selectedDice = getAllDice(rollResults.results)
+  } else {
+    selectedDice = await dicePicker(rollResults);
+  }
 
   const content = await renderTemplate('systems/earthland/templates/chat/roll-result.html', {
     name: name,

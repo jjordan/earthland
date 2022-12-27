@@ -108,6 +108,7 @@
   "MakeDraggable":"Make DicePool Item",
   "Name": "Name",
   "NoTraitsInPool": "There are currently no traits or dice in this pool.",
+  "RollAll":"Roll All",
   "Reroll": "Re-Roll",
   "Roll": "Roll",
   "RollAndSelect": "Roll & Select",

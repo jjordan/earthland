@@ -37,7 +37,7 @@ export class UserDicePool extends FormApplication {
       template: 'systems/earthland/templates/other/dice-pool.html',
       title: localizer('DicePool'),
       classes: ['dice-pool', 'user-dice-pool'],
-      width: 660,
+      width: 750,
       height: 'auto',
       top: 500,
       left: 20,
@@ -421,11 +421,15 @@ export class UserDicePool extends FormApplication {
     const name = currentDicePool.name
     console.log("What is currentDicePool? %o", dicePool);
 
-    const rollType = $target.hasClass('roll-for-total')
-      ? 'total'
-      : $target.hasClass('roll-for-effect')
-        ? 'effect'
-        : 'select'
+    let rollType = 'select';
+
+    if ($target.hasClass('roll-for-total')) {
+      rollType = 'total';
+    } else if ($target.hasClass('roll-for-effect')) {
+      rollType = 'effect';
+    } else if ($target.hasClass('roll-all')) {
+      rollType = 'all';
+    }
 
     await rollDice.call(this, dicePool, rollType, name)
   }

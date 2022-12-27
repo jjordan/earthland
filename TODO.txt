@@ -77,14 +77,16 @@ Still To Do
    + Make it so that the button disapears if you have an itemid
    + Make it so that loading a pool from chat (that was added from an item) saves the itemid
    + Make it so that adding or removing a trait from the pool removes the itemid
+ * Try to fix bug where you can't save a dicepool object if you only remove a die from it (adding and changing the name seem to work fine). Probably would work if I added a timestamp, I have a feeling it's only doing a shallow compare of the underlying item objects, so it thinks that nothing has changed.
+ * What if I had a DicePool type, and if it's set to "normal", we roll normally, if it's set to "Damage" we roll damage and "healing" rolls healing?  Except that there's no functional difference between damage and healing rolls, just what to do with the results of the roll
+ * For now, let's just add a "roll all" button
+ * Give lots of things damage dice and healing dice
+ * Make it so that there's a way to roll just Damage Dice or Healing Dice together without the "selection" process and without worrying about hitches and adding the total together.
 
  --------------------------------------------------------------------------------
 Still ToDo
 
- * Try to fix bug where you can't save a dicepool object if you only remove a die from it (adding and changing the name seem to work fine). Probably would work if I added a timestamp, I have a feeling it's only doing a shallow compare of the underlying item objects, so it thinks that nothing has changed.
 
- * Give lots of things damage dice and healing dice
- * Make it so that there's a way to roll just Damage Dice or Healing Dice together without the "selection" process and without worrying about hitches and adding the total together.
  * Make it so that things with charges have their charge deducted as part of the rolling process
 
 
