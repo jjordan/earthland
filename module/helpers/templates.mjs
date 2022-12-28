@@ -104,6 +104,7 @@
     "systems/earthland/templates/partials/dice/select.html",
     "systems/earthland/templates/partials/dice/dmp.html",
     "systems/earthland/templates/partials/dice/den.html",
+    "systems/earthland/templates/partials/dice/dch.html",
     "systems/earthland/templates/partials/dice/d2.html",
     "systems/earthland/templates/partials/dice/d4.html",
     "systems/earthland/templates/partials/dice/d10.html",

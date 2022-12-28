@@ -467,6 +467,7 @@ const removeCostsFromPool = async (pool) => {
   // basically we're going to return a new pool without the costs
   const new_pool = {};
   const costs_by_actor_id = {};
+  const charges_by_item_id = {};
   for (const [source, value] of Object.entries(pool)) {
     new_pool[source] = {};
     for (const [index, object] of Object.entries(value)) {
@@ -477,6 +478,8 @@ const removeCostsFromPool = async (pool) => {
         }
       } else if (object.type == 'cost') {
         costs_by_actor_id[object.actor_id] = object;
+      } else if (object.type == 'charge') {
+        charges_by_item_id[object.item_id] = object;
       }
     }
   }
@@ -530,6 +533,54 @@ const removeCostsFromPool = async (pool) => {
     } else {
       ui.notifications.error(`Couldn't find actor for ${object.label}`);
       return false;
+    }
+  }
+  // collect the charges from the item
+  for (const [item_id, object] of Object.entries(charges_by_item_id)) {
+    console.log("Actor id: %o", object.actor_id);
+    let actor = await Actor.get(object.actor_id);
+    if(!!actor) {
+      if(actor.isOwner) {
+        const item = actor.getEmbeddedDocument("Item", object.item_id);
+        if (!!item) {
+          const current_charges = item.system.current_charges;
+          const charge_cost = item.system.charge_cost;
+          if (current_charges >= charge_cost) {
+            const new_charges = current_charges - charge_cost;
+            let updated;
+            console.log("new charges: %o", new_charges);
+            if ((new_charges == 0) && (item.system.destroyed_when_empty)) {
+              // remove the item from the actor if new_charges is 0
+              // and the item is destroyed if no charges
+              updated = await actor.deleteEmbeddedDocuments("Item", [item.id]);
+            } else {
+              // do not destroy the item
+              updated = await item.update({
+                data: {
+                  current_charges: new_charges
+                }
+              });
+            }
+            if(!updated) {
+              ui.notifications.error( `Couldn't update resources for item ${item.name} to new current charges (${new_charges})` );
+              return false;
+            }
+
+          } else {
+            return ui.notifications.error(`Item ${item.name} does not have enough charges (${current_charges}) to pay the cost (${charge_cost})`);
+          }
+
+        } else {
+          // error that we couldn't get the item
+          return ui.notifications.error(`Couldn't find the item with id: ${object.item_id}`);
+        }
+      } else {
+        // error that we can't extract charges from items that other characters own
+        return ui.notifications.error(`Can't extract charges from objects you don't own.`);
+      }
+    } else {
+      // error that we couldn't get the actor
+      return ui.notifications.error(`Couldn't find the actor with id: ${object.actor_id}`);
     }
   }
   return new_pool;

@@ -127,8 +127,8 @@
           <h4>{{potion.name}}</h4>
         </div>
         <div class="item-name">
-          {{#if potion.system.dice}}
-            <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject potion.system.dice.value}}" data-label="{{potion.name}}" data-kind="potion"><i class="fas fa-dice-d20"></i></button>
+          {{#if potion.system.charge_cost}}
+            <button title="Consume" class="role consumable small-button" data-id="{{potion._id}}"  data-rolltype="actor" data-roll="{{formulaFromObject potion.system.dice.value}}" data-label="{{potion.name}}" data-kind="potion" data-chcost="{{potion.system.charge_cost}}" data-chcurrent="{{potion.system.current_charges}}"><i class="fa-solid fa-prescription-bottle-medical"></i></button>
           {{/if}}
         </div>
         <div class="item-controls">
@@ -159,8 +159,12 @@
           <h4>{{lacrima.name}}</h4>
         </div>
         <div class="item-name">
-          {{#if lacrima.system.dice}}
-            <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject lacrima.system.dice.value}}" data-label="{{lacrima.name}}" data-kind="lacrima"><i class="fas fa-dice-d20"></i></button>
+          {{#if lacrima.system.charge_cost}}
+            <button title="Consume Item" class="role consumable small-button" data-id="{{lacrima._id}}"  data-rolltype="actor" data-roll="{{formulaFromObject lacrima.system.dice.value}}" data-label="{{lacrima.name}}" data-kind="lacrima" data-chcost="{{lacrima.system.charge_cost}}" data-chcurrent="{{lacrima.system.current_charges}}"><i class="fa-regular fa-circle-dot"></i></button>
+          {{else}}
+            {{#if lacrima.system.dice}}
+              <button title="Add to Dice-Pool" class="role rollable small-button" data-id="{{lacrima._id}}" data-rolltype="actor" data-roll="{{formulaFromObject lacrima.system.dice.value}}" data-label="{{lacrima.name}}" data-kind="lacrima"><i class="fas fa-dice-d20"></i></button>
+            {{/if}}
           {{/if}}
         </div>
         <div class="item-controls">
@@ -194,8 +198,12 @@
           {{#if (or gear.system.energy_cost gear.system.mp_cost)}}
             <button title="Use Weapon Equipment (add to dice-pool)" class="usable small-button" data-usetype="actor" data-energycost="{{gear.system.energy_cost}}" data-mpcost="{{gear.system.mp_cost}}" data-label="{{gear.name}}" data-kind="spell" data-level="{{spellLevel}}" data-roll="{{formulaFromObject gear.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
           {{else}}
-            {{#if gear.system.dice}}
-              <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject gear.system.dice.value}}" data-label="{{gear.name}}" data-kind="equipment"><i class="fas fa-dice-d20"></i></button>
+            {{#if gear.system.charge_cost}}
+              <button title="Consume" class="role consumable small-button" data-id="{{gear._id}}" data-rolltype="actor" data-roll="{{formulaFromObject gear.system.dice.value}}" data-label="{{gear.name}}" data-kind="gear" data-chcost="{{gear.system.charge_cost}}" data-chcurrent="{{gear.system.current_charges}}"><i class="fa-solid fa-shield-halved"></i></button>
+            {{else}}
+              {{#if gear.system.dice}}
+                <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject gear.system.dice.value}}" data-label="{{gear.name}}" data-kind="equipment"><i class="fas fa-dice-d20"></i></button>
+              {{/if}}
             {{/if}}
           {{/if}}
         </div>
@@ -230,8 +238,12 @@
           {{#if (or trinket.system.energy_cost trinket.system.mp_cost)}}
             <button title="Use Trinket Ability (add to dice-pool)" class="usable small-button" data-usetype="actor" data-energycost="{{trinket.system.energy_cost}}" data-mpcost="{{trinket.system.mp_cost}}" data-label="{{trinket.name}}" data-kind="spell" data-level="{{spellLevel}}" data-roll="{{formulaFromObject trinket.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
           {{else}}
-            {{#if trinket.system.dice}}
-              <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject trinket.system.dice.value}}" data-label="{{trinket.name}}" data-kind="trinket"><i class="fas fa-dice-d20"></i></button>
+            {{#if trinket.system.charge_cost}}
+              <button title="Consume" class="role consumable small-button" data-id="{{trinket._id}}" data-rolltype="actor" data-roll="{{formulaFromObject trinket.system.dice.value}}" data-label="{{trinket.name}}" data-kind="trinket" data-chcost="{{trinket.system.charge_cost}}" data-chcurrent="{{trinket.system.current_charges}}"><i class="fa-solid fa-ring"></i></button>
+            {{else}}
+              {{#if trinket.system.dice}}
+                <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject trinket.system.dice.value}}" data-label="{{trinket.name}}" data-kind="trinket"><i class="fas fa-dice-d20"></i></button>
+              {{/if}}
             {{/if}}
           {{/if}}
         </div>

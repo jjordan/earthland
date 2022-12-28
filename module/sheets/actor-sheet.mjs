@@ -367,6 +367,7 @@ export class earthlandActorSheet extends ActorSheet {
     html.find('.rollable').click(this._onRoll.bind(this));
     html.find('.usable').click(this._onUse.bind(this));
     html.find('.poolable').click(this._onPool.bind(this));
+    html.find('.consumable').click(this._onConsume.bind(this));
 
     html.find('input.checkbox').each( (i, val) => {
       const isTrueSet = ($(val).val() === 'true');
@@ -594,11 +595,62 @@ export class earthlandActorSheet extends ActorSheet {
     event.preventDefault();
     const element = event.currentTarget;
     const dataset = element.dataset;
-    if(dataset.poolid) {
+    if (dataset.poolid) {
       let poolObj = this.actor.getEmbeddedDocument('Item', dataset.poolid);
       let pool = JSON.parse(poolObj.system.pool);
       console.log("Got pool: %o", pool);
       game.earthland.UserDicePool._setPool(pool, poolObj.name, poolObj.id);
+    }
+  }
+
+  _onConsume(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+    console.log("in _onConsume with dataset: %o", dataset);
+    // in order to consume a charge on the item, we need:
+    // the charge_cost, the current available charges, and the itemid.
+    // Now technically with just the itemid we could load the item and check the other two datapoints...
+    // We have to do that anyway in the dicepool, so maybe for now we just load those
+    // datapoints directly here so that the first check is quick.
+    if (dataset.id) {
+      let item = this.actor.getEmbeddedDocument("Item", dataset.id);
+      console.log("have item: %o", item);
+      const charge_cost = parseInt(dataset.chcost);
+      const current_charges = parseInt(dataset.chcurrent);
+      console.log("charge_cost: %o, current_charges: %o", charge_cost, current_charges);
+      if (charge_cost >= 1) {
+        if (current_charges >= 1) {
+          if (current_charges >= charge_cost) {
+            console.log("we can pay the cost");
+            // the item has more charges than it consumes, it's safe to use it
+            let label = dataset.label ? `[${dataset.kind}] ${dataset.label}` : '';
+            const object = this.unwrapCostObject({ ch: dataset.chcost });
+            console.log("about to add a charge to the pool");
+            game.earthland.UserDicePool._addChargeToPool(this.actor.name, label, object, this.actor.id, item.id);
+          } else {
+            // send error message to user and don't add to the pool
+            return ui.notifications.error( `${item.name} does not have enough charges ${dataset.chcurrent} to pay the cost ${dataset.chcost}` );
+          }
+        } else {
+          return ui.notifications.error( `${item.name} does not have enough charges ${dataset.chcurrent} to pay the cost ${dataset.chcost}` );
+        }
+      }
+    }
+    if (dataset.roll) {
+      let label = dataset.label ? `[${dataset.kind}] ${dataset.label}` : '';
+      let trait = dataset.roll;
+      let rollData = this.actor.getRollData();
+      let value = this.replaceFormulaData(trait, rollData);
+      let object;
+      if (typeof value === 'string') {
+        object = this.formulaToDiceObject(value);
+      } else if (typeof value === 'object') {
+        object = value
+      }
+
+      game.earthland.UserDicePool._addTraitToPool(this.actor.name, label, object, this.actor.id)
+      return null;
     }
   }
 

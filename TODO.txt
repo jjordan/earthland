@@ -88,6 +88,7 @@ Still ToDo
 
 
  * Make it so that things with charges have their charge deducted as part of the rolling process
+   + Items have charges, so Potion, Lacrima, Equipment and Trinket
 
 
 GM TOOLS:

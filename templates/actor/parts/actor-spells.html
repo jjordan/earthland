@@ -18,7 +18,7 @@
             <h4>{{item.name}}</h4>
           </div>
           <div class="item-name">
-            <button title="Cast Spell" class="usable small-button" data-usetype="actor" data-energycost="{{item.system.energy_cost}}" data-mpcost="{{item.system.mp_cost}}" data-label="{{item.name}}" data-kind="spell" data-level="{{spellLevel}}" data-roll="{{formulaFromObject item.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
+            <button title="Cast Spell" class="usable small-button" data-itemid="{{item.id}}" data-usetype="actor" data-energycost="{{item.system.energy_cost}}" data-mpcost="{{item.system.mp_cost}}" data-label="{{item.name}}" data-kind="spell" data-level="{{spellLevel}}" data-roll="{{formulaFromObject item.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
           </div>
           <div class="item-controls">
             <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>

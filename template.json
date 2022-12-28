@@ -432,6 +432,11 @@
          "magic":{
             "sfx":""
          },
+         "consumable":{
+            "charge_cost": 1,
+            "max_charges": 1,
+            "current_charges": 1
+         },
          "wondrous":{
             "energy_cost":0,
             "mp_cost":0,
@@ -508,22 +513,22 @@
             "base",
             "physical_item",
             "rollable",
+            "consumable",
             "magic"
          ],
          "duration":"",
-         "charges":1,
-         "consumed_on_use": true
+         "destroyed_when_empty": true
       },
       "lacrima":{
          "templates":[
             "base",
             "physical_item",
             "rollable",
+            "consumable",
             "magic"
          ],
          "spell":"",
-          "charges":1,
-         "consumed_on_use": true
+         "destroyed_when_empty": true
       },
       "container":{
          "templates":[
@@ -541,10 +546,10 @@
             "equippable_item",
             "rollable",
             "wondrous",
+            "consumable",
             "magic"
          ],
-         "charges":1,
-         "consumed_on_use": false
+         "destroyed_when_empty": false
       },
       "trinket":{
          "templates":[
@@ -553,10 +558,10 @@
             "equippable_item",
             "rollable",
             "wondrous",
+            "consumable",
             "magic"
          ],
-         "charges":1,
-         "consumed_on_use": false,
+         "destroyed_when_empty": false,
          "active_effects":[
          ]
       },

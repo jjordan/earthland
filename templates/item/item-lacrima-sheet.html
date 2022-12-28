@@ -18,13 +18,23 @@
     {{!-- Attributes Tab --}}
     <div class="tab attributes" data-group="primary" data-tab="attributes">
       <div class="resource">
-        <label class="resource-label">Charges</label>
-        <input type="text" name="system.charges" value="{{system.charges}}" data-dtype="Number"/>
+        <label class="resource-label">Current Charges</label>
+        <input type="text" name="system.current_charges" value="{{system.current_charges}}" data-dtype="Number"/>
       </div>
 
       <div class="resource">
-        <label class="resource-label">Consumed on Use?</label>
-        <input class="input-checkbox-cpt" name="system.consumed_on_use" type="checkbox" {{checked system.consumed_on_use}}>
+        <label class="resource-label">Max Charges</label>
+        <input type="text" name="system.max_charges" value="{{system.max_charges}}" data-dtype="Number"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">Charge Cost</label>
+        <input type="text" name="system.charge_cost" value="{{system.charge_cost}}" data-dtype="Number"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">Destroyed when Empty?</label>
+        <input class="input-checkbox-cpt" name="system.destroyed_when_empty" type="checkbox" {{checked system.destroyed_when_empty}}>
       </div>
 
       <div class="resource">

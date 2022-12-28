@@ -84,6 +84,7 @@ export default () => {
                     label: $die.data('label'),
                     type: $die.data('type'),
                     actor_id: $die.data('actorid'),
+                    item_id: $die.data('itemid'),
                     value: $die.find('.die').get()
                       .reduce((diceValues, dieValue, dieValueIndex) => {
                         return {

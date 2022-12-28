@@ -191,7 +191,7 @@ export class UserDicePool extends FormApplication {
     await game.user.setFlag('earthland', 'dicePool', this.dicePool)
   }
 
-  // value { energy: 0, mp: 0 }
+  // value { en: 1, mp: 2 } // 1 energy and 2 magic points required
   async _addCostToPool (source, label, value, actor_id) {
     console.log("in _addCostFromPool with source (%o) label (%o) value (%o)", source, label, value);
     const currentDice = game.user.getFlag('earthland', 'dicePool')
@@ -211,18 +211,36 @@ export class UserDicePool extends FormApplication {
 
   async _removeCostFromPool (event) {
     console.log("in _removeCostFromPool");
-    event.preventDefault()
-    const $target = $(event.currentTarget)
-    const source = $target.data('source')
-    let currentDice = game.user.getFlag('earthland', 'dicePool')
+    event.preventDefault();
+    const $target = $(event.currentTarget);
+    const source = $target.data('source');
+    let currentDice = game.user.getFlag('earthland', 'dicePool');
 
     delete currentDice.pool[source][$target.data('key')];
     setProperty(currentDice, `changed`, { value: true });
 
-    await game.user.setFlag('earthland', 'dicePool', null)
-    await game.user.setFlag('earthland', 'dicePool', currentDice)
+    await game.user.setFlag('earthland', 'dicePool', null);
+    await game.user.setFlag('earthland', 'dicePool', currentDice);
 
     this.render(true);
+  }
+
+  // value { ch: 1 } // 1 charge consumed
+  async _addChargeToPool (source, label, value, actor_id, item_id) {
+    console.log("in _addChargeToPool with source (%o) label (%o) value (%o)", source, label, value);
+    const currentDice = game.user.getFlag('earthland', 'dicePool')
+    const currentPoolLength = getLength(currentDice.pool[source] || {})
+    const type = 'charge';
+    setProperty(currentDice, `pool.${source}.${currentPoolLength}`, { label, value, type, actor_id, item_id });
+    setProperty(currentDice, `changed`, { value: true });
+
+    console.log("Have currentDice: %o", currentDice);
+
+    await game.user.setFlag('earthland', 'dicePool', null);
+
+    await game.user.setFlag('earthland', 'dicePool', currentDice);
+
+    await this.render(true)
   }
 
   async _addCustomTraitToPool (event) {
