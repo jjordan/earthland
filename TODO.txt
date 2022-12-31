@@ -87,9 +87,6 @@ Still To Do
  * Create a tool to reset a user's Dice Pool in case it breaks
  * Change the icon for charges in the dice pool
 
- --------------------------------------------------------------------------------
-Still ToDo
-
  * Download the following data from the EarthLand game:
    + Celestial Spirits - pull from local *CHECK*
    + Monsters (Earth Land) - add to compendium from local monsters *CHECK*
@@ -120,19 +117,24 @@ Still ToDo
    + Lacrima *CHECK*
    + Gemstones *CHECK*
    + Celestial Keys *CHECK*
-   + Firearms
-   + Firearm Ammo
-   + Monster Traits
-   + Monster Abilities
-   + Class Traits
-   + Magical Armor
-   + Magical Items
-   + Magical Weapons
-   + Magical Ammo
-   + Etherious Forms
-   + Artificer Creations
-   + NPCs (kind of like Monsters)
+   + Firearms *CHECK*
+   + Firearm Ammo *CHECK*
+   + Monster Traits *CHECK*
+   + Monster Abilities *CHECK*
+   + Class Traits *CHECK*
+   + Magical Armor *CHECK*
+   + Magical Items *CHECK*
+   + Magical Weapons *CHECK*
+   + Magical Ammo *CHECK*
+   + Etherious Forms *CHECK*
+   + Artificer Creations *CHECK*
+   + NPCs (kind of like Monsters) *CHECK*
 
+ --------------------------------------------------------------------------------
+Still ToDo
+
+ * Import the documents above into the game by making adjustments to the structure
+   + Start with the items and abilities
 
 GM TOOLS:
  * Create a macro/tool to roll difficulty for the GM automatically (or add them to a pool, at least)

@@ -399,7 +399,8 @@
       ],
       "templates":{
          "base":{
-            "description":""
+            "description":"",
+            "source":""
          },
          "capability": {
             "is_physical_item": false,
@@ -410,6 +411,7 @@
             "is_physical_item": true,
             "is_capability": false,
             "rarity":"common",
+            "identified":true,
             "weight":0,
             "value":0,
             "durability":0
@@ -426,16 +428,32 @@
             "dice": {
               "value": {
                 "0": "4"
-              }
+              },
+              "effect_type":""
             }
          },
          "magic":{
-            "sfx":""
+            "sfx":"",
+            "effect_type":"",
+            "casting_time":"",
+            "attack":"",
+            "save":"",
+            "concentration":false,
+            "duration":""
          },
          "consumable":{
             "charge_cost": 1,
             "max_charges": 1,
             "current_charges": 1
+         },
+         "targetable":{
+            "range": "",
+            "area":"",
+            "target": "",
+            "shape": "",
+            "height":"",
+            "width":"",
+            "depth":""
          },
          "wondrous":{
             "energy_cost":0,
@@ -460,6 +478,7 @@
             "base",
             "physical_item",
             "rollable",
+            "targetable",
             "equippable_item",
             "magic",
             "wondrous"
@@ -513,6 +532,7 @@
             "base",
             "physical_item",
             "rollable",
+            "targetable",
             "consumable",
             "magic"
          ],
@@ -524,6 +544,7 @@
             "base",
             "physical_item",
             "rollable",
+            "targetable",
             "consumable",
             "magic"
          ],
@@ -546,6 +567,7 @@
             "equippable_item",
             "rollable",
             "wondrous",
+            "targetable",
             "consumable",
             "magic"
          ],
@@ -558,6 +580,7 @@
             "equippable_item",
             "rollable",
             "wondrous",
+            "targetable",
             "consumable",
             "magic"
          ],
@@ -594,14 +617,13 @@
          "templates":[
             "base",
             "rollable",
+            "targetable",
             "magic"
          ],
          "is_physical_item": false,
          "is_capability": false,
          "requirements":"",
-         "range":"",
          "duration":"",
-         "shape":"",
          "school":"",
          "level":0,
          "energy_cost":0,
