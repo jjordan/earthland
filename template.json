@@ -662,6 +662,7 @@
          "is_class_feature": false,
          "is_species_feature": false,
          "is_monster_feature": false,
+         "energy_cost":0,
          "description":""
       },
       "class":{
@@ -671,6 +672,7 @@
             "capability",
             "rollable"
          ],
+         "hitDice":"",
          "is_class_feature": false,
          "is_species_feature": false,
          "is_monster_feature": false,
