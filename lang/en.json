@@ -105,6 +105,8 @@
   "very_hard":         "Very Hard",
   "almost_impossible": "Almost Impossible",
 
+  "MakingATotalOf": "Making a Total of",
+  "MagicPoints": "Magic Points",
   "AddCustomDice": "Add Custom Dice",
   "Added": "added",
   "AddToPool": "Add To Pool",

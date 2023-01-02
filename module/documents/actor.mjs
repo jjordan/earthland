@@ -3,6 +3,7 @@
  * @extends {Actor}
  */
 import { formulaFromObject } from '../../lib/helpers.js'
+import { localizer } from '../scripts/foundryHelpers.mjs'
 
 export class earthlandActor extends Actor {
 
@@ -67,6 +68,50 @@ export class earthlandActor extends Actor {
     const systemData = actorData.system;
     systemData.xp = (systemData.cr * systemData.cr) * 100;
   }
+
+
+  async changePpBy (value, directChange = false) {
+    // ensure current value is an integer
+    const currentValue = +(this.data.data.magic.value ?? 0)
+
+    const newValue = currentValue + value
+
+    // action only taken if value will be different and won't result in negative plot points
+    if (currentValue !== newValue && newValue >= 0) {
+      await this.updatePpValue(newValue)
+      // determin if it is spending a plot point or receiving a plot point
+      const valueChangeType = currentValue > newValue
+          ? directChange
+            ? localizer('Removed')
+            : localizer('Spent')
+          : directChange
+            ? localizer('Added')
+            : localizer('Received')
+
+      await this.createPpMessage(valueChangeType, Math.abs(currentValue - newValue), newValue)
+    }
+  }
+
+  // Send a message to the chat on the pp change
+  async createPpMessage (changeType, value, total) {
+    const message = await renderTemplate(`systems/earthland/templates/chat/change-pp.html`, {
+      changeType,
+      speaker: game.user,
+      target: this,
+      total,
+      value
+    })
+
+    ChatMessage.create({ content: message })
+  }
+
+  // Update plot point value of the actor
+  async updatePpValue (value) {
+    await this.update({
+      'data.magic.value': value
+    })
+  }
+
 
   /**
    * Override getRollData() that's supplied to rolls.

@@ -378,6 +378,17 @@ export class earthlandActorSheet extends ActorSheet {
         $(this).prop("checked", event.target.value);
       }
     });
+    html.find('.add-pp').click(() => { this.actor.changePpBy(1) })
+    html.find('.pp-number-field').change(this._ppNumberChange.bind(this))
+    html.find('.spend-pp').click(() => {
+      this.actor
+        .changePpBy(-1)
+        .then(() => {
+          if (game.dice3d) {
+            game.dice3d.show({ throws: [{ dice: [{ result: 1, resultLabel: 1, type: 'dp', vectors: [], options: {} }] }] }, game.user, true)
+          }
+        })
+    })
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -388,6 +399,17 @@ export class earthlandActorSheet extends ActorSheet {
         li.addEventListener("dragstart", handler, false);
       });
     }
+  }
+
+  async _ppNumberChange (event) {
+    event.preventDefault()
+    const $field = $(event.currentTarget)
+    const parsedValue = parseInt($field.val(), 10)
+    const currentValue = parseInt(this.actor.data.data.magic.value, 10)
+    const newValue = parsedValue < 0 ? 0 : parsedValue
+    const changeAmount = newValue - currentValue
+
+    this.actor.changePpBy(changeAmount, true)
   }
 
   async _onMilestoneCheck(event) {
