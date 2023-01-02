@@ -60,22 +60,6 @@ export class UserDicePool extends FormApplication {
     let items = [];
     let draggable = {value: false};
     let changed = dice.changed;
-    if (!!dice.itemid && dice.itemid.value != '') {
-      const actor_ids = this._findActorIdsForPool(dice.pool);
-      if (actor_ids.length == 1) {
-        let actor = game.actors.get(actor_ids[0]);
-        let item = await actor.getEmbeddedDocument('Item', dice.itemid.value);
-        console.log("Got item: %o", item);
-        if(!!item) {
-          items.push( item );
-          draggable.value = false; // Setting to false so confusing draggable button doesn't appear
-        } else {
-          let value;
-          setProperty(dice, `itemid`, { value });
-        }
-      }
-    }
-    console.log("have items: %o", items);
     const themes = game.settings.get('earthland', 'themes')
     const theme = themes.current === 'custom' ? themes.custom : themes.list[themes.current]
     return { ...dice, theme, items, draggable, changed }
@@ -450,6 +434,30 @@ export class UserDicePool extends FormApplication {
     }
 
     await rollDice.call(this, dicePool, rollType, name)
+  }
+
+  async _addDifficultyToPool (source, label, value, type) {
+    console.log("in _addDifficultyToPool with source (%o) label (%o) value (%o), type: %o", source, label, value, type);
+    const currentDice = game.user.getFlag('earthland', 'dicePool')
+
+    const currentDiceLength = getLength(currentDice.pool[source] || {})
+    const rollType = 'difficulty';
+    setProperty(currentDice, `pool.${source}.${currentDiceLength}`, { label, value, type: rollType })
+    setProperty(currentDice, `changed`, { value: true });
+
+    console.log("Have currentDice: %o", currentDice);
+
+    await game.user.setFlag('earthland', 'dicePool', null)
+
+    await game.user.setFlag('earthland', 'dicePool', currentDice)
+    let should_render = true;
+    if (type == 'roll') {
+      should_render = false;
+      await rollDice.call(this, currentDice.pool, 'total')
+      await this.render(false)
+    } else {
+      await this.render(true)
+    }
   }
 
   async toggle () {

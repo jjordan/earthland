@@ -1,0 +1,42 @@
+<form class="{{cssClass}} difficulty difficulty-table sheet-cpt" autocomplete="off">
+  <div class="sheet-background"></div>
+  <div class="sheet-image"></div>
+  <div class="sheet-content part-1">
+    <div class="section-cpt">
+      <div class="section-image"></div>
+      <div class="section-content">
+        <div class="relative-section difficulty-table">
+          <div class="section-background"></div>
+          <h3 class="section-primary-title-cpt px-2 mb-0">{{localize 'Difficulty'}}</h3>
+          <div class="resources grid grid-4col">
+            {{#each difficulty_levels as |dice key|}}
+            <div class="flex-col pr-0 flex-s-1">
+              <div class="flex-row">
+                <label class="resource-label">{{localize key}}</label>
+              </div>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <div class="flex-row">
+                <div>
+                  <span class="input-label-cpt">{{localize 'Dice'}}</span>
+                  {{> "systems/earthland/templates/partials/dice/select.html"
+                    dice=dice.value
+                    edit=false
+                    selectName=key
+                  }}
+                </div>
+              </div>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button class="add-to-pool btn btn-primary-cpt" data-target="{{key}}" type="button">{{localize 'AddToPool'}}</button>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button class="roll-directly btn btn-primary-cpt" data-target="{{key}}" type="button">{{localize 'RollNow'}}</button>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

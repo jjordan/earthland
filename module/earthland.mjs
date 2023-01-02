@@ -9,6 +9,7 @@ import { earthlandItemSheet } from "./sheets/item-sheet.mjs";
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { earthland } from "./helpers/config.mjs";
 import dicePoolHooks from './hooks/dicePoolHooks.mjs';
+import difficultyHooks from './hooks/difficultyHooks.mjs';
 import { registerHandlebarHelpers } from './handlebars/helpers.js'
 import { registerSettings } from './settings/settings.js'
 
@@ -53,6 +54,7 @@ Hooks.once('init', async function() {
   console.log("just registered game settings");
 
   dicePoolHooks();
+  difficultyHooks();
   registerHandlebarHelpers();
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();
