@@ -436,13 +436,13 @@ export class UserDicePool extends FormApplication {
     await rollDice.call(this, dicePool, rollType, name)
   }
 
-  async _addDifficultyToPool (source, label, value, type) {
-    console.log("in _addDifficultyToPool with source (%o) label (%o) value (%o), type: %o", source, label, value, type);
+  async _addDifficultyToPool (source, label, value) {
+    console.log("in _addDifficultyToPool with source (%o) label (%o) value (%o)", source, label, value);
     const currentDice = game.user.getFlag('earthland', 'dicePool')
 
     const currentDiceLength = getLength(currentDice.pool[source] || {})
-    const rollType = 'difficulty';
-    setProperty(currentDice, `pool.${source}.${currentDiceLength}`, { label, value, type: rollType })
+    const type = 'difficulty';
+    setProperty(currentDice, `pool.${source}.${currentDiceLength}`, { label, value, type })
     setProperty(currentDice, `changed`, { value: true });
 
     console.log("Have currentDice: %o", currentDice);
@@ -450,14 +450,8 @@ export class UserDicePool extends FormApplication {
     await game.user.setFlag('earthland', 'dicePool', null)
 
     await game.user.setFlag('earthland', 'dicePool', currentDice)
-    let should_render = true;
-    if (type == 'roll') {
-      should_render = false;
-      await rollDice.call(this, currentDice.pool, 'total')
-      await this.render(false)
-    } else {
-      await this.render(true)
-    }
+
+    await this.render(true)
   }
 
   async toggle () {

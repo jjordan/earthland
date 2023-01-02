@@ -140,8 +140,7 @@ export class Difficulty extends FormApplication {
     const dice = this.difficulty_levels[target].value;
 
     // add dice to pool
-    const type = 'render';
-    game.earthland.UserDicePool._addDifficultyToPool(game.user.name, label, dice, type)
+    game.earthland.UserDicePool._addDifficultyToPool(game.user.name, label, dice)
   }
 
   async _rollDifficulty(event) {
@@ -153,10 +152,20 @@ export class Difficulty extends FormApplication {
     const label = `Difficulty [${level}]`;
 
     const dice = this.difficulty_levels[target].value;
-    const type = 'roll';
     // TODO: conver this to pulling the constant from UserDicePool:
-    game.earthland.UserDicePool._addDifficultyToPool(game.user.name, label, dice, type)
+    const pool = {};
+    pool[game.user.name] = {};
+    pool[game.user.name]['0'] = {};
+    pool[game.user.name]['0']['label'] = label;
+    pool[game.user.name]['0']['type'] = 'difficulty';
+    pool[game.user.name]['0']['value'] = dice;
+    rollDice.call(this, pool, 'total');
   }
+
+  async _clearDicePool (event) {
+    // no-op for interface with rollDice.call above
+  }
+
 
   async display() {
     await this.render(true)
