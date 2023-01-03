@@ -39,6 +39,7 @@
     "systems/earthland/templates/actor/parts/actor-roles.html",
     "systems/earthland/templates/actor/parts/actor-specialties.html",
     "systems/earthland/templates/actor/parts/actor-spells.html",
+    "systems/earthland/templates/item/parts/active-effects.html",
     "systems/earthland/templates/item/parts/base.html",
     "systems/earthland/templates/item/parts/equipment.html",
     "systems/earthland/templates/item/parts/magic.html",

@@ -3,6 +3,7 @@
  * @extends {ItemSheet}
  */
 import { times, getLength, objectMapValues, objectReindexFilter, objectFindValue, objectSome } from '../../lib/helpers.js'
+import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
 
 export class earthlandItemSheet extends ItemSheet {
 
@@ -59,6 +60,10 @@ export class earthlandItemSheet extends ItemSheet {
     // Add the actor's data to context.data for easier access, as well as flags.
     context.system = itemData.system;
     context.flags = itemData.flags;
+
+    // Prepare active effects
+    context.effects = prepareActiveEffectCategories(this.item.effects);
+
     console.log("what is new context? %o", context);
     return context;
   }
@@ -90,6 +95,9 @@ export class earthlandItemSheet extends ItemSheet {
     html.find('.die-select').change(this._onDieChange.bind(this))
     html.find('.die-select').on('mouseup', this._onDieRemove.bind(this))
     html.find('.new-die').click(this._newDie.bind(this))
+
+    // Active Effect management
+    html.find(".effect-control").click(ev => onManageActiveEffect(ev, this.item));
   }
 
 

@@ -4,6 +4,7 @@
  * @param {Actor|Item} owner      The owning document which manages this effect
  */
  export function onManageActiveEffect(event, owner) {
+  console.log("event: %o, owner: %o", event, owner);
   event.preventDefault();
   const a = event.currentTarget;
   const li = a.closest("li");

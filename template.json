@@ -8,17 +8,28 @@
       "templates":{
          "base":{
             "description":"",
+            "concept":"",
+            "archtype":"",
+            "personality_traits":"",
+            "ideals":"",
+            "bonds":"",
+            "flaws":"",
             "species":"",
             "subspecies":"",
             "armor_class": {
               "value": {
-                "0": "2"
+                "0": 2
               }
             },
             "health":{
                "value":10,
                "min":0,
                "max":10
+            },
+            "temporary_health":{
+               "value":0,
+               "min":0,
+               "max":0
             },
             "energy":{
                "value":5,
@@ -33,42 +44,42 @@
             "attributes":{
                "brawn": {
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "precision":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "speed":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "vitality":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "knowledge":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "awareness":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "willpower":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "presence":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                }
             }
@@ -79,84 +90,84 @@
             "packages":{
                "assassin":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "brawler":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "defender":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "fencer":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "healer":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "martial_artist":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "sharpshooter":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "spellbinder":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                }
             },
             "roles":{
                "athlete":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "burglar":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "courtesean":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "craftsperson":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "detective":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "entertainer":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "explorer":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "scholar":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                }
             }
@@ -180,6 +191,11 @@
             "min":0,
             "value":0
          },
+         "initiative_bonus": {
+            "value": {
+               "0": 2
+            }
+         },
          "biography":""
       },
       "monster":{
@@ -188,7 +204,7 @@
          ],
          "health_die": {
             "value": {
-               "0": "4"
+               "0": 4
             }
          },
          "kind":"",
@@ -200,84 +216,84 @@
          "behaviors":{
             "aggression":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "alertness":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "coordination":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "cunning":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "ferocity":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "predation":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "protectivity":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "skittishness":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "territoriality":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             }
          },
          "roles":{
             "artillery":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "brute":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "controller":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "leader":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "lurker":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "skirmisher":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             },
             "soldier":{
                 "value": {
-                      "0": "4"
+                      "0": 4
                    }
             }
          }
@@ -289,7 +305,7 @@
          ],
          "health_die": {
             "value": {
-               "0": "4"
+               "0": 4
             }
          },
          "kind":"minion",
@@ -298,74 +314,74 @@
             "virtues":{
                "compassion":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "courage":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "honor":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "humility":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "justice":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "prudence":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "temperance":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                }
             },
             "vices":{
                "envy":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "gluttony":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "greed":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "lust":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "pride":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "sloth":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                },
                "wrath":{
                    "value": {
-                      "0": "4"
+                      "0": 4
                    }
                }
             }
@@ -427,7 +443,7 @@
          "rollable":{
             "dice": {
               "value": {
-                "0": "4"
+                "0": 4
               },
               "effect_type":""
             }

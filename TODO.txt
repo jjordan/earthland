@@ -129,22 +129,55 @@ Still To Do
    + Etherious Forms *CHECK*
    + Artificer Creations *CHECK*
    + NPCs (kind of like Monsters) *CHECK*
+ * Create a macro/tool to roll difficulty for the GM automatically (or add them to a pool, at least)
+ * Add a button to the player character sheet where they can use an MP any time
+ * Add a button to roll armor class
+Acid
+Bludgeoning
+Cold
+Fire
+Force
+Lightning
+Necrotic
+Piercing
+Poison
+Psychic
+Radiant
+Slashing
+Thunder
+ * Tool to give PP (Magic Point) to a player character
+ * Tool to give or take Energy from a character
 
  --------------------------------------------------------------------------------
 Still ToDo
 
  * Import the documents above into the game by making adjustments to the structure
-   + Start with the items and abilities
+   + Start with the items and abilities *CHECK*
+   + Do characters need to be imported? They are going to be very different from what they are in D&D.
+
+actors = game.actors.filter( x => x.type == 'character' && x.hasPlayerOwner )
+
+ * Change sfx to use text area instead of normal input
+ * Add Concept, Archtype and D&D "personality" section to player character
 
 GM TOOLS:
- * Create a macro/tool to roll difficulty for the GM automatically (or add them to a pool, at least)
- * Tool to give PP (Magic Point) to a player character
- * Tool to give or take Energy from a character
- * Add a "rest" button and "short rest" button to the character sheet
- * Add a GM only button that gives a Player a MP on a hitch roll
- * Add a button to the player character sheet where they can use an MP any time
+ * Tool to give a targeted token character a status condition
+ * Tool to add all conditions of a targeted token to the current dice pool
+ * Tool to recover from all temporary status conditions when in a rest scene
+
+
+
 
 <-- Playable by here -->
+
+ * Make armor class automatically calculate itself based on armor and shields worn (1 of each)
+ * Tool to degrade armor
+ * Tool to repair armor
+
+
+ * Add a "rest" button and "short rest" button to the character sheet
+ * Add a GM only button that gives a Player a MP on a hitch roll
+
 
 --------------------------------------------------------------------------------
 Nice to have

@@ -1,0 +1,107 @@
+<form class="{{cssClass}} difficulty difficulty-table sheet-cpt" autocomplete="off">
+  <div class="sheet-background"></div>
+  <div class="sheet-image"></div>
+  <div class="sheet-content part-1">
+    <div class="section-cpt">
+      <div class="section-image"></div>
+      <div class="section-content">
+        <div class="relative-section status-condition-table">
+          <div class="section-background"></div>
+          <h3 class="section-primary-title-cpt px-2 mb-0">{{localize 'StatusConditions'}}</h3>
+          <div class="resources grid grid-3col">
+            <select class="input-cpt" name="status-condition">
+              {{#select value}}
+                {{#each status_conditions as |id name|}}
+                  <option value="{{id}}">{{localize name}}</option>
+                {{/each}}
+              {{/select}}
+            </select>
+            <div class="flex-col pr-0 flex-s-1">
+              <button class="add-complication btn btn-primary-cpt" type="button">{{localize 'AddStatus'}}</button>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button class="del-complication btn btn-primary-cpt" type="button">{{localize 'RemoveStatus'}}</button>
+            </div>
+          </div>
+          <div class="resources grid grid-3col">
+            <div class="flex-col pr-0 flex-s-1 input-holder">
+              <label for="complication">Freeform Condition</label>
+              <input class="complication-freeform" type="text" name="complication" value="" />
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button class="add-ff-complication btn btn-primary-cpt" type="button">{{localize 'AddStatus'}}</button>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button class="del-ff-complication btn btn-primary-cpt" type="button">{{localize 'RemoveStatus'}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="relative-section utilities">
+          <div class="section-background"></div>
+          <h3 class="section-primary-title-cpt px-2 mb-0">{{localize 'Energy'}}</h3>
+          <div class="resources grid grid-3col">
+            <div class="flex-col pr-0 flex-s-1 input-holder">
+              <label for="energy">Energy Amount</label>
+              <input class="energy-amount" type="number" name="energy" value="1" />
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button class="add-energy btn btn-primary-cpt" type="button">{{localize 'AddEnergy'}}</button>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button class="remove-energy btn btn-primary-cpt" type="button">{{localize 'RemoveEnergy'}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="relative-section utilities">
+          <div class="section-background"></div>
+          <h3 class="section-primary-title-cpt px-2 mb-0">{{localize 'Magic'}}</h3>
+          <div class="resources grid grid-3col">
+            <div class="flex-col pr-0 flex-s-1 input-holder">
+              <label for="magic">Magic Amount</label>
+              <input class="magic-amount" type="number" name="magic" value="1" />
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button class="add-magic btn btn-primary-cpt" type="button">{{localize 'AddMagic'}}</button>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button class="remove-magic btn btn-primary-cpt" type="button">{{localize 'RemoveMagic'}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="relative-section utilities">
+          <div class="section-background"></div>
+          <h3 class="section-primary-title-cpt px-2 mb-0">{{localize 'Health'}}</h3>
+          <div class="resources grid grid-3col">
+            <div class="flex-col pr-0 flex-s-1 input-holder">
+              <label for="health">Health Amount</label>
+              <input class="health-amount" type="number" name="health" value="" />
+              <label for="damage_type">Damage Type</label>
+              <select class="input-cpt" name="damage_type">
+                <option value="">--</option>
+                <option value="Acid">Acid</option>
+                <option value="Bludgeoning">Bludgeoning</option>
+                <option value="Cold">Cold</option>
+                <option value="Fire">Fire</option>
+                <option value="Force">Force</option>
+                <option value="Lightning">Lightning</option>
+                <option value="Necrotic">Necrotic</option>
+                <option value="Piercing">Piercing</option>
+                <option value="Poison">Poison</option>
+                <option value="Psychic">Psychic</option>
+                <option value="Radiant">Radiant</option>
+                <option value="Slashing">Slashing</option>
+                <option value="Thunder">Thunder</option>
+              </select>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button class="add-health btn btn-primary-cpt" type="button">{{localize 'AddHealth'}}</button>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button class="remove-health btn btn-primary-cpt" type="button">{{localize 'RemoveHealth'}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

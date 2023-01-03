@@ -57,7 +57,7 @@ export class earthlandActorSheet extends ActorSheet {
 
     // Use a safe clone of the actor data for further operations.
     const actorData = this.actor.toObject(false);
-
+    console.log("actor data: %o", actorData);
     // Add the actor's data to context.data for easier access, as well as flags.
     context.system = actorData.system;
     context.flags = actorData.flags;

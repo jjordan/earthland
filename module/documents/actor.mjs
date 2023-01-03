@@ -69,12 +69,65 @@ export class earthlandActor extends Actor {
     systemData.xp = (systemData.cr * systemData.cr) * 100;
   }
 
+  /**
+   * Allow the actor to rest and regain energy.
+   * The amount of energy regained depends on the length of rest.
+   * 'action' = 1 Energy
+   * 'short' = up to max energy, in addition temporary complications are removed
+   * 'long' = up to max energy, in addition status conditions are lowered a step and hit points are regained
+   */
+  async rest(type) {
+    const currentEnergy = +(this.data.data.energy.value ?? 0)
+    console.log("in actor rest with current energy: %o", currentEnergy);
+    const maxEnergy = this.data.data.energy.max;
+    let newEnergy = currentEnergy;
+    if (type == 'action') {
+      newEnergy++;
+    } else if (type == 'short') {
+      newEnergy = maxEnergy
+    } else { // long rest
+      newEnergy = maxEnergy
+    }
+    if (currentEnergy !== newEnergy && newEnergy >= 0) {
+      console.log("Got a reasonable change in energy");
+      await this.updateEnergyValue(newEnergy);
+    }
+  }
+
+  async reenergize(value) {
+    console.log("in reengerize with value: %o", value);
+    const currentEnergy = +(this.data.data.energy.value ?? 0)
+    const maxEnergy = +(this.data.data.energy.max ?? 0)
+    let newEnergy = parseInt(currentEnergy) + parseInt(value);
+    console.log("have newEnergy: %o, currentEnergy: %o and maxEnergy: %o", newEnergy, currentEnergy, maxEnergy);
+    if (currentEnergy !== newEnergy && newEnergy <= maxEnergy) {
+      console.log("Got a reasonable change in energy");
+      await this.updateEnergyValue(newEnergy);
+    }
+  }
+
+  async exhaust(value) {
+    const currentEnergy = +(this.data.data.energy.value ?? 0)
+    let newEnergy = currentEnergy - value;
+    if (currentEnergy !== newEnergy && newEnergy >= 0) {
+      console.log("Got a reasonable change in energy");
+      await this.updateEnergyValue(newEnergy);
+    }
+  }
+
+  // Update energy value of the actor
+  async updateEnergyValue (value) {
+    console.log("in updateEnergyValue with value: %o", value);
+    await this.update({
+      'data.energy.value': value
+    })
+  }
 
   async changePpBy (value, directChange = false) {
     // ensure current value is an integer
     const currentValue = +(this.data.data.magic.value ?? 0)
 
-    const newValue = currentValue + value
+    const newValue = parseInt(currentValue) + parseInt(value)
 
     // action only taken if value will be different and won't result in negative plot points
     if (currentValue !== newValue && newValue >= 0) {
@@ -125,6 +178,69 @@ export class earthlandActor extends Actor {
 
     return data;
   }
+
+
+  /**
+   * Add a known status condition to this actor
+   */
+  async addStatusCondition(id) {
+    console.log("In actor with id: %o", id);
+    // get the complication object by id
+    // check if the actor already has a complication with the same name or id
+    // if they do, upgrade it by 1 level
+      // If the upgrade would put the die beyond a D12, instead add "Incapacitated"
+    // if they don't, add it as a D6 complication
+  }
+
+
+  /**
+   * Remove a known status condition from this actor
+   */
+  async removeStatusCondition(id) {
+    console.log("In actor with id: %o", id);
+    // get the complication object by id
+    // check if the actor already has a complication with the same name or id
+    // if they do, remove it
+    // otherwise do nothing
+  }
+
+
+  /**
+   * Add a free-form complication to this actor
+   */
+  async addComplication(name) {
+    console.log("In actor with name: %o", name);
+    // check if the actor already has a complication with the same name
+    // if they do, upgrade it by 1 level
+    // if they don't, add it
+  }
+
+
+  /**
+   * Remove a free-form complication from this actor
+   */
+  async removeComplication(name) {
+    console.log("In actor with name: %o", name);
+    // check if the actor already has a complication with the same name
+    // if they do, remove it
+    // otherwise do nothing
+  }
+
+
+  async addDamage(amount, damage_type) {
+    console.log("In actor with amount: %o, and damage type: %o", amount, damage_type);
+  }
+
+
+  async loseHealth(amount) {
+    console.log("In actor with amount: %o", amount);
+  }
+
+
+  async restoreHealth(amount) {
+    console.log("In actor with amount: %o", amount);
+  }
+
 
   /**
    * Prepare character roll data.

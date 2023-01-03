@@ -8,7 +8,7 @@
       {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
       use both the "grid" and "grid-Ncol" class where "N" can be any number
       from 1 to 12 and will create that number of columns.  --}}
-      <div class="resources grid grid-3col">
+      <div class="resources grid grid-4col">
 
         {{!-- "flex-group-center" is also defined in the _grid.scss file
         and it will add a small amount of padding, a border, and will
@@ -19,6 +19,15 @@
           <input type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number"/>
           <span> / </span>
           <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.temporary_health.value" class="resource-label">Temporary Hit Points</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="system.temporary_health.value" value="{{system.temporary_health.value}}" data-dtype="Number"/>
+          <span> / </span>
+          <input type="text" name="system.temporary_health.max" value="{{system.temporary_health.max}}" data-dtype="Number"/>
           </div>
         </div>
 
@@ -47,10 +56,10 @@
               <label for="system.armor_class.value" class="resource-label">Armor Class</label>
               {{> "systems/earthland/templates/partials/dice/select.html"
                 dice=system.armor_class.value
-                edit=true
+                edit=false
                 selectName='system.armor_class'
               }}
-            </div>
+            </div><button title="Add to Dice-Pool" class="armor_class rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject system.armor_class.value}}" data-label="Armor Class" data-kind="Attribute"><i class="fas fa-dice-d20"></i></button>
           </section>
         </div>
         <div class="resource flex-group-center">
@@ -98,14 +107,10 @@
             {{> "systems/earthland/templates/actor/parts/actor-distinctions.html"}}
           </div>
           <br/>
-          <hr/>
-          <br/>
           <div class="specialty">
             <h3>Specialties</h3>
             {{> "systems/earthland/templates/actor/parts/actor-specialties.html"}}
           </div>
-          <br/>
-          <hr/>
           <br/>
           <div class="complication">
             <h3>Complications</h3>
