@@ -150,6 +150,7 @@ Thunder
  * Tool to give a targeted token character a status condition
  * Tool to recover from all temporary status conditions when in a rest scene
  * Tool to add all conditions of a targeted token to the current dice pool
+ * Change sfx to use text area instead of normal input
 
  --------------------------------------------------------------------------------
 Still ToDo
@@ -158,9 +159,6 @@ Still ToDo
    + Start with the items and abilities *CHECK*
    + Do characters need to be imported? They are going to be very different from what they are in D&D.
 
-actors = game.actors.filter( x => x.type == 'character' && x.hasPlayerOwner )
-
- * Change sfx to use text area instead of normal input
  * Add Concept, Archtype and D&D "personality" section to player character
 
 GM TOOLS:
