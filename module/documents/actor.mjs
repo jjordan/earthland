@@ -123,6 +123,14 @@ export class earthlandActor extends Actor {
     })
   }
 
+  // Update health value of the actor
+  async updateHealthValue (value) {
+    console.log("in updateHealthValue with value: %o", value);
+    await this.update({
+      'data.health.value': value
+    })
+  }
+
   async changePpBy (value, directChange = false) {
     // ensure current value is an integer
     const currentValue = +(this.data.data.magic.value ?? 0)
@@ -229,16 +237,69 @@ export class earthlandActor extends Actor {
 
   async addDamage(amount, damage_type) {
     console.log("In actor with amount: %o, and damage type: %o", amount, damage_type);
+    // check if the character has resistances, immunities or weaknesses
+    // monsters have these fields directly
+    let damage_amount = amount;
+    const dt = damage_type.toLocaleLowerCase()
+    const dt_re = new RegExp(dt, "i");
+    if (this.type == 'monster') {
+      if (this.system.immunities != '') {
+        if (this.system.immunities.match(dt_re)) {
+          ChatMessage.create({ content: `${this.name} is immune to ${damage_type} damage!` });
+          damage_amount = 0;
+        }
+      }
+      if (this.system.resistances != '') {
+        if (this.system.resistances.match(dt_re)) {
+          ChatMessage.create({ content: `${this.name} is resistant to ${damage_type} damage!` });
+          damage_amount = Math.ceil(amount / 2.0);
+        }
+      }
+      if (this.system.weaknesses != '') {
+        if (this.system.resistances.match(dt_re)) {
+          ChatMessage.create({ content: `${this.name} is weak to ${damage_type} damage!` });
+          damage_amount = Math.ceil(amount * 2.0);
+        }
+      }
+    } else if (this.type == 'character') {
+      console.log("Immunity, Resistance and Weakness calculations are not yet implemented for humanoids");
+      damage_amount = amount;
+    } else if (this.type == 'npc') {
+      console.log("Immunity, Resistance and Weakness calculations are not yet implemented for humanoids");
+      damage_amount = amount;
+    }
+    if (damage_amount > 0) {
+      ChatMessage.create({ content: `${this.name} took ${damage_amount} ${damage_type} damage!` });
+    }
+    await this.loseHealth(damage_amount);
+    // humandoids would have ActiveEffects with a specific name
+    // then check if the damage type is in one of those
+    // if it's not, then just call loseHealth
+    // if it is, then perform a modification on the damage
   }
 
 
   async loseHealth(amount) {
     console.log("In actor with amount: %o", amount);
+    const currentHealth = +(this.data.data.health.value ?? 0)
+    let newHealth = currentHealth - amount;
+    if (currentHealth !== newHealth && newHealth >= 0) {
+      console.log("Got a reasonable change in health");
+      await this.updateHealthValue(newHealth);
+    }
   }
 
 
   async restoreHealth(amount) {
     console.log("In actor with amount: %o", amount);
+    const currentHealth = +(this.data.data.health.value ?? 0)
+    const maxHealth = +(this.data.data.health.max ?? 0)
+    let newHealth = parseInt(currentHealth) + parseInt(amount);
+    console.log("have newHealth: %o, currentHealth: %o and maxHealth: %o", newHealth, currentHealth, maxHealth);
+    if (currentHealth !== newHealth && newHealth <= maxHealth) {
+      console.log("Got a reasonable change in health");
+      await this.updateHealthValue(newHealth);
+    }
   }
 
 
