@@ -77,9 +77,9 @@ export class earthlandActor extends Actor {
    * 'long' = up to max energy, in addition status conditions are lowered a step and hit points are regained
    */
   async rest(type) {
-    const currentEnergy = +(this.data.data.energy.value ?? 0)
+    const currentEnergy = +(this.system.energy.value ?? 0)
     console.log("in actor rest with current energy: %o", currentEnergy);
-    const maxEnergy = this.data.data.energy.max;
+    const maxEnergy = this.system.energy.max;
     let newEnergy = currentEnergy;
     if (type == 'action') {
       newEnergy++;
@@ -91,27 +91,30 @@ export class earthlandActor extends Actor {
     if (currentEnergy !== newEnergy && newEnergy >= 0) {
       console.log("Got a reasonable change in energy");
       await this.updateEnergyValue(newEnergy);
+      ChatMessage.create({ content: `${this.name} has regained energy (${newEnergy}/${maxEnergy})` });
     }
   }
 
   async reenergize(value) {
     console.log("in reengerize with value: %o", value);
-    const currentEnergy = +(this.data.data.energy.value ?? 0)
-    const maxEnergy = +(this.data.data.energy.max ?? 0)
+    const currentEnergy = +(this.system.energy.value ?? 0)
+    const maxEnergy = +(this.system.energy.max ?? 0)
     let newEnergy = parseInt(currentEnergy) + parseInt(value);
     console.log("have newEnergy: %o, currentEnergy: %o and maxEnergy: %o", newEnergy, currentEnergy, maxEnergy);
     if (currentEnergy !== newEnergy && newEnergy <= maxEnergy) {
       console.log("Got a reasonable change in energy");
       await this.updateEnergyValue(newEnergy);
+      ChatMessage.create({ content: `${this.name} has regained ${value} energy` });
     }
   }
 
   async exhaust(value) {
-    const currentEnergy = +(this.data.data.energy.value ?? 0)
+    const currentEnergy = +(this.system.energy.value ?? 0)
     let newEnergy = currentEnergy - value;
     if (currentEnergy !== newEnergy && newEnergy >= 0) {
       console.log("Got a reasonable change in energy");
       await this.updateEnergyValue(newEnergy);
+      ChatMessage.create({ content: `${this.name} has lost ${value} energy` });
     }
   }
 
@@ -133,7 +136,7 @@ export class earthlandActor extends Actor {
 
   async changePpBy (value, directChange = false) {
     // ensure current value is an integer
-    const currentValue = +(this.data.data.magic.value ?? 0)
+    const currentValue = +(this.system.magic.value ?? 0)
 
     const newValue = parseInt(currentValue) + parseInt(value)
 
@@ -281,24 +284,26 @@ export class earthlandActor extends Actor {
 
   async loseHealth(amount) {
     console.log("In actor with amount: %o", amount);
-    const currentHealth = +(this.data.data.health.value ?? 0)
+    const currentHealth = +(this.system.health.value ?? 0)
     let newHealth = currentHealth - amount;
     if (currentHealth !== newHealth && newHealth >= 0) {
       console.log("Got a reasonable change in health");
       await this.updateHealthValue(newHealth);
+      ChatMessage.create({ content: `${this.name} has lost ${amount} hit points` });
     }
   }
 
 
   async restoreHealth(amount) {
     console.log("In actor with amount: %o", amount);
-    const currentHealth = +(this.data.data.health.value ?? 0)
-    const maxHealth = +(this.data.data.health.max ?? 0)
+    const currentHealth = +(this.system.health.value ?? 0)
+    const maxHealth = +(this.system.health.max ?? 0)
     let newHealth = parseInt(currentHealth) + parseInt(amount);
     console.log("have newHealth: %o, currentHealth: %o and maxHealth: %o", newHealth, currentHealth, maxHealth);
     if (currentHealth !== newHealth && newHealth <= maxHealth) {
       console.log("Got a reasonable change in health");
       await this.updateHealthValue(newHealth);
+      ChatMessage.create({ content: `${this.name} has gained ${amount} hit points` });
     }
   }
 
