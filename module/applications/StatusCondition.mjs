@@ -76,6 +76,18 @@ export class StatusCondition extends FormApplication {
     html.find('.remove-magic').click(this._onRemoveMagic.bind(this));
     html.find('.add-health').click(this._onAddHealth.bind(this));
     html.find('.remove-health').click(this._onRemoveHealth.bind(this));
+    html.find('.add-to-pool').click(this._onAddToPool.bind(this));
+  }
+
+  async _onAddToPool(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const actors = this._getActorsBySelectedTokens();
+    if (actors.length == 0) {
+      ui.notifications.error("No tokens selected, cannot add complications to dice pool");
+    } else {
+      actors.forEach(a => a.addConditionsToPool());
+    }
   }
 
   async _onAddComplication(event) {

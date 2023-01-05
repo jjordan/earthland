@@ -147,6 +147,9 @@ Slashing
 Thunder
  * Tool to give PP (Magic Point) to a player character
  * Tool to give or take Energy from a character
+ * Tool to give a targeted token character a status condition
+ * Tool to recover from all temporary status conditions when in a rest scene
+ * Tool to add all conditions of a targeted token to the current dice pool
 
  --------------------------------------------------------------------------------
 Still ToDo
@@ -161,9 +164,6 @@ actors = game.actors.filter( x => x.type == 'character' && x.hasPlayerOwner )
  * Add Concept, Archtype and D&D "personality" section to player character
 
 GM TOOLS:
- * Tool to give a targeted token character a status condition
- * Tool to add all conditions of a targeted token to the current dice pool
- * Tool to recover from all temporary status conditions when in a rest scene
 
 
 

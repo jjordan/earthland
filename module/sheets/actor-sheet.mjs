@@ -389,7 +389,9 @@ export class earthlandActorSheet extends ActorSheet {
           }
         })
     })
-
+    html.find('.short-rest').click(this._onShortRest.bind(this));
+    html.find('.long-rest').click(this._onLongRest.bind(this));
+    html.find('.rest-action').click(this._onRestAction.bind(this));
     // Drag events for macros.
     if (this.actor.isOwner) {
       let handler = ev => this._onDragStart(ev);
@@ -399,6 +401,18 @@ export class earthlandActorSheet extends ActorSheet {
         li.addEventListener("dragstart", handler, false);
       });
     }
+  }
+
+  async _onShortRest() {
+    this.actor.rest('short');
+  }
+
+  async _onLongRest() {
+    this.actor.rest('long');
+  }
+
+  async _onRestAction() {
+    this.actor.rest('action');
   }
 
   async _ppNumberChange (event) {

@@ -61,6 +61,17 @@
               }}
             </div><button title="Add to Dice-Pool" class="armor_class rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject system.armor_class.value}}" data-label="Armor Class" data-kind="Attribute"><i class="fas fa-dice-d20"></i></button>
           </section>
+          <section class="grid grid-3col" style="width: 260px;">
+            <div class="flex-col pr-0 flex-s-1">
+              <button title="Rest Action" class="rest-action medium-button" >Rest Action</button>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button title="Short Rest" class="short-rest medium-button" >Short Rest</button>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <button title="Long Rest" class="long-rest medium-button" >Long Rest</button>
+            </div>
+          </section>
         </div>
         <div class="resource flex-group-center">
           {{> "systems/earthland/templates/partials/pp.html" magic=system.magic }}

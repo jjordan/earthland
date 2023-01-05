@@ -14,6 +14,10 @@
   width: 30px;
 }
 
+.medium-button {
+  width: 90px;
+}
+
 .draggable {
   cursor: grab;
 }

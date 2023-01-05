@@ -69,6 +69,55 @@ export class earthlandActor extends Actor {
     systemData.xp = (systemData.cr * systemData.cr) * 100;
   }
 
+  async resetTemporaryHitPoints() {
+    await this.update({
+      'data.temporary_health.value': 0,
+      'data.temporary_health.max': 0
+    })
+  }
+
+  async addConditionsToPool() {
+    const complications = this.items.filter(i => (i.type == 'complication'));
+    console.log("Found complications: %o", complications);
+    complications.forEach(complication => {
+      let label = `[Complication] ${complication.name}`;
+      let object = complication.system.dice.value;
+      game.earthland.UserDicePool._addTraitToPool(this.name, label, object, this.id);
+    });
+  }
+
+
+  async restoreHitPoints() {
+    const currentHealth = +(this.system.health.value ?? 0)
+    const maxHealth = +(this.system.health.max ?? 0)
+    const vitality = parseInt(this.system.attributes.vitality.value[0]);
+    let newHealth = 0;
+    // TODO: change the way hitpoints are regained to use vitality
+    if (currentHealth < maxHealth) {
+      let difference = maxHealth - currentHealth;
+      console.log("What is difference? %o", difference);
+      console.log("What is vitality: %o", vitality);
+      if (difference > vitality) { // more HP lost than Vitality, recover half
+        let half_hp = Math.ceil(difference / 2.0);
+        console.log("the difference is greater than our vitality, recovering half: %o", half_hp);
+        this.restoreHealth( half_hp );
+      } else { // small enough amount the character can just heal it.
+        console.log("difference is less than vitality, recovering all hp");
+        this.restoreHealth(difference);
+      }
+    }
+  }
+
+  async recoverAllTemporaryComplications() {
+    const temporary_complications = this.items.filter(i => (i.type == 'complication') &&
+                                            ((i.system.is_permanent == false) && (i.system.is_semi_permanent == false) ));
+    console.log("got temporary complications: %o", temporary_complications);
+    temporary_complications.forEach(complication => {
+      this.deleteEmbeddedDocuments('Item', [complication.id]);
+      ChatMessage.create({ content: `${this.name} has completely recovered from ${complication.name}` });
+    });
+  }
+
   /**
    * Allow the actor to rest and regain energy.
    * The amount of energy regained depends on the length of rest.
@@ -82,11 +131,18 @@ export class earthlandActor extends Actor {
     const maxEnergy = this.system.energy.max;
     let newEnergy = currentEnergy;
     if (type == 'action') {
-      newEnergy++;
+      ChatMessage.create({ content: `${this.name} has taken the rest action.` });
+      newEnergy += 2;
     } else if (type == 'short') {
-      newEnergy = maxEnergy
+      ChatMessage.create({ content: `${this.name} has taken a short rest.` });
+      newEnergy = maxEnergy;
+      this.recoverAllTemporaryComplications();
     } else { // long rest
-      newEnergy = maxEnergy
+      ChatMessage.create({ content: `${this.name} has taken a long rest.` });
+      newEnergy = maxEnergy;
+      this.recoverAllTemporaryComplications();
+      this.restoreHitPoints();
+      this.resetTemporaryHitPoints();
     }
     if (currentEnergy !== newEnergy && newEnergy >= 0) {
       console.log("Got a reasonable change in energy");
@@ -253,7 +309,7 @@ export class earthlandActor extends Actor {
       // If the upgrade would put the die beyond a D12, instead add "Incapacitated"
       if (die[0] <= 4) {
         await this.deleteEmbeddedDocuments('Item', [existing_condition.id]);
-        ChatMessage.create({ content: `${this.name}'s has completely recovered from ${existing_condition.name}` });
+        ChatMessage.create({ content: `${this.name} has completely recovered from ${existing_condition.name}` });
       } else {
         let sides = parseInt(die[0]) - 2;
         await this.updateEmbeddedDocuments('Item', [
@@ -351,7 +407,7 @@ export class earthlandActor extends Actor {
       // If the upgrade would put the die beyond a D12, instead add "Incapacitated"
       if (die[0] <= 4) {
         await this.deleteEmbeddedDocuments('Item', [existing_condition.id]);
-        ChatMessage.create({ content: `${this.name}'s has completely recovered from ${existing_condition.name}` });
+        ChatMessage.create({ content: `${this.name} has completely recovered from ${existing_condition.name}` });
       } else {
         let sides = parseInt(die[0]) - 2;
         await this.updateEmbeddedDocuments('Item', [
