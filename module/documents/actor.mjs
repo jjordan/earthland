@@ -197,10 +197,42 @@ export class earthlandActor extends Actor {
   async addStatusCondition(id) {
     console.log("In actor with id: %o", id);
     // get the complication object by id
+    const condition = await Item.get(id);
+    const existing_conditions = this.items.filter(c => condition.name == c.name);
+    let existing_condition = existing_conditions[0];
+    console.log("got condition: %o", condition);
+    console.log("got existing condition: %o", existing_condition);
     // check if the actor already has a complication with the same name or id
+    if (existing_condition) {
     // if they do, upgrade it by 1 level
+      const die = existing_condition.system.dice.value;
       // If the upgrade would put the die beyond a D12, instead add "Incapacitated"
-    // if they don't, add it as a D6 complication
+      if (die[0] >= 12) {
+        const results = game.items.filter(i => i.name == 'Incapacitated');
+        const incapacitated = results[0];
+        await this.addStatusCondition(incapacitated.id);
+      } else {
+        let sides = parseInt(die[0]) + 2;
+        die[0] = sides;
+        await this.updateEmbeddedDocuments('Item', [
+          {
+            _id: existing_condition._id,
+            system: {
+              dice: {
+                value: {
+                  0: sides
+                }
+              }
+            }
+          }
+        ]);
+        ChatMessage.create({ content: `${this.name}'s Status Condition ${existing_condition.name} has worsened (d${existing_condition.system.dice.value[0]})` });
+      }
+    } else { // if they don't, add it as a D6 complication
+      const result = await this.createEmbeddedDocuments('Item', [condition]);
+      existing_condition = result[0];
+      ChatMessage.create({ content: `${this.name} gained Status Condition ${existing_condition.name} (d${existing_condition.system.dice.value[0]})` });
+    }
   }
 
 
@@ -209,6 +241,36 @@ export class earthlandActor extends Actor {
    */
   async removeStatusCondition(id) {
     console.log("In actor with id: %o", id);
+    const condition = await Item.get(id);
+    const existing_conditions = this.items.filter(c => condition.name == c.name);
+    let existing_condition = existing_conditions[0];
+    console.log("got condition: %o", condition);
+    console.log("got existing condition: %o", existing_condition);
+    // check if the actor already has a complication with the same name or id
+    if (existing_condition) {
+    // if they do, upgrade it by 1 level
+      const die = existing_condition.system.dice.value;
+      // If the upgrade would put the die beyond a D12, instead add "Incapacitated"
+      if (die[0] <= 4) {
+        await this.deleteEmbeddedDocuments('Item', [existing_condition.id]);
+        ChatMessage.create({ content: `${this.name}'s has completely recovered from ${existing_condition.name}` });
+      } else {
+        let sides = parseInt(die[0]) - 2;
+        await this.updateEmbeddedDocuments('Item', [
+          {
+            _id: existing_condition._id,
+            system: {
+              dice: {
+                value: {
+                  0: sides
+                }
+              }
+            }
+          }
+        ]);
+        ChatMessage.create({ content: `${this.name}'s Status Condition ${existing_condition.name} has improved (d${existing_condition.system.dice.value[0]})` });
+      }
+    }
     // get the complication object by id
     // check if the actor already has a complication with the same name or id
     // if they do, remove it
@@ -222,7 +284,51 @@ export class earthlandActor extends Actor {
   async addComplication(name) {
     console.log("In actor with name: %o", name);
     // check if the actor already has a complication with the same name
+    const existing_conditions = this.items.filter(c => name == c.name);
+    let existing_condition = existing_conditions[0];
+    console.log("got existing condition: %o", existing_condition);
+    // check if the actor already has a complication with the same name or id
+    if (existing_condition) {
     // if they do, upgrade it by 1 level
+      const die = existing_condition.system.dice.value;
+      // If the upgrade would put the die beyond a D12, instead add "Incapacitated"
+      if (die[0] >= 12) {
+        const results = game.items.filter(i => i.name == 'Incapacitated');
+        const incapacitated = results[0];
+        await this.addStatusCondition(incapacitated.id);
+      } else {
+        let sides = parseInt(die[0]) + 2;
+        die[0] = sides;
+        await this.updateEmbeddedDocuments('Item', [
+          {
+            _id: existing_condition._id,
+            system: {
+              dice: {
+                value: {
+                  0: sides
+                }
+              }
+            }
+          }
+        ]);
+        ChatMessage.create({ content: `${this.name}'s Complication ${existing_condition.name} has worsened (d${existing_condition.system.dice.value[0]})` });
+      }
+    } else {
+      const complication = {
+        name: name,
+        type: 'complication',
+        system: {
+          dice: {
+            value: {
+              0: 6
+            }
+          }
+        }
+      };
+      const result = await this.createEmbeddedDocuments('Item', [complication]);
+      existing_condition = result[0];
+      ChatMessage.create({ content: `${this.name} gained Status Condition ${existing_condition.name} (d${existing_condition.system.dice.value[0]})` });
+    }
     // if they don't, add it
   }
 
@@ -235,6 +341,34 @@ export class earthlandActor extends Actor {
     // check if the actor already has a complication with the same name
     // if they do, remove it
     // otherwise do nothing
+    const existing_conditions = this.items.filter(c => name == c.name);
+    let existing_condition = existing_conditions[0];
+    console.log("got existing condition: %o", existing_condition);
+    // check if the actor already has a complication with the same name or id
+    if (existing_condition) {
+    // if they do, upgrade it by 1 level
+      const die = existing_condition.system.dice.value;
+      // If the upgrade would put the die beyond a D12, instead add "Incapacitated"
+      if (die[0] <= 4) {
+        await this.deleteEmbeddedDocuments('Item', [existing_condition.id]);
+        ChatMessage.create({ content: `${this.name}'s has completely recovered from ${existing_condition.name}` });
+      } else {
+        let sides = parseInt(die[0]) - 2;
+        await this.updateEmbeddedDocuments('Item', [
+          {
+            _id: existing_condition._id,
+            system: {
+              dice: {
+                value: {
+                  0: sides
+                }
+              }
+            }
+          }
+        ]);
+        ChatMessage.create({ content: `${this.name}'s Complication ${existing_condition.name} has improved (d${existing_condition.system.dice.value[0]})` });
+      }
+    }
   }
 
 

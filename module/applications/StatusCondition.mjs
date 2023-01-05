@@ -99,7 +99,7 @@ export class StatusCondition extends FormApplication {
     if (actors.length == 0) {
       ui.notifications.error("No tokens selected, cannot remove a complication");
     } else {
-      actors.forEach(a => a.addStatusCondition(id));
+      actors.forEach(a => a.removeStatusCondition(id));
     }
   }
 
