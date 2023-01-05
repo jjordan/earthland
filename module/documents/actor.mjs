@@ -256,7 +256,7 @@ export class earthlandActor extends Actor {
         }
       }
       if (this.system.weaknesses != '') {
-        if (this.system.resistances.match(dt_re)) {
+        if (this.system.weaknesses.match(dt_re)) {
           ChatMessage.create({ content: `${this.name} is weak to ${damage_type} damage!` });
           damage_amount = Math.ceil(amount * 2.0);
         }
