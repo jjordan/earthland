@@ -391,6 +391,7 @@
    "Item":{
       "types":[
          "ability",
+         "ammunition",
          "armor",
          "asset",
          "class",
@@ -542,6 +543,16 @@
             "rollable"
          ],
          "effects":""
+      },
+      "ammunition":{
+         "templates":[
+            "base",
+            "physical_item",
+            "rollable",
+            "consumable",
+            "magic"
+         ],
+         "destroyed_when_empty": true
       },
       "potion":{
          "templates":[

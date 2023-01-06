@@ -41,29 +41,6 @@ def process_object( object )
   end
   level = object["level"]
   description = object["description"]
-  object["energy_cost"] = 0
-  if object["activation"] && object["activation"]["cost"]
-    object["energy_cost"] = object["activation"]["cost"]
-  end
-  if object["uses"] && object["uses"]["value"]
-    object["energy_cost"] = 1
-  end
-  damage = object["damage"]
-  dice_objects = []
-  damage["parts"].each do |part|
-    if part.size > 0
-      dice_obj = convert_formula_to_dice_object( part[0] )
-      dice_obj["effect_type"] = part[1]
-      dice_objects << dice_obj
-    end
-  end
-  object["dice"] = dice_objects
-  object["attunable"] = false
-  if object["attunement"].to_i > 0
-    object["attunable"] = true
-  else
-    object["attunable"] = false
-  end
   return object
 end
 
@@ -71,7 +48,6 @@ open(filename) do |f|
   objects = JSON.parse(f.read)
   headers = objects[0].keys + objects[0]["system"].keys
   headers = headers - ["system"]
-  headers = headers + ["dice", "energy_cost", "attunable"]
   headers.sort!
   CSV.open(outfile, "w") do |csv|
     $stderr.puts "about to add headers: #{headers}"
