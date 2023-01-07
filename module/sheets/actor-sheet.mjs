@@ -184,6 +184,7 @@ export class earthlandActorSheet extends ActorSheet {
     const subclasses = [];
     const relationships = [];
     const milestones = [];
+    const feats = [];
     const spells = {
       0: [],
       1: [],
@@ -270,10 +271,10 @@ export class earthlandActorSheet extends ActorSheet {
         if (i.type == "class") {
           classes.push(i);
         }
-        if (i.type == "subclass") {
+        else if (i.type == "subclass") {
           subclasses.push(i);
         }
-        if (i.system.is_class_feature){
+        else if (i.system.is_class_feature){
           class_features.push(i);
         }
         else if (i.system.is_class_ability){
@@ -284,6 +285,9 @@ export class earthlandActorSheet extends ActorSheet {
         }
         else if (i.system.is_species_feature){
           species_features.push(i);
+        }
+        else {
+          feats.push(i);
         }
       }
       // Append to spells.
@@ -319,6 +323,7 @@ export class earthlandActorSheet extends ActorSheet {
     context.gear              = gear;
     context.abilities         = abilities;
     context.dicepools         = dicepools;
+    context.feats             = feats;
     console.log("What are dicepools? %o", dicepools);
   }
 
