@@ -630,8 +630,12 @@
             "base",
             "physical_item"
          ],
+         "craft":"",
+         "category":"",
+         "kind":"",
+         "complexity":0,
          "formula":"",
-         "sequence":""
+         "crafting_time":""
       },
       "treasure":{
          "templates":[

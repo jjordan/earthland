@@ -18,13 +18,28 @@
     {{!-- Attributes Tab --}}
     <div class="tab attributes" data-group="primary" data-tab="attributes">
       <div class="resource">
+        <label class="resource-label">Craft</label>
+        <input type="text" name="system.craft" value="{{system.craft}}" data-dtype="String"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">Category</label>
+        <input type="text" name="system.category" value="{{system.category}}" data-dtype="String"/>
+      </div>
+
+      <div class="resource">
+        <label class="resource-label">Kind</label>
+        <input type="text" name="system.kind" value="{{system.kind}}" data-dtype="String"/>
+      </div>
+
+      <div class="resource">
         <label class="resource-label">Formula</label>
         <input type="text" name="system.formula" value="{{system.formula}}" data-dtype="String"/>
       </div>
 
       <div class="resource">
-        <label class="resource-label">Sequence</label>
-        <input type="text" name="system.sequence" value="{{system.sequence}}" data-dtype="String"/>
+        <label class="resource-label">complexity</label>
+        <input type="number" name="system.complexity" value="{{system.complexity}}" data-dtype="Number"/>
       </div>
 
       <div>
