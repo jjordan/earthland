@@ -618,12 +618,35 @@
       "resource":{
          "templates":[
             "base",
-            "physical_item",
-            "magic"
+            "physical_item"
          ],
+         "category":"",
+         "ac_bonus":"",
+         "ac_bonus_max":"",
+         "alchemical_properties":"",
+         "ammo_quality":"",
+         "ammo_quantity":"",
+         "awareness_bonus":"",
+         "cold_resistance":"",
+         "cold_tolerance":"",
+         "damage_bonus":"",
+         "environments":"",
+         "features":"",
+         "fire_resistance":"",
+         "flavors":"",
+         "gathering_type":"",
+         "healer_bonus":"",
+         "heat_tolerance":"",
          "kind":"",
-         "components":"",
-         "features":""
+         "knowledge_bonus":"",
+         "melting_difficulty":"",
+         "presence_bonus":"",
+         "ranged_bonus":"",
+         "special_properties":"",
+         "spellslinger_bonus":"",
+         "thorns_bonus":"",
+         "willpower_bonus":"",
+         "workability_difficulty":""
       },
       "recipe":{
          "templates":[
