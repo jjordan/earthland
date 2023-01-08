@@ -161,30 +161,31 @@ export class earthlandActorSheet extends ActorSheet {
    */
   _prepareItems(context) {
     // Initialize containers.
-    const distinctions = [];
-    const specialties = [];
-    const complications = [];
-    const gear = [];
     const abilities = [];
-    const weapons = [];
+    const ammunition = [];
     const armor = [];
-    const potions = [];
-    const lacrima = [];
-    const equipment = [];
-    const trinkets = [];
-    const containers = [];
-    const recipes = [];
-    const resources = [];
-    const treasures = [];
     const class_abilities = [];
     const class_features = [];
+    const classes = [];
+    const complications = [];
+    const containers = [];
+    const distinctions = [];
+    const equipment = [];
+    const feats = [];
+    const gear = [];
+    const lacrima = [];
+    const milestones = [];
+    const potions = [];
+    const recipes = [];
+    const relationships = [];
+    const resources = [];
+    const specialties = [];
     const species_abilities = [];
     const species_features = [];
-    const classes = [];
     const subclasses = [];
-    const relationships = [];
-    const milestones = [];
-    const feats = [];
+    const treasures = [];
+    const trinkets = [];
+    const weapons = [];
     const spells = {
       0: [],
       1: [],
@@ -229,6 +230,10 @@ export class earthlandActorSheet extends ActorSheet {
       else if (i.type === 'weapon') {
         weapons.push(i);
       }
+      // Append to ammunition
+      else if (i.type === 'ammunition') {
+        ammunition.push(i);
+      }
       // Append to armor
       else if (i.type === 'armor') {
         armor.push(i);
@@ -243,6 +248,10 @@ export class earthlandActorSheet extends ActorSheet {
       }
       // Append to equipment
       else if (i.type === 'equipment') {
+        equipment.push(i);
+      }
+      // Append to containers to equipment
+      else if (i.type === 'container') {
         equipment.push(i);
       }
       // Append to trinkets
@@ -298,32 +307,33 @@ export class earthlandActorSheet extends ActorSheet {
       }
     }
     // Assign and return
-    context.distinctions      = distinctions;
-    context.specialties       = specialties;
-    context.complications     = complications;
-    context.relationships     = relationships;
-    context.milestones        = milestones;
-    context.weapons           = weapons;
-    context.armors            = armor; // pseudo plural
-    context.potions           = potions;
-    context.lacrimas          = lacrima; // pseudo plural
-    context.equipment         = equipment;
-    context.trinkets          = trinkets;
-    context.containers        = containers;
-    context.recipes           = recipes;
-    context.resources         = resources;
-    context.treasures         = treasures;
-    context.class_features    = class_features;
-    context.class_abilities   = class_abilities;
-    context.species_features  = species_features;
-    context.species_abilities = species_abilities;
-    context.subclasses        = subclasses;
-    context.classes           = classes;
-    context.spells            = spells;
-    context.gear              = gear;
     context.abilities         = abilities;
+    context.ammunition        = ammunition;
+    context.armors            = armor; // pseudo plural
+    context.class_abilities   = class_abilities;
+    context.class_features    = class_features;
+    context.classes           = classes;
+    context.complications     = complications;
+    context.containers        = containers;
     context.dicepools         = dicepools;
+    context.distinctions      = distinctions;
+    context.equipment         = equipment;
     context.feats             = feats;
+    context.gear              = gear;
+    context.lacrimas          = lacrima; // pseudo plural
+    context.milestones        = milestones;
+    context.potions           = potions;
+    context.recipes           = recipes;
+    context.relationships     = relationships;
+    context.resources         = resources;
+    context.specialties       = specialties;
+    context.species_abilities = species_abilities;
+    context.species_features  = species_features;
+    context.spells            = spells;
+    context.subclasses        = subclasses;
+    context.treasures         = treasures;
+    context.trinkets          = trinkets;
+    context.weapons           = weapons;
     console.log("What are dicepools? %o", dicepools);
   }
 
