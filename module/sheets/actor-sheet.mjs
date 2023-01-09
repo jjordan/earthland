@@ -489,13 +489,13 @@ export class earthlandActorSheet extends ActorSheet {
     event.preventDefault()
     const $targetNewDie = $(event.currentTarget)
     const target = $targetNewDie.data('target')
-    const targetKey = parseInt($targetNewDie.data('key'));
-    const targetValue = $targetNewDie.val()
+    const targetKey = $targetNewDie.data('key');
+    const targetValue = parseInt($targetNewDie.val())
     const currentDiceData = getProperty(this.actor, target)
 
     const newValue = objectMapValues(currentDiceData.value ?? {}, (value, index) => parseInt(index, 10) === targetKey ? targetValue : value)
 
-    await this._resetDataPoint(target, 'value', parseInt(newValue));
+    await this._resetDataPoint(target, 'value', newValue);
   }
 
 
