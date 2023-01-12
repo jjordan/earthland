@@ -540,6 +540,9 @@ export class earthlandActor extends Actor {
     if((typeof myTrait == 'undefined') && (typeof this.system.behaviors != 'undefined')) {
       myTrait = this.system.behaviors[trait]
     }
+    if((typeof myTrait == 'undefined') && (typeof this.system[trait] != 'undefined')) {
+      myTrait = this.system[trait.toLocaleLowerCase()]
+    }
     if((typeof myTrait == 'undefined')) {
       myTrait = {'value': {'0': '0'}}
     }

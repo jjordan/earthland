@@ -13,28 +13,28 @@ const SIDES_TO_ADDITION = {
 export class EarthlandCombatant extends Combatant {
   getInitiativeRoll(formula) {
     let traits = game.settings.get('earthland', 'initiativeTraits').split(',').map( s => s.trim() )
-      // get the actor
-      let formulae = []
-      let additive = 0
-      let actor = this.actor
-      // iterate over the traits
-      traits.forEach((trait) => {
-        let diceObj = actor.getDiceObjectForTrait(trait)
-          if (diceObj != null) {
-            let myFormula = ""
-            for (const [sides, dice] of Object.entries(diceObj)) {
-              additive += sides * dice
-              myFormula = `${dice}d${sides}`
-              formulae.push(myFormula)
-            }
+    // get the actor
+    let formulae = []
+    let additive = 0
+    let actor = this.actor
+    // iterate over the traits
+    traits.forEach((trait) => {
+      let diceObj = actor.getDiceObjectForTrait(trait)
+        if (diceObj != null) {
+          let myFormula = ""
+          for (const [sides, dice] of Object.entries(diceObj)) {
+            additive += sides * dice
+            myFormula = `${dice}d${sides}`
+            formulae.push(myFormula)
           }
-      })
-      // pull the trait values out of the actor and build the roll
-      let myRollFormula = formulae.join(' + ')
-      let myAdditivePercent = additive / 100.0
-      myRollFormula = `${myRollFormula} + ${myAdditivePercent}`
-      const myRoll = new Roll(myRollFormula)
-      return myRoll
+        }
+    })
+    // pull the trait values out of the actor and build the roll
+    let myRollFormula = formulae.join(' + ')
+    let myAdditivePercent = additive / 100.0
+    myRollFormula = `${myRollFormula} + ${myAdditivePercent}`
+    const myRoll = new Roll(myRollFormula)
+    return myRoll
   }
 
 }
