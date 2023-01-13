@@ -1,2 +1,9 @@
 <h2>Humanoid Minion</h2>
-<p>Resources go here</p>
+<label>Health Die</label>
+<div class="flex-col pr-0 flex-s-1">
+  {{> "systems/earthland/templates/partials/dice/select.html"
+    dice=system.health_die.value
+    edit=true
+    selectName='system.health_die'
+  }}
+</div>
