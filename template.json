@@ -444,7 +444,7 @@
          "rollable":{
             "dice": {
               "value": {
-                "0": 4
+                "0": 8
               },
               "effect_type":""
             }
