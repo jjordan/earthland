@@ -20,7 +20,7 @@
           <label for="system.kind" class="resource-label">Kind</label>
           <div class="kind flexrow flex-group-center">
             <select class='tiny-input' name="system.kind" value="{{system.kind}}" data-dtype="String">
-              {{#each npc_kind_options }}
+              {{#each monster_kind_options }}
               <option value="{{value}}" {{#selected}} selected="selected"{{/selected}}>{{name}}</option>
               {{/each}}
             </select>
@@ -47,6 +47,10 @@
         {{> "systems/earthland/templates/actor/parts/actor-header-monster-minion.html"}}
       {{/if}}
 
+      {{#if is_pet}}
+        {{> "systems/earthland/templates/actor/parts/actor-header-monster-pet.html"}}
+      {{/if}}
+
       {{#if is_elite}}
         {{> "systems/earthland/templates/actor/parts/actor-header-monster-elite.html"}}
       {{/if}}
@@ -64,6 +68,10 @@
 
       {{#if is_minion}}
         {{> "systems/earthland/templates/actor/parts/actor-body-monster-minion.html"}}
+      {{/if}}
+
+      {{#if is_pet}}
+        {{> "systems/earthland/templates/actor/parts/actor-body-monster-pet.html"}}
       {{/if}}
 
       {{#if is_elite}}

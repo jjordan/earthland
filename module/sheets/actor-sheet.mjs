@@ -32,6 +32,34 @@ export class earthlandActorSheet extends ActorSheet {
     // sheets are the actor object, the data object, whether or not it's
     // editable, the items array, and the effects array.
     const context = super.getData();
+    context.monster_kind_options = [
+      {
+        name: 'Boss',
+        value: 'boss',
+        selected: false
+      },
+      {
+        name: 'Elite',
+        value: 'elite',
+        selected: false
+      },
+      {
+        name: 'Pet',
+        value: 'pet',
+        selected: false
+      },
+      {
+        name: 'Minion',
+        value: 'minion',
+        selected: false
+      },
+      {
+        name: 'Mob',
+        value: 'mob',
+        selected: false
+      }
+    ];
+
     context.npc_kind_options = [
       {
         name: 'Boss',
@@ -63,10 +91,19 @@ export class earthlandActorSheet extends ActorSheet {
     context.flags = actorData.flags;
 
     let kind_name = context.system.kind;
-    context.npc_kind_options[0].selected = false; // reset zero option
-    const kind = context.npc_kind_options.find( element => element.value === kind_name);
+    let kind = '';
+    if (actorData.type == 'npc') {
+      context.npc_kind_options[0].selected = false; // reset zero option
+      kind = context.npc_kind_options.find( element => element.value === kind_name);
+    }
+    if (actorData.type == 'monster') {
+      context.monster_kind_options[0].selected = false; // reset zero option
+      kind = context.monster_kind_options.find( element => element.value === kind_name);
+    }
+    console.log("What is kind? %o", kind);
     context.is_mob    = false;
     context.is_minion = false;
+    context.is_pet    = false;
     context.is_elite  = false;
     context.is_boss   = false;
     if (!!kind) {
@@ -79,6 +116,8 @@ export class earthlandActorSheet extends ActorSheet {
         context.is_elite = true;
       } else if (kind.value == 'boss') {
         context.is_boss = true;
+      } else if (kind.value == 'pet') {
+        context.is_pet = true;
       } else {
         context.is_minion = true;
       }

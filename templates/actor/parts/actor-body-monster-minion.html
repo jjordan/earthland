@@ -22,6 +22,26 @@
         <div class="complication flexrow flex-group-center">
           {{> "systems/earthland/templates/actor/parts/actor-complications.html"}}
         </div>
+        <div class="attributes">
+          <h3>Dice Pools</h3>
+          <ol class="items-list">
+            <li class="item flexrow items-header">
+              <div class="item-name">Name</div>
+              <div class="item-controls"></div>
+            </li>
+            {{#each dicepools as |dicepool id|}}
+              <li class="item flexrow" data-item-id="{{dicepool._id}}">
+                <div class="item-name">
+                  <button title="Reconstitute Dice-Pool" class="role poolable small-button" data-rolltype="actor" data-poolid="{{dicepool._id}}" data-label="{{dicepool.name}}" data-kind="Dicepool"><i class="fas fa-dice-d8"></i></button>
+                 <label class="resource-label poolable flexlarge align-left" data-rolltype="actor" data-poolid="{{dicepool._id}}" data-label="{{dicepool.name}}" data-kind="Dicepool">{{dicepool.name}}</label>
+                </div>
+                <div class="item-controls">
+                  <a class="item-control item-delete" title="Delete Dicepool"><i class="fas fa-trash"></i></a>
+                </div>
+              </li>
+            {{/each}}
+          </ol>
+        </div>
       </div>
     </section>
   </div>

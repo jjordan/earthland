@@ -16,6 +16,8 @@
             "flaws":"",
             "species":"",
             "subspecies":"",
+            "movement":"",
+            "senses":"",
             "armor_class": {
               "value": {
                 "0": 2
