@@ -1,0 +1,67 @@
+<div class="resources grid grid-3col">
+  {{!-- "flex-group-center" is also defined in the _grid.scss file
+  and it will add a small amount of padding, a border, and will
+  center all of its child elements content and text. --}}
+  <div class="resource flex-group-center">
+    <label for="system.health.value" class="resource-label">Hit Points</label>
+    <div class="resource-content flexrow flex-center flex-between">
+    <input type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number"/>
+    <span> / </span>
+    <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number"/>
+    </div>
+  </div>
+
+  <div class="resource flex-group-center">
+    <label for="system.magic.value" class="resource-label">Magic Points</label>
+    <div class="resource-content flexrow flex-center flex-between">
+    <input type="text" name="system.magic.value" value="{{system.magic.value}}" data-dtype="Number"/>
+    </div>
+  </div>
+
+  <div class="resource flex-group-center">
+    <label for="system.energy.value" class="resource-label">Energy</label>
+    <div class="resource-content flexrow flex-center flex-between">
+    <input type="text" name="system.energy.value" value="{{system.energy.value}}" data-dtype="Number"/>
+    <span> / </span>
+    <input type="text" name="system.energy.max" value="{{system.energy.max}}" data-dtype="Number"/>
+    </div>
+  </div>
+</div>
+
+<div class="resources grid grid-3col">
+  <div class="resource flex-group-center">
+    <label for="system.resistances" class="resource-label">Reistances</label>
+    <div class="resource-content flexrow flex-center flex-between">
+    <input type="text" name="system.resistances" value="{{system.resistances}}" data-dtype="String"/>
+    </div>
+  </div>
+
+  <div class="resource flex-group-center">
+    <label for="system.immunities" class="resource-label">Immunities</label>
+    <div class="resource-content flexrow flex-center flex-between">
+    <input type="text" name="system.immunities" value="{{system.immunities}}" data-dtype="String"/>
+    </div>
+  </div>
+
+  <div class="resource flex-group-center">
+    <label for="system.weaknesses" class="resource-label">Weaknesses</label>
+    <div class="resource-content flexrow flex-center flex-between">
+    <input type="text" name="system.weaknesses" value="{{system.weaknesses}}" data-dtype="String"/>
+    </div>
+  </div>
+</div>
+
+<div class="resources">
+  <div class="resource flex-group-left">
+    <section class="grid grid-2col" style="width: 400px;">
+      <div class="flex-col pr-0 flex-s-1">
+        <label for="system.armor_class.value" class="resource-label">Armor Class</label>
+        {{> "systems/earthland/templates/partials/dice/select.html"
+          dice=system.armor_class.value
+          edit=true
+          selectName='system.armor_class'
+        }}
+      </div><button title="Add to Dice-Pool" class="armor_class rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject system.armor_class.value}}" data-label="Armor Class" data-kind="Attribute"><i class="fas fa-dice-d20"></i></button>
+    </section>
+  </div>
+</div>
