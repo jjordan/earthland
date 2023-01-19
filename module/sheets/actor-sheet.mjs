@@ -226,16 +226,7 @@ export class earthlandActorSheet extends ActorSheet {
     const trinkets = [];
     const weapons = [];
     const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: []
+      0: [] // all the rest are auto-added
     };
     const dicepools = [];
 
@@ -346,7 +337,12 @@ export class earthlandActorSheet extends ActorSheet {
       // Append to spells.
       else if (i.type === 'spell') {
         if (i.system.level != undefined) {
-          spells[i.system.level].push(i);
+          if (spells.hasOwnProperty(i.system.level)) {
+            spells[i.system.level].push(i);
+          } else {
+            spells[i.system.level] = [];
+            spells[i.system.level].push(i);
+          }
         }
       }
     }
