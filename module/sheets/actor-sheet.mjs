@@ -350,6 +350,12 @@ export class earthlandActorSheet extends ActorSheet {
         }
       }
     }
+    context.is_not_gm = true;
+    context.is_gm = false
+    if ( game.user.isGM ) {
+       context.is_not_gm = false;
+       context.is_gm = true;
+    }
     // Assign and return
     context.abilities         = abilities;
     context.ammunition        = ammunition;

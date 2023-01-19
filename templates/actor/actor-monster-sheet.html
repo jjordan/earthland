@@ -9,6 +9,9 @@
       <div class="">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="200" width="200"/>
       </div>
+      {{#if is_pet}}
+        {{> "systems/earthland/templates/actor/parts/actor-mini-monster-pet.html"}}
+      {{/if}}
     </div>
     <div class="header-fields align-left">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
@@ -19,7 +22,7 @@
         <div class="resource flex-group-center">
           <label for="system.kind" class="resource-label">Kind</label>
           <div class="kind flexrow flex-group-center">
-            <select class='tiny-input' name="system.kind" value="{{system.kind}}" data-dtype="String">
+            <select class='tiny-input' name="system.kind" value="{{system.kind}}" data-dtype="String" {{disabled is_not_gm}}>
               {{#each monster_kind_options }}
               <option value="{{value}}" {{#selected}} selected="selected"{{/selected}}>{{name}}</option>
               {{/each}}
