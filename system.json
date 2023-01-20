@@ -2,7 +2,7 @@
   "id": "earthland",
   "title": "earthland",
   "description": "The earthland system for FoundryVTT!",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "compatibility": {
     "minimum": 10,
     "verified": "10.291",
@@ -28,7 +28,7 @@
   "secondaryTokenAttribute": "energy",
   "url": "https://github.com/jjordan/earthland",
   "manifest": "https://raw.githubusercontent.com/jjordan/earthland/master/system.json",
-  "download": "https://github.com/jjordan/earthland/archive/refs/tags/v0.0.18.zip",
+  "download": "https://github.com/jjordan/earthland/archive/refs/tags/v0.0.19.zip",
   "license": "LICENSE.txt",
   "changelog": "CHANGELOG.md"
 }
