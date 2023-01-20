@@ -41,6 +41,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Count</div>
       <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Weapon" data-type="weapon"><i class="fas fa-plus"></i> Add Weapon</a>
@@ -54,6 +55,7 @@
           </div>
           <h4>{{weapon.name}}</h4>
         </div>
+        <div class="item-name">{{weapon.system.quantity}}</div>
         <div class="item-name">
           {{#if (or weapon.system.energy_cost weapon.system.mp_cost)}}
             <button title="Use Weapon Ability (add to dice-pool)" class="usable small-button" data-usetype="actor" data-energycost="{{weapon.system.energy_cost}}" data-mpcost="{{weapon.system.mp_cost}}" data-label="{{weapon.name}}" data-kind="spell" data-level="{{spellLevel}}" data-roll="{{formulaFromObject weapon.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
@@ -78,6 +80,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Count</div>
       <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Ammunition" data-type="ammunition"><i class="fas fa-plus"></i> Add Ammunition</a>
@@ -91,6 +94,7 @@
           </div>
           <h4>{{ammo.name}}</h4>
         </div>
+        <div class="item-name">{{ammo.system.quantity}}</div>
         <div class="item-name">
           {{#if (or ammo.system.energy_cost ammo.system.mp_cost)}}
             <button title="Use Ammunition Ability (add to dice-pool)" class="usable small-button" data-usetype="actor" data-energycost="{{ammo.system.energy_cost}}" data-mpcost="{{ammo.system.mp_cost}}" data-label="{{ammo.name}}" data-kind="spell" data-level="{{spellLevel}}" data-roll="{{formulaFromObject ammo.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
@@ -114,6 +118,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Count</div>
       <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Armor" data-type="armor"><i class="fas fa-plus"></i> Add Armor</a>
@@ -127,6 +132,7 @@
           </div>
           <h4>{{armor.name}}</h4>
         </div>
+        <div class="item-name">{{armor.system.quantity}}</div>
         <div class="item-name">
           {{#if (or armor.system.energy_cost armor.system.mp_cost)}}
             <button title="Use Armor Ability (add to dice-pool)" class="usable small-button" data-usetype="actor" data-energycost="{{armor.system.energy_cost}}" data-mpcost="{{armor.system.mp_cost}}" data-label="{{armor.name}}" data-kind="spell" data-level="{{spellLevel}}" data-roll="{{formulaFromObject armor.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
@@ -150,6 +156,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Count</div>
       <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Potion" data-type="potion"><i class="fas fa-plus"></i> Add Potion</a>
@@ -163,6 +170,7 @@
           </div>
           <h4>{{potion.name}}</h4>
         </div>
+        <div class="item-name">{{potion.system.quantity}}</div>
         <div class="item-name">
           {{#if potion.system.charge_cost}}
             <button title="Consume" class="role consumable small-button" data-id="{{potion._id}}"  data-rolltype="actor" data-roll="{{formulaFromObject potion.system.dice.value}}" data-label="{{potion.name}}" data-kind="potion" data-chcost="{{potion.system.charge_cost}}" data-chcurrent="{{potion.system.current_charges}}"><i class="fa-solid fa-prescription-bottle-medical"></i></button>
@@ -182,6 +190,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Count</div>
       <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Lacrima" data-type="lacrima"><i class="fas fa-plus"></i> Add Lacrima</a>
@@ -195,6 +204,7 @@
           </div>
           <h4>{{lacrima.name}}</h4>
         </div>
+        <div class="item-name">{{lacrima.system.quantity}}</div>
         <div class="item-name">
           {{#if lacrima.system.charge_cost}}
             <button title="Consume Item" class="role consumable small-button" data-id="{{lacrima._id}}"  data-rolltype="actor" data-roll="{{formulaFromObject lacrima.system.dice.value}}" data-label="{{lacrima.name}}" data-kind="lacrima" data-chcost="{{lacrima.system.charge_cost}}" data-chcurrent="{{lacrima.system.current_charges}}"><i class="fa-regular fa-circle-dot"></i></button>
@@ -218,6 +228,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Count</div>
       <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Equipment" data-type="equipment"><i class="fas fa-plus"></i> Add Equipment</a>
@@ -231,6 +242,7 @@
           </div>
           <h4>{{gear.name}}</h4>
         </div>
+        <div class="item-name">{{gear.system.quantity}}</div>
         <div class="item-name">
           {{#if (or gear.system.energy_cost gear.system.mp_cost)}}
             <button title="Use Equipment (add to dice-pool)" class="usable small-button" data-usetype="actor" data-energycost="{{gear.system.energy_cost}}" data-mpcost="{{gear.system.mp_cost}}" data-label="{{gear.name}}" data-kind="spell" data-level="{{spellLevel}}" data-roll="{{formulaFromObject gear.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
@@ -258,6 +270,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Count</div>
       <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Trinket" data-type="trinket"><i class="fas fa-plus"></i> Add Trinket</a>
@@ -271,6 +284,7 @@
           </div>
           <h4>{{trinket.name}}</h4>
         </div>
+        <div class="item-name">{{trinket.system.quantity}}</div>
         <div class="item-name">
           {{#if (or trinket.system.energy_cost trinket.system.mp_cost)}}
             <button title="Use Trinket Ability (add to dice-pool)" class="usable small-button" data-usetype="actor" data-energycost="{{trinket.system.energy_cost}}" data-mpcost="{{trinket.system.mp_cost}}" data-label="{{trinket.name}}" data-kind="spell" data-level="{{spellLevel}}" data-roll="{{formulaFromObject trinket.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
@@ -298,6 +312,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Count</div>
       <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Recipe" data-type="recipe"><i class="fas fa-plus"></i> Add Recipe</a>
@@ -311,6 +326,7 @@
           </div>
           <h4>{{recipe.name}}</h4>
         </div>
+        <div class="item-name">{{recipe.system.quantity}}</div>
         <div class="item-name">
           {{#if recipe.system.dice}}
             <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject recipe.system.dice.value}}" data-label="{{recipe.name}}" data-kind="recipe"><i class="fas fa-dice-d20"></i></button>
@@ -330,6 +346,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Count</div>
       <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Resource" data-type="resource"><i class="fas fa-plus"></i> Add Resource</a>
@@ -343,6 +360,7 @@
           </div>
           <h4>{{resource.name}}</h4>
         </div>
+        <div class="item-name">{{resource.system.quantity}}</div>
         <div class="item-name">
           {{#if resource.system.dice}}
             <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject resource.system.dice.value}}" data-label="{{resource.name}}" data-kind="resource"><i class="fas fa-dice-d20"></i></button>
@@ -362,6 +380,7 @@
   <ol class="items-list">
     <li class="item flexrow items-header">
       <div class="item-name">Name</div>
+      <div class="item-name">Count</div>
       <div class="item-name">Action</div>
       <div class="item-controls">
         <a class="item-control item-create" title="Create Treasure" data-type="treasure"><i class="fas fa-plus"></i> Add Treasure</a>
@@ -375,6 +394,7 @@
           </div>
           <h4>{{treasure.name}}</h4>
         </div>
+        <div class="item-name">{{treasure.system.quantity}}</div>
         <div class="item-name">
           {{#if treasure.system.dice}}
             <button title="Add to Dice-Pool" class="role rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject treasure.system.dice.value}}" data-label="{{treasure.name}}" data-kind="treasure"><i class="fas fa-dice-d20"></i></button>
