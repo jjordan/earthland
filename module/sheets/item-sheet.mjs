@@ -48,12 +48,16 @@ export class earthlandItemSheet extends ItemSheet {
     }
 
     if ( itemData.type == 'milestone' ) {
-      if (itemData.system.is_completed && itemData.system.completed_time == '') {
+      if (itemData.system.is_completed &&
+             itemData.system.completed_time == '') {
         console.log("about to complete milestone");
         itemData.complete();
         console.log("milestone completed");
+      } else if(itemData.system.is_completed == false) {
+        itemData.reset();
       }
-      if ( itemData.system.completed_time != '' ) {
+      if ( itemData.system.completed_time != '' &&
+         (!itemData.system.is_repeatable) ) {
         context.is_locked = true;
       }
     }

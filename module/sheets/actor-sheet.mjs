@@ -503,6 +503,7 @@ export class earthlandActorSheet extends ActorSheet {
         await item.complete();
         element.checked = true;
       } else { // cannot uncheck it, but first just see if we can toggle it
+        await item.reset();
         element.checked = false;
         await item.update({
           is_complete: false

@@ -41,7 +41,7 @@
         <div class="item-name">{{#if milestone.system.is_completed}}COMPLETED{{else}}incomplete{{/if}}</div>
         <div class="item-name">{{milestone.system.kind}}</div>
         <div class="item-name">
-          <input class="input-checkbox-cpt milestone-checkbox" name="system.is_completed" type="checkbox" {{checked milestone.system.is_completed}} value="{{milestone.system.is_completed}}" data-id="{{milestone._id}}" {{disabled milestone.system.is_completed}}  />
+          <input class="input-checkbox-cpt milestone-checkbox" name="system.is_completed" type="checkbox" {{checked milestone.system.is_completed}} value="{{milestone.system.is_completed}}" data-id="{{milestone._id}}" {{disabled (ternary (and milestone.system.is_completed (not milestone.system.is_repeatable)) true false ) }}  />
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>

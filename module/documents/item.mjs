@@ -70,7 +70,8 @@ export class earthlandItem extends Item {
     console.log("what is item? %o", this);
     if (this.type == 'milestone') {
       console.log("attempting to complete a milestone");
-      if (this.system.completed_time != '') {
+      if (this.system.completed_time != '' &&
+         (!this.system.is_repeatable)) {
         ui.notifications.info("This milestone has already been marked as completed. Ask the GM to reset your milestones.");
         return '';
       }
@@ -110,7 +111,7 @@ export class earthlandItem extends Item {
     if( game.user.isGM ) {
       if (this.type == 'milestone') {
         if (this.system.is_repeatable) {
-          console.log("attempting to complete a milestone");
+          console.log("attempting to revert a milestone");
           let updated = await this.update({
               data: {
                   is_completed: false,
