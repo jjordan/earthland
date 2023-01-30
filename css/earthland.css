@@ -266,6 +266,24 @@
   -ms-transform: translate(-50%, -60%);
   transform: translate(-50%, -60%);
 }
+.die-cpt.chosen-cpt .fill {
+  fill: var(--die-rating-fill, #4169E1);
+}
+.die-cpt.chosen-cpt .stroke {
+  fill: var(--die-rating-stroke, #4169E1);
+}
+.die-cpt.chosen-cpt .number {
+  color: var(--die-rating-number, #ffffff);
+}
+.die-cpt.unchosen-cpt .fill {
+  fill: var(--unchosen-fill, #dedede);
+}
+.die-cpt.unchosen-cpt .stroke {
+  fill: var(--unchosen-stroke, #424c59);
+}
+.die-cpt.unchosen-cpt .number {
+  color: var(--unchosen-number, #424c59);
+}
 
 
 /* Styles limited to earthland sheets */
@@ -494,8 +512,9 @@
   z-index: 10;
 }
 
+
+
 .dice-picker.window-app .window-content, .consumable-dice.window-app .window-content {
-  background: none;
   padding: 0;
 }
 

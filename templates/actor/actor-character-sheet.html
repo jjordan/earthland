@@ -2,7 +2,23 @@
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="200" width="200"/>
+    <div class="align-left slim-header">
+      <div class="">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="200" width="200"/>
+      </div>
+      <div class="flex-col pr-0 flex-s-1">
+        <label for="system.hero_dice.value" class="resource-label">Hero Dice</label>
+        {{> "systems/earthland/templates/partials/dice/select.html"
+          addToPool=true
+          dice=system.hero_dice.value
+          consumable=true
+          minDice=0
+          label="Hero Dice"
+          selectName='system.hero_dice'
+        }}
+        </div><button title="Add to Dice-Pool" class="hero_dice rollable small-button" data-rolltype="actor" data-roll="{{formulaFromObject system.hero_dice.value}}" data-label="Hero Dice" data-kind="Resource" data-consumable="true" data-target="system.hero_dice"><i class="fas fa-dice-d20"></i></button>
+      </div>
+    </div>
     <div class="header-fields">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
       {{!-- The grid classes are defined in scss/global/_grid.scss. To use,

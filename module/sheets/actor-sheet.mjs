@@ -1,5 +1,6 @@
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
 import { times, getLength, objectMapValues, objectReindexFilter, objectFindValue, objectSome } from '../../lib/helpers.js'
+import { localizer } from '../scripts/foundryHelpers.mjs'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -614,10 +615,12 @@ export class earthlandActorSheet extends ActorSheet {
    * @param {Event} event   The originating click event
    * @private
    */
-  _onRoll(event) {
+  async _onRoll(event) {
     event.preventDefault();
     const element = event.currentTarget;
     const dataset = element.dataset;
+    const $targetNewDie = $(event.currentTarget);
+    const target = $targetNewDie.data('target');
     // Handle item rolls.
     if (dataset.rollType) {
       if (dataset.rollType == 'item') {
@@ -627,13 +630,33 @@ export class earthlandActorSheet extends ActorSheet {
       }
     }
 
+    let object;
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
       let label = dataset.label ? `[${dataset.kind}] ${dataset.label}` : '';
       let trait = dataset.roll;
       let rollData = this.actor.getRollData();
       let value = this.replaceFormulaData(trait, rollData);
-      let object;
+      console.log("Got value in actor sheet 1: %o", value);
+      if (dataset.consumable) {
+        if (typeof value === 'string') {
+          object = this.formulaToDiceObject(value);
+        } else if (typeof value === 'object') {
+          object = value
+        }
+        console.log("Got object in actor sheet 1: %o", object);
+        const selectedDice = await this._getConsumableDiceSelection(object, label)
+        console.log("What are the selected dice? %o", selectedDice);
+        if (selectedDice.remove?.length) {
+          const newValue = objectReindexFilter(object, (_, key) => !selectedDice.remove.map(x => parseInt(x, 10)).includes(parseInt(key, 10)))
+          console.log("Got new value: %o", newValue);
+          console.log("Resetting target: %o.value", target);
+          await this._resetDataPoint(target, 'value', newValue)
+        }
+
+        value = selectedDice.value
+      }
+      console.log("Got value in actor sheet: %o", value);
       if (typeof value === 'string') {
         object = this.formulaToDiceObject(value);
       } else if (typeof value === 'object') {
@@ -752,6 +775,66 @@ export class earthlandActorSheet extends ActorSheet {
     }
   }
 
+  async _getConsumableDiceSelection (options, label) {
+    const content = await renderTemplate('systems/earthland/templates/dialog/consumable-dice.html', {
+      options,
+      isOwner: game.user.isOwner
+    })
+
+    return new Promise((resolve, reject) => {
+      new Dialog({
+        title: label,
+        content,
+        buttons: {
+          cancel: {
+            icon: '<i class="fas fa-times"></i>',
+            label: localizer('Cancel'),
+            callback () {
+              resolve({ remove: [], value: {} })
+            }
+          },
+          done: {
+            icon: '<i class="fas fa-check"></i>',
+            label: localizer('AddToPool'),
+            callback (html) {
+              const remove = html.find('.remove-check').prop('checked')
+              const selectedDice = html.find('.die-select.selected').get()
+
+              if (!selectedDice?.length) {
+                resolve({ remove: [], value: {} })
+              }
+
+              resolve(
+                selectedDice
+                  .reduce((selectedValues, selectedDie, index) => {
+                    const $selectedDie = $(selectedDie)
+
+                    if (remove) {
+                      selectedValues.remove = [...selectedValues.remove, $selectedDie.data('key')]
+                    }
+
+                    selectedValues.value = { ...selectedValues.value, [getLength(selectedValues.value)]: $selectedDie.data('value') }
+
+                    return selectedValues
+                  }, { remove: [], value: {} })
+              )
+            }
+          }
+        },
+        default: 'cancel',
+        render(html) {
+          html.find('.die-select').click(function () {
+            const $dieContainer = $(this)
+            const $dieCpt = $dieContainer.find('.die-cpt')
+            $dieContainer.toggleClass('result selected')
+            $dieCpt.toggleClass('unchosen-cpt chosen-cpt')
+          })
+        }
+      }, { jQuery: true, classes: ['dialog', 'consumable-dice', 'earthland'] }).render(true)
+    })
+  }
+
+
   unwrapCostObject( object ) {
     const invertedObject = {};
     let j = 0;
@@ -777,10 +860,17 @@ export class earthlandActorSheet extends ActorSheet {
   }
 
 
-  formulaToDiceObject(formula) {
-    const [num, sides] = formula.split('d');
+  formulaToDiceObject(formulae) {
+    const formulas = formulae.split(' ');
     const obj = {};
-    times(parseInt(num)) (i => obj[i] = parseInt(sides));
+    let j = 0;
+    formulas.forEach( formula => {
+      let [num, sides] = formula.split('d');
+      times(parseInt(num)) (i => {
+        obj[j] = parseInt(sides)
+        j++;
+      });
+    });
     return obj;
   }
 }

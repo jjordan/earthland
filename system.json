@@ -4,22 +4,28 @@
   "description": "The earthland system for FoundryVTT!",
   "version": "0.0.20",
   "compatibility": {
-    "minimum": 10,
+    "minimum": "10",
     "verified": "10.291",
-    "maximum": 10
+    "maximum": "10"
   },
-  "authors": [{
-    "name": "Jeremiah Jordan"
-  }],
-  "esmodules": ["module/earthland.mjs"],
-  "styles": ["css/earthland.css"],
-  "scripts": [],
-  "packs": [],
+  "authors": [
+    {
+      "name": "Jeremiah Jordan",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "module/earthland.mjs"
+  ],
+  "styles": [
+    "css/earthland.css"
+  ],
   "languages": [
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+      "flags": {}
     }
   ],
   "gridDistance": 5,
