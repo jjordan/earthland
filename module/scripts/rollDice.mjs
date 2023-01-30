@@ -472,7 +472,7 @@ const removeCostsFromPool = async (pool) => {
     new_pool[source] = {};
     for (const [index, object] of Object.entries(value)) {
       console.log("What is object? %o", object);
-      if ((object.type == 'trait') || (object.type == 'difficulty')) {
+      if ((object.type == 'trait') || (object.type == 'difficulty') || (object.type == 'custom')) {
         new_pool[source][index] = object;
         if (object.label.match(/hindrance/i) && object.actor_id) {
           addMPFromHindrance(object.actor_id);

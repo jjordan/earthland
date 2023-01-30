@@ -7,6 +7,7 @@ const blankPool = {
   name: '',
   changed: { value: true },
   customAdd: {
+    type: 'custom',
     label: '',
     value: { 0: '8' }
   },
@@ -236,6 +237,7 @@ export class UserDicePool extends FormApplication {
     setProperty(currentDice, `pool.custom.${currentCustomLength}`, currentDice.customAdd)
 
     setProperty(currentDice, `customAdd`, {
+      type: 'custom',
       label: '',
       value: { 0: '8' }
     })
@@ -380,6 +382,7 @@ export class UserDicePool extends FormApplication {
     const currentDice = game.user.getFlag('earthland', 'dicePool')
 
     setProperty(currentDice, 'customAdd', {
+      type: 'custom',
       label: '',
       value: { 0: '8' }
     })
