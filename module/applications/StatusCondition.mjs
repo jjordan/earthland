@@ -46,7 +46,7 @@ export class StatusCondition extends FormApplication {
 
   static get defaultOptions () {
     return mergeObject(super.defaultOptions, {
-      id: 'difficulty',
+      id: 'status-conditions',
       template: 'systems/earthland/templates/other/status_conditions.html',
       title: localizer('StatusConditions'),
       classes: ['status', 'status-conditions', 'conditions', 'complications'],

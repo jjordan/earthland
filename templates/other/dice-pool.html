@@ -59,11 +59,6 @@
             {{#each pool as |source sourceName|}}
               <div class="flex flex-ac flex-jsb py-1">
                 <span class="trait-title-cpt flex-col">{{sourceName}}</span>
-                <div class="flex-col">
-                  <button class="btn btn-secondary-cpt clear-source" data-source="{{sourceName}}" type="button">
-                    {{localize 'Clear'}}
-                  </button>
-                </div>
               </div>
               <div class="flex flex-ac flex-wrap py-2">
                 {{#each source as |trait traitKey|}}
@@ -107,7 +102,6 @@
         <div class="relative-section">
           <div class="section-background"></div>
           <div class="flex-col col-12 flex flex-je py-2">
-            {{#if (and name.value changed.value)}}
             <div class="flex-col">
               {{#if (not itemid.value)}}
                 <button class="make-dice-pool-item btn btn-secondary-cpt" type="button">{{localize 'CreatePool'}}</button>
@@ -115,7 +109,6 @@
                 <button class="make-dice-pool-item btn btn-secondary-cpt" type="button">{{localize 'SavePool'}}</button>
               {{/if}}
             </div>
-            {{/if}}
             <div class="flex-col">
               <button class="clear-dice-pool btn btn-secondary-cpt" type="button">{{localize 'Clear'}}</button>
             </div>
