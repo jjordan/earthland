@@ -10,6 +10,7 @@ import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { earthland } from "./helpers/config.mjs";
 import dicePoolHooks from './hooks/dicePoolHooks.mjs';
 import difficultyHooks from './hooks/difficultyHooks.mjs';
+import gmbankHooks from './hooks/gmbankHooks.mjs';
 import statusConditionHooks from './hooks/statusConditionHooks.mjs';
 import { registerHandlebarHelpers } from './handlebars/helpers.js'
 import { registerSettings } from './settings/settings.js'
@@ -57,6 +58,7 @@ Hooks.once('init', async function() {
   dicePoolHooks();
   difficultyHooks();
   statusConditionHooks();
+  gmbankHooks();
   registerHandlebarHelpers();
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();

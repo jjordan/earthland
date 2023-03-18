@@ -1,0 +1,34 @@
+<form class="{{cssClass}} gm-bank sheet-cpt" autocomplete="off">
+  <div class="sheet-background"></div>
+  <div class="sheet-image"></div>
+  <div class="sheet-content pa-2">
+    <div class="section-cpt">
+      <div class="section-image">{{log 'bank_type: ' bank_type}}</div>
+      <div class="section-image">{{log 'bank_types: ' bank_types}}</div>
+      <div class="section-content">
+        <div class="relative-section pb-2 pt-0">
+          <div class="section-background"></div>
+          <h3 class="section-primary-title-cpt px-2 mb-0">{{localize bank_type_name}}</h3>
+          <div class="resources grid grid-3col">
+            <div class="flex-col pr-0 flex-s-1">
+              <label for="bank_type">Bank Type</label>
+              <select class="input-cpt" name="bank_type" value="{{bank_type}}">
+                {{#each bank_types}}
+                  <option value="{{value}}" {{#selected}} selected="selected"{{/selected}}>{{localize name}}</option>
+                {{/each}}
+              </select>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <label for="magic_points">Magic Points</label>
+              <input class="magic-points" type="text" name="magic_points" value="{{magic_points}}" />
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <label for="bank_name">Bank Name</label>
+              <input class="bank-name" type="text" name="bank_name" value="{{bank_name}}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
