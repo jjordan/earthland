@@ -54,7 +54,7 @@
         {{/each}}
         {{#each rollResults.hitches as |rollResult|}}
         <div class="dice-wrapper ml-1">
-          <div class="die" data-die-rating="{{rollResult.faces}}" data-type="hitch" data-value="1"></div>
+          <div class="die hitch clickable" data-die-rating="{{rollResult.faces}}" data-type="hitch" data-value="1"></div>
           <div class="descriptor-label-cpt">d{{rollResult.faces}}</div>
         </div>
         {{/each}}

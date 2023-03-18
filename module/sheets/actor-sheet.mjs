@@ -681,7 +681,7 @@ export class earthlandActorSheet extends ActorSheet {
     if (actor_energy < dataset.energycost) {
       error_messages.push( `Energy (${actor_energy})` );
     }
-    if (actor_mp < dataset.mpcost) {
+    if (actor_mp < dataset.mpcost && !game.user.isGM) {
       error_messages.push( `Magic Points (${actor_mp})` );
     }
     if (error_messages.length > 0) {

@@ -3,13 +3,13 @@
   <div class="sheet-image"></div>
   <div class="sheet-content pa-2">
     <div class="section-cpt">
-      <div class="section-image">{{log 'bank_type: ' bank_type}}</div>
+      <div class="section-image">{{log 'pool: ' pool}}</div>
       <div class="section-image">{{log 'bank_types: ' bank_types}}</div>
       <div class="section-content">
         <div class="relative-section pb-2 pt-0">
           <div class="section-background"></div>
           <h3 class="section-primary-title-cpt px-2 mb-0">{{localize bank_type_name}}</h3>
-          <div class="resources grid grid-3col">
+          <div class="resources grid grid-4col">
             <div class="flex-col pr-0 flex-s-1">
               <label for="bank_type">Bank Type</label>
               <select class="input-cpt" name="bank_type" value="{{bank_type}}">
@@ -20,11 +20,44 @@
             </div>
             <div class="flex-col pr-0 flex-s-1">
               <label for="magic_points">Magic Points</label>
-              <input class="magic-points" type="text" name="magic_points" value="{{magic_points}}" />
+              <input class="magic-points" readonly="readonly" disabled="disabled" type="text" name="magic_points" value="{{magic_points}}" />
             </div>
             <div class="flex-col pr-0 flex-s-1">
               <label for="bank_name">Bank Name</label>
               <input class="bank-name" type="text" name="bank_name" value="{{bank_name}}" />
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <label for="add-magic-point">Add Magic Point</label>
+              <button class="btn btn-primary-cpt btn-icon clickable add-magic-point" type="button"><i class="fa fa-plus"></i></button>
+            </div>
+          </div>
+          <div class="resources grid grid-1col">
+            <div class="flex-col flex-s-1">
+              <span class="input-label-cpt">{{localize 'Dice'}}</span>
+              {{> "systems/earthland/templates/partials/dice/select.html"
+                dice=pool
+                edit=true
+                label="{{bank_name}}"
+                selectName="bank"
+              }}
+            </div>
+          </div>
+          <div class="resources grid grid-4col">
+            <div class="flex-col pr-0 flex-s-1">
+              <label for="roll_pool">Roll Pool</label>
+              <button class="btn btn-primary-cpt btn-icon clickable roll-pool" type="button"><i class="fa-solid fa-dice"></i></button>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <label for="roll_pool">Add NPC</label>
+              <button class="btn btn-primary-cpt btn-icon clickable add-npc" type="button"><i class="fa-solid fa-user-plus"></i></button>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <label for="roll_pool">Create Problem</label>
+              <button class="btn btn-primary-cpt btn-icon clickable create-problem" type="button"><i class="fa-solid fa-circle-exclamation"></i></button>
+            </div>
+            <div class="flex-col pr-0 flex-s-1">
+              <label for="roll_pool">Use Ability</label>
+              <button class="btn btn-primary-cpt btn-icon clickable use-ability" type="button"><i class="fa-solid fa-hand-sparkles"></i></button>
             </div>
           </div>
         </div>

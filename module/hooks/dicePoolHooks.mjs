@@ -114,6 +114,19 @@ export default () => {
         console.log("what is name in send-to-pool? %o", name);
         await game.earthland.UserDicePool._setPool(pool, name)
       })
+      $rollResult.find('.hitch').click(async (event) => {
+        event.preventDefault()
+        const $target = $(event.currentTarget);
+        const die = { 0: $target.data("die-rating") }
+        console.log( "Got target: %o", $target);
+        const actorId = $rollResult.find('.dice-tag').data("actorid");
+        console.log( "Got actorId: %o", actorId);
+        if (!!actorId) {
+          const actor = game.actors.get(actorId)
+          actor.changePpBy(1);
+        }
+        await game.earthland.GMBank.addDieToBank( die );
+      })
     }
   })
 

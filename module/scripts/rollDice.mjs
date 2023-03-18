@@ -1,5 +1,6 @@
 import { objectReduce } from '../../lib/helpers.js'
 import { localizer } from './foundryHelpers.mjs'
+import { getLength, objectFilter, objectMapValues, objectReindexFilter } from '../../lib/helpers.js'
 
 const getAppendDiceContent = (data) => renderTemplate('systems/earthland/templates/partials/die-display.html', data)
 
@@ -464,6 +465,7 @@ const addMPFromHindrance = async (actor_id) => {
 }
 
 const removeCostsFromPool = async (pool) => {
+  console.log("got to here in removeCostsFromPool");
   // basically we're going to return a new pool without the costs
   const new_pool = {};
   const costs_by_actor_id = {};
@@ -490,7 +492,48 @@ const removeCostsFromPool = async (pool) => {
     console.log("Actor id: %o", actor_id);
     let actor = await Actor.get(actor_id);
     if(!!actor) {
-      if(actor.isOwner) {
+      console.log("Found actor");
+      if( game.user.isGM ) { // pull the MP from the bank
+        console.log("GM User");
+        const actor_en = actor.system.energy.value;
+        const gm_bank = game.user.getFlag('earthland', 'GMBank');
+        const currentDice = gm_bank.pool;
+        const actor_mp = getLength(currentDice ?? {});
+
+        // collate all of the costs
+        const required_en = Object.values(object.value).filter(n => n == 'en').length
+        const required_mp = Object.values(object.value).filter(n => n == 'mp').length
+        console.log("required en: %o, required mp: %o", required_en, required_mp);
+        const error_messages = [];
+        if (actor_en < required_en) {
+          required_mp += 1; // if we don't have enough energy, use MP instead
+          required_en = 0; // set to zero so we don't set negative EN
+        }
+        if (actor_mp < required_mp) {
+          error_messages.push( `Magic (${actor_mp})` );
+        }
+        if (error_messages.length > 0) {
+          const messages = error_messages.join(' or ');
+          ui.notifications.error( `${actor.name} does not have enough ${messages} to use ${object.label}` );
+          return false;
+        } else {
+          game.earthland.GMBank.useMP(required_mp);
+          if (required_en > 0) {
+            const new_energy = actor_en - required_en;
+            const updated = await actor.update({
+              data: {
+                energy: {
+                  value: new_energy
+                }
+              }
+            });
+            if(!updated) {
+              ui.notifications.error( `Couldn't update resources for actor ${actor.name} (mp: ${required_mp}) (en: ${required_en})` );
+              return false;
+            }
+          }
+        }
+      } else if(actor.isOwner) {
         const actor_en = actor.system.energy.value;
         const actor_mp = actor.system.magic.value;
         // collate all of the costs
