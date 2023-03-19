@@ -15,7 +15,7 @@ export class GMBank extends FormApplication {
     this.bank_types = [
       { name: 'Bank', value: 'bank', selected: false},
       { name: 'Doom Pool', value: 'doom_pool', selected: false},
-      { name: 'Crisis Pool', value: 'crisis_pool', selected: false},
+     // { name: 'Crisis Pool', value: 'crisis_pool', selected: false},
       { name: 'Challenge Pool', value: 'challenge_pool', selected: false}
     ];
     this.bank_type_name = 'Bank'; // the default
@@ -50,7 +50,7 @@ export class GMBank extends FormApplication {
       template: 'systems/earthland/templates/other/gm-bank.html',
       title: localizer('GMBank'),
       classes: ['gm-bank', 'bank'],
-      width: 550,
+      width: 650,
       height: 'auto',
       top: 450,
       left: 200,
