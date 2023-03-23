@@ -26,6 +26,29 @@ export class earthlandItem extends Item {
     return rollData;
   }
 
+
+  async chatCard(label) {
+    // Initialize chat data.
+    const item = this;
+    const token = this.actor.token;
+    const speaker = ChatMessage.getSpeaker({ actor: this.actor });
+    const rollMode = game.settings.get('core', 'rollMode');
+    const templateData = {
+      actor: this.actor.toObject(false),
+      item: this.toObject(false),
+      tokenId: token?.uuid || null,
+      isSpell: item.type === "spell",
+    };
+    const html = await renderTemplate("systems/earthland/templates/chat/item-card.html", templateData);
+
+    ChatMessage.create({
+        speaker: speaker,
+        rollMode: rollMode,
+        flavor: label,
+        content: html
+    });
+  }
+
   /**
    * Handle clickable rolls.
    * @param {Event} event   The originating click event
@@ -34,19 +57,10 @@ export class earthlandItem extends Item {
   async roll() {
     const item = this;
 
-    // Initialize chat data.
-    const speaker = ChatMessage.getSpeaker({ actor: this.actor });
-    const rollMode = game.settings.get('core', 'rollMode');
-    const label = `[${item.type}] ${item.name}`;
-
     // If there's no roll data, send a chat message.
     if (!this.system.formula) {
-      ChatMessage.create({
-        speaker: speaker,
-        rollMode: rollMode,
-        flavor: label,
-        content: item.system.description ?? ''
-      });
+      const label = `Examining`;
+      this.chatCard(label);
     }
     // Otherwise, create a roll and send a chat message from it.
     else {

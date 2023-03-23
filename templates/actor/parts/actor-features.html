@@ -77,7 +77,10 @@
           <h4>{{ability.name}}</h4>
         </div>
         <div class="item-name">
-          <button title="Use Ability (add to dice-pool)" class="usable small-button" data-usetype="actor" data-energycost="{{ability.system.energy_cost}}" data-mpcost="{{ability.system.mp_cost}}" data-label="{{ability.name}}" data-kind="ability" data-roll="{{formulaFromObject ability.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
+          {{#if ability.system.dice.value}}
+            <button title="Add to Dice-Pool" class="usable small-button" data-rolltype="actor" data-roll="{{formulaFromObject ability.system.dice.value}}" data-energycost="{{ability.system.energy_cost}}" data-mpcost="{{ability.system.mp_cost}}" data-label="{{ability.name}}" data-kind="ability"><i class="fas fa-dice-d20"></i></button>
+          {{/if}}
+          <button title="Use Ability" class="usable small-button" data-itemid="{{ability._id}}" data-usetype="actor" data-energycost="{{ability.system.energy_cost}}" data-mpcost="{{ability.system.mp_cost}}" data-label="{{ability.name}}" data-kind="ability" data-description="{{ability.system.description}}"><i class="fa-solid fa-wand-sparkles"></i></button>
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
@@ -213,7 +216,10 @@
           <h4>{{ability.name}}</h4>
         </div>
         <div class="item-name">
-          <button title="Use Ability (add to dice-pool)" class="usable small-button" data-usetype="actor" data-energycost="{{ability.system.energy_cost}}" data-mpcost="{{ability.system.mp_cost}}" data-label="{{ability.name}}" data-kind="ability" data-roll="{{formulaFromObject ability.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
+          {{#if ability.system.dice.value}}
+            <button title="Add to Dice-Pool" class="usable small-button" data-rolltype="actor" data-roll="{{formulaFromObject ability.system.dice.value}}" data-energycost="{{ability.system.energy_cost}}" data-mpcost="{{ability.system.mp_cost}}" data-label="{{ability.name}}" data-kind="ability"><i class="fas fa-dice-d20"></i></button>
+          {{/if}}
+          <button title="Use Ability" class="usable small-button" data-itemid="{{ability._id}}" data-usetype="actor" data-energycost="{{ability.system.energy_cost}}" data-mpcost="{{ability.system.mp_cost}}" data-label="{{ability.name}}" data-kind="ability" data-description="{{ability.system.description}}"><i class="fa-solid fa-wand-sparkles"></i></button>
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
@@ -243,7 +249,10 @@
           <h4>{{feat.name}}</h4>
         </div>
         <div class="item-name">
-          <button title="Use Feat (add to dice-pool)" class="usable small-button" data-usetype="actor" data-energycost="{{feat.system.energy_cost}}" data-mpcost="{{feat.system.mp_cost}}" data-label="{{feat.name}}" data-kind="feat" data-roll="{{formulaFromObject feat.system.dice.value}}"><i class="fa-solid fa-wand-sparkles"></i></button>
+          {{#if feat.system.dice.value}}
+            <button title="Add to Dice-Pool" class="usable small-button" data-rolltype="actor" data-roll="{{formulaFromObject feat.system.dice.value}}" data-energycost="{{feat.system.energy_cost}}" data-mpcost="{{feat.system.mp_cost}}" data-label="{{feat.name}}" data-kind="feat"><i class="fas fa-dice-d20"></i></button>
+          {{/if}}
+          <button title="Use Feat" class="usable small-button" data-itemid="{{feat._id}}" data-usetype="actor" data-energycost="{{feat.system.energy_cost}}" data-mpcost="{{feat.system.mp_cost}}" data-label="{{feat.name}}" data-kind="feat" data-description="{{feat.system.description}}"><i class="fa-solid fa-wand-sparkles"></i></button>
         </div>
         <div class="item-controls">
           <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>

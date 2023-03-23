@@ -624,6 +624,7 @@ export class earthlandActorSheet extends ActorSheet {
     // Handle item rolls.
     if (dataset.rollType) {
       if (dataset.rollType == 'item') {
+        console.log("in roll-type item");
         const itemId = element.closest('.item').dataset.itemId;
         const item = this.actor.items.get(itemId);
         if (item) return item.roll();
@@ -668,6 +669,7 @@ export class earthlandActorSheet extends ActorSheet {
     }
   }
 
+
   _onUse(event) {
     event.preventDefault();
     const element = event.currentTarget;
@@ -692,7 +694,9 @@ export class earthlandActorSheet extends ActorSheet {
       const object = this.unwrapCostObject({ en: dataset.energycost, mp: dataset.mpcost });
       // added but not yet deducted
       if ((parseInt(dataset.energycost) > 0) || (parseInt(dataset.mpcost) > 0)) {
-        game.earthland.UserDicePool._addCostToPool(this.actor.name, label, object, this.actor.id);
+        if (dataset.roll) {
+          game.earthland.UserDicePool._addCostToPool(this.actor.name, label, object, this.actor.id);
+        }
       }
     }
     if (dataset.roll) {
@@ -709,6 +713,31 @@ export class earthlandActorSheet extends ActorSheet {
 
       game.earthland.UserDicePool._addTraitToPool(this.actor.name, label, object, this.actor.id)
       return null;
+    } else {
+      // just output the spell card and deduct the energy.
+      this.actor.exhaust(parseInt(dataset.energycost));
+      this.actor.changePpBy( - parseInt(dataset.mpcost))
+      const item = this.actor.items.get(dataset.itemid);
+      console.log("Got to here with used item: %o, %o", dataset.itemid, item);
+      if(!!item) {
+        let label = 'Uses';
+        if (item.type === "spell") {
+          label = 'Casts';
+        }
+        item.chatCard(label);
+      } else {
+        // Initialize chat data.
+        const speaker = ChatMessage.getSpeaker({ actor: this.actor });
+        const rollMode = game.settings.get('core', 'rollMode');
+        const label = `Uses [${dataset.kind}] ${dataset.label}`;
+        // If there's no roll data, send a chat message.
+        ChatMessage.create({
+          speaker: speaker,
+          rollMode: rollMode,
+          flavor: label,
+          content: dataset.description ?? ''
+        });
+      }
     }
   }
 
