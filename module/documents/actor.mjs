@@ -133,6 +133,9 @@ export class earthlandActor extends Actor {
     if (type == 'action') {
       ChatMessage.create({ content: `${this.name} has taken the rest action.` });
       newEnergy += 2;
+      if (newEnergy > maxEnergy) {
+        newEnergy = maxEnergy;
+      }
     } else if (type == 'short') {
       ChatMessage.create({ content: `${this.name} has taken a short rest.` });
       newEnergy = maxEnergy;
@@ -187,6 +190,14 @@ export class earthlandActor extends Actor {
     console.log("in updateHealthValue with value: %o", value);
     await this.update({
       'data.health.value': value
+    })
+  }
+
+  // Update experience value of the actor
+  async updateXPValue (value) {
+    console.log("in updateXPValue with value: %o", value);
+    await this.update({
+      'data.experience.value': value
     })
   }
 
@@ -497,6 +508,17 @@ export class earthlandActor extends Actor {
     }
   }
 
+
+  async gainXP(amount, message) {
+    let currentXP = +(this.system.experience.value ?? 0)
+    let newXP = parseInt(amount);
+    console.log("have newXP: %o, currentXP: %o", newXP, currentXP);
+    if ((newXP + currentXP) > currentXP) {
+      newXP += currentXP;
+      await this.updateXPValue(newXP);
+      ChatMessage.create({ content: `${this.name} has gained ${amount} XP from "${message}"` });
+    }
+  }
 
   /**
    * Prepare character roll data.
