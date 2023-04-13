@@ -234,13 +234,17 @@ export class UserDicePool extends FormApplication {
     const currentDice = game.user.getFlag('earthland', 'dicePool')
     const currentCustomLength = getLength(currentDice.pool.custom ?? {})
 
-    setProperty(currentDice, `pool.custom.${currentCustomLength}`, currentDice.customAdd)
+    const actor_id = game.user.character?.id
+    currentDice.customAdd.actor_id = actor_id;
 
+    setProperty(currentDice, `pool.custom.${currentCustomLength}`, currentDice.customAdd)
     setProperty(currentDice, `customAdd`, {
       type: 'custom',
+      actor_id: actor_id,
       label: '',
       value: { 0: '8' }
     })
+
     setProperty(currentDice, `changed`, { value: true });
 
     await game.user.setFlag('earthland', 'dicePool', null)
