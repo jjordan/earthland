@@ -747,6 +747,7 @@
             "capability",
             "rollable"
          ],
+         "level":1,
          "hitDice":"",
          "is_class_feature": false,
          "is_species_feature": false,
@@ -763,6 +764,7 @@
             "capability",
             "rollable"
          ],
+         "level":1,
          "is_class_feature": false,
          "is_species_feature": false,
          "is_monster_feature": false,
